@@ -1,9 +1,0 @@
-D:\Research\KuAn\AppForAn\CameraApp\PointMark\bin\Debug\PointMark.exe.config
-D:\Research\KuAn\AppForAn\CameraApp\PointMark\bin\Debug\PointMark.exe
-D:\Research\KuAn\AppForAn\CameraApp\PointMark\bin\Debug\PointMark.pdb
-D:\Research\KuAn\AppForAn\CameraApp\PointMark\obj\Debug\PointMark.csprojResolveAssemblyReference.cache
-D:\Research\KuAn\AppForAn\CameraApp\PointMark\obj\Debug\PointMark.Form1.resources
-D:\Research\KuAn\AppForAn\CameraApp\PointMark\obj\Debug\PointMark.Properties.Resources.resources
-D:\Research\KuAn\AppForAn\CameraApp\PointMark\obj\Debug\PointMark.csproj.GenerateResource.Cache
-D:\Research\KuAn\AppForAn\CameraApp\PointMark\obj\Debug\PointMark.exe
-D:\Research\KuAn\AppForAn\CameraApp\PointMark\obj\Debug\PointMark.pdb
