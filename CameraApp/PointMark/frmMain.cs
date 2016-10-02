@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PointMark
 {
@@ -18,7 +16,13 @@ namespace PointMark
         private int XCenter;
         private int YCenter;
 
+<<<<<<< HEAD:CameraApp/PointMark/frmMain.cs
         public frmMain()
+=======
+        List<string> _lstDS;
+        
+        public Form1()
+>>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.cs
         {
             InitializeComponent();
         }
@@ -110,6 +114,146 @@ namespace PointMark
         {
 
         }
+<<<<<<< HEAD:CameraApp/PointMark/frmMain.cs
         
+=======
+
+        private void thêmDanhSáchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog od = new OpenFileDialog();
+            if (od.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    ReadExcelContents(od.FileName);
+
+                    //get list
+                    _lstDS = new List<string>();
+
+                    _lstDS.Add("Nguyen Van A");
+                    _lstDS.Add("Nguyen Van B");
+                    _lstDS.Add("Tran Quang C");
+                }
+                catch(Exception ex)
+                { }
+            }
+        }
+
+        public DataTable ReadExcelContents(string fileName)
+        {
+            try
+            {
+                /*
+                string connectionString = String.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 8.0;HDR=YES;IMEX=1;""", fileName);
+                string query = String.Format("select * from [{0}$]", "Sheet1");
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(query, connectionString);
+                DataSet dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                */
+                string connectionString = String.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0;HDR=YES;IMEX=1;""", fileName);
+                string query = String.Format("select * from [{0}$]", "Sheet1");
+                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(query, connectionString);
+                DataSet dataSet = new DataSet();
+                dataAdapter.Fill(dataSet);
+                //dataGridView1.DataSource = dataSet.Tables[0];
+
+
+                DataTable dt = dataSet.Tables[0];
+                
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Program can't read file. " + ex.Message, "Please Note", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        private void _btnExport_Click(object sender, EventArgs e)
+        {
+            ExportExcel(GetTable());
+        }
+
+        public void ExportExcel(DataTable dt)
+        {
+            SaveFileDialog sd = new SaveFileDialog();
+            sd.Filter = "xls files (*.xls)|*.xls";
+            sd.FilterIndex = 2;
+            sd.RestoreDirectory = true;
+
+            if (sd.ShowDialog() == DialogResult.OK)
+            {
+                Excel.Application xlApp;
+                Excel.Workbook xlWorkBook;
+                Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+
+                xlApp = new Excel.Application();
+                xlWorkBook = xlApp.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                /*
+                xlWorkSheet.Cells[0, 1] = "Tên";
+                xlWorkSheet.Cells[0, 2] = "Lần 1";
+                xlWorkSheet.Cells[0, 3] = "Lần 2";
+                xlWorkSheet.Cells[0, 4] = "Lần 3";
+                xlWorkSheet.Cells[0, 5] = "Tổng";
+                */
+
+                //chay tu 1, 0 la title
+                for (int i = 1; i <= dt.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j <= dt.Columns.Count - 1; j++)
+                    {
+                        string data = dt.Rows[i].ItemArray[j].ToString();
+                        xlWorkSheet.Cells[i + 1, j + 1] = data;
+                    }
+                }
+                xlWorkBook.SaveAs(sd.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.Close(true, misValue, misValue);
+                xlApp.Quit();
+
+                releaseObject(xlWorkSheet);
+                releaseObject(xlWorkBook);
+                releaseObject(xlApp);
+            }
+
+        }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+
+        static DataTable GetTable()
+        {
+            // Here we create a DataTable with four columns.
+            DataTable table = new DataTable();
+            table.Columns.Add("Tên", typeof(string));
+            table.Columns.Add("Lần 1", typeof(int));
+            table.Columns.Add("Lần 2", typeof(int));
+            table.Columns.Add("Lần 3", typeof(int));
+            table.Columns.Add("Tổng", typeof(string));
+
+            // Here we add five DataRows.
+            table.Rows.Add("Nguyễn Văn A", 10, 8, 9, 27);
+            table.Rows.Add("Nguyễn Văn b", 10, 8, 8, 26);
+            table.Rows.Add("Nguyễn Văn c", 10, 8, 7, 25);
+            return table;
+        }
+>>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.cs
     }
 }
