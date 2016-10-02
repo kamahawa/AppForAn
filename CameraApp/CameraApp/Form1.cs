@@ -43,6 +43,7 @@ namespace CameraApp
             {
                 if (_txtIpCameraAddress.Text != "")
                 {
+                    //rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100
                     //test link : http://68.114.48.220:80/videostream.cgi?user=admin&pwd=
                     //test link : http://68.186.171.207:86/videostream.cgi?user=admin&pwd=
                     MJPEGStream stream = new MJPEGStream(_txtIpCameraAddress.Text);
