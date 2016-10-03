@@ -102,7 +102,6 @@
     <Content Include="bia so 4.jpg" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <COMReference Include="AxAXVLC">
       <Guid>{DF2BBE39-40A8-433B-A279-073F48DA94B6}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -117,7 +116,7 @@
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
-=======
+	</COMReference>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -142,7 +141,6 @@
       <VersionMinor>3</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>

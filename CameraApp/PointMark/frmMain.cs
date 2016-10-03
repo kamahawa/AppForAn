@@ -16,13 +16,9 @@ namespace PointMark
         private int XCenter;
         private int YCenter;
 
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.cs
-        public frmMain()
-=======
         List<string> _lstDS;
-        
-        public Form1()
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.cs
+
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -114,9 +110,6 @@ namespace PointMark
         {
 
         }
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.cs
-        
-=======
 
         private void thêmDanhSáchToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -254,6 +247,5 @@ namespace PointMark
             table.Rows.Add("Nguyễn Văn c", 10, 8, 7, 25);
             return table;
         }
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.cs
     }
 }

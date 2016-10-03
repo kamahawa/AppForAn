@@ -36,26 +36,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this._lblName = new System.Windows.Forms.Label();
             this._btnNext = new System.Windows.Forms.Button();
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
             this.axVLCPlugin21 = new AxAXVLC.AxVLCPlugin2();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nhậpDanhSáchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xuấtFileĐiểmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).BeginInit();
-=======
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmDanhSáchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._ptbImage)).BeginInit();
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // _btnCenter
             // 
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
             this._btnCenter.Location = new System.Drawing.Point(13, 518);
             this._btnCenter.Name = "_btnCenter";
             this._btnCenter.Size = new System.Drawing.Size(75, 23);
@@ -63,7 +57,7 @@
             this._btnCenter.Text = "Lấy tâm";
             this._btnCenter.UseVisualStyleBackColor = true;
             this._btnCenter.Click += new System.EventHandler(this._btnCenter_Click);
-=======
+
             this._ptbImage.Image = ((System.Drawing.Image)(resources.GetObject("_ptbImage.Image")));
             this._ptbImage.Location = new System.Drawing.Point(13, 27);
             this._ptbImage.Name = "_ptbImage";
@@ -82,7 +76,6 @@
             this._btnOpen.Text = "Lấy tâm";
             this._btnOpen.UseVisualStyleBackColor = true;
             this._btnOpen.Click += new System.EventHandler(this._btnOpen_Click);
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             // 
             // _btnScore
             // 
@@ -98,11 +91,8 @@
             // 
             this._lblScore.AutoSize = true;
             this._lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
             this._lblScore.Location = new System.Drawing.Point(785, 86);
-=======
             this._lblScore.Location = new System.Drawing.Point(786, 74);
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             this._lblScore.Name = "_lblScore";
             this._lblScore.Size = new System.Drawing.Size(0, 24);
             this._lblScore.TabIndex = 3;
