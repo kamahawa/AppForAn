@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRTSP));
             this._btnGetCenter = new System.Windows.Forms.Button();
             this._ptbCamera = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -41,9 +42,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this._lblName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.axVLCPlugin21 = new AxAXVLC.AxVLCPlugin2();
+            this._transpCtrl = new CameraApp.TranspCtrl();
             ((System.ComponentModel.ISupportInitialize)(this._ptbCamera)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).BeginInit();
             this.SuspendLayout();
             // 
             // _btnGetCenter
@@ -63,7 +67,6 @@
             this._ptbCamera.Size = new System.Drawing.Size(640, 480);
             this._ptbCamera.TabIndex = 2;
             this._ptbCamera.TabStop = false;
-            this._ptbCamera.MouseUp += new System.Windows.Forms.MouseEventHandler(this._ptbCamera_MouseUp);
             // 
             // menuStrip1
             // 
@@ -162,11 +165,33 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Họ và tên : ";
             // 
+            // axVLCPlugin21
+            // 
+            this.axVLCPlugin21.Enabled = true;
+            this.axVLCPlugin21.Location = new System.Drawing.Point(12, 37);
+            this.axVLCPlugin21.Name = "axVLCPlugin21";
+            this.axVLCPlugin21.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVLCPlugin21.OcxState")));
+            this.axVLCPlugin21.Size = new System.Drawing.Size(640, 480);
+            this.axVLCPlugin21.TabIndex = 6;
+            // 
+            // _transpCtrl
+            // 
+            this._transpCtrl.BackColor = System.Drawing.Color.Transparent;
+            this._transpCtrl.Location = new System.Drawing.Point(12, 37);
+            this._transpCtrl.Name = "_transpCtrl";
+            this._transpCtrl.Opacity = 100;
+            this._transpCtrl.Size = new System.Drawing.Size(640, 480);
+            this._transpCtrl.TabIndex = 7;
+            this._transpCtrl.Text = "transpCtrl1";
+            this._transpCtrl.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseUp);
+            // 
             // frmRTSP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 576);
+            this.Controls.Add(this._transpCtrl);
+            this.Controls.Add(this.axVLCPlugin21);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this._btnScore);
             this.Controls.Add(this._ptbCamera);
@@ -181,6 +206,7 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,5 +226,7 @@
         private System.Windows.Forms.Label _lblScore;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem thoátToolStripMenuItem;
+        private AxAXVLC.AxVLCPlugin2 axVLCPlugin21;
+        private TranspCtrl _transpCtrl;
     }
 }

@@ -25,6 +25,8 @@ namespace CameraApp
         private int XCenter;
         private int YCenter;
 
+        private AxAXVLC.AxVLCPlugin2 player;
+
         public frmRTSP()
         {
             InitializeComponent();
@@ -36,11 +38,18 @@ namespace CameraApp
             //axVLCPlugin21.playlist.play();
         }
 
-        private void frmRTSP_Load(object sender, EventArgs e)
+        void playDC(object sender, EventArgs e)
         {
-            LoadCamera();
+            MessageBox.Show(string.Format("X: {0} Y: {1}", MousePosition.X, MousePosition.Y));
         }
 
+        private void frmRTSP_Load(object sender, EventArgs e)
+        {
+            //LoadCamera();
+            axVLCPlugin21.playlist.add("http://68.114.48.220:80/videostream.cgi?user=admin&pwd=", null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
+            axVLCPlugin21.playlist.play();            
+        }
+        
         void LoadCamera()
         {
             _videoCaptureDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -76,13 +85,6 @@ namespace CameraApp
             //MessageBox.Show(string.Format("X: {0} Y: {1}", XCenter, YCenter));
         }
 
-        private void _ptbCamera_MouseUp(object sender, MouseEventArgs e)
-        {
-            X = e.X;
-            Y = e.Y;
-            drawPoint(X, Y);
-        }
-
         public void drawPoint(int x, int y)
         {
             Graphics g = Graphics.FromHwnd(_ptbCamera.Handle);
@@ -97,8 +99,6 @@ namespace CameraApp
 
         private void _btnScore_Click(object sender, EventArgs e)
         {
-            //_lblPoint.Text = string.Format("XCenter: {0} YCenter: {1} X: {2} Y: {3}", XCenter, YCenter, X, Y);
-
             if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 55)
             {
                 _lblScore.Text = "10";
@@ -225,6 +225,13 @@ namespace CameraApp
             frmAddList frm = new frmAddList();
             frm.ShowDialog();
             this.Show();
+        }
+
+        private void _transpCtrl_MouseUp(object sender, MouseEventArgs e)
+        {
+            X = e.X;
+            Y = e.Y;
+            drawPoint(X, Y);
         }
     }
 }
