@@ -17,6 +17,7 @@ namespace CameraApp
 {
     public partial class frmRTSP : Form
     {
+        private string urlCamera = "rtsp://192.168.1.12:533/user=admin&password=&channel=1&stream=0.sdp?real_stream--rtp-caching=100";//"http://68.114.48.220:80/videostream.cgi?user=admin&pwd=";
         private FilterInfoCollection _videoCaptureDevices;
 
         private int X;
@@ -46,7 +47,7 @@ namespace CameraApp
         private void frmRTSP_Load(object sender, EventArgs e)
         {
             //LoadCamera();
-            axVLCPlugin21.playlist.add("http://68.114.48.220:80/videostream.cgi?user=admin&pwd=", null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
+            axVLCPlugin21.playlist.add(urlCamera, null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
             axVLCPlugin21.playlist.play();            
         }
         
