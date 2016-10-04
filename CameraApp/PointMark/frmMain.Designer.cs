@@ -36,26 +36,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this._lblName = new System.Windows.Forms.Label();
             this._btnNext = new System.Windows.Forms.Button();
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
             this.axVLCPlugin21 = new AxAXVLC.AxVLCPlugin2();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nhậpDanhSáchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xuấtFileĐiểmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).BeginInit();
-=======
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmDanhSáchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._ptbImage)).BeginInit();
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // _btnCenter
             // 
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
             this._btnCenter.Location = new System.Drawing.Point(13, 518);
             this._btnCenter.Name = "_btnCenter";
             this._btnCenter.Size = new System.Drawing.Size(75, 23);
@@ -63,7 +57,7 @@
             this._btnCenter.Text = "Lấy tâm";
             this._btnCenter.UseVisualStyleBackColor = true;
             this._btnCenter.Click += new System.EventHandler(this._btnCenter_Click);
-=======
+
             this._ptbImage.Image = ((System.Drawing.Image)(resources.GetObject("_ptbImage.Image")));
             this._ptbImage.Location = new System.Drawing.Point(13, 27);
             this._ptbImage.Name = "_ptbImage";
@@ -82,7 +76,6 @@
             this._btnOpen.Text = "Lấy tâm";
             this._btnOpen.UseVisualStyleBackColor = true;
             this._btnOpen.Click += new System.EventHandler(this._btnOpen_Click);
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             // 
             // _btnScore
             // 
@@ -98,11 +91,8 @@
             // 
             this._lblScore.AutoSize = true;
             this._lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
             this._lblScore.Location = new System.Drawing.Point(785, 86);
-=======
             this._lblScore.Location = new System.Drawing.Point(786, 74);
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             this._lblScore.Name = "_lblScore";
             this._lblScore.Size = new System.Drawing.Size(0, 24);
             this._lblScore.TabIndex = 3;
@@ -111,11 +101,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
+
             this.label1.Location = new System.Drawing.Point(675, 86);
-=======
-            this.label1.Location = new System.Drawing.Point(676, 74);
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 20);
             this.label1.TabIndex = 4;
@@ -125,11 +112,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
-            this.label2.Location = new System.Drawing.Point(679, 32);
-=======
+
             this.label2.Location = new System.Drawing.Point(676, 27);
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 20);
             this.label2.TabIndex = 5;
@@ -139,11 +123,7 @@
             // 
             this._lblName.AutoSize = true;
             this._lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
-            this._lblName.Location = new System.Drawing.Point(746, 38);
-=======
             this._lblName.Location = new System.Drawing.Point(743, 33);
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             this._lblName.Name = "_lblName";
             this._lblName.Size = new System.Drawing.Size(0, 24);
             this._lblName.TabIndex = 6;
@@ -158,7 +138,6 @@
             this._btnNext.UseVisualStyleBackColor = true;
             this._btnNext.Click += new System.EventHandler(this._btnNext_Click);
             // 
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
             // axVLCPlugin21
             // 
             this.axVLCPlugin21.Enabled = true;
@@ -168,8 +147,6 @@
             this.axVLCPlugin21.Size = new System.Drawing.Size(640, 480);
             this.axVLCPlugin21.TabIndex = 8;
             // 
-=======
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -177,27 +154,18 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(930, 24);
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
             this.menuStrip1.TabIndex = 9;
-=======
-            this.menuStrip1.TabIndex = 8;
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
             this.nhậpDanhSáchToolStripMenuItem,
             this.xuấtFileĐiểmToolStripMenuItem});
-=======
-            this.thêmDanhSáchToolStripMenuItem});
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
             // nhậpDanhSáchToolStripMenuItem
             // 
             this.nhậpDanhSáchToolStripMenuItem.Name = "nhậpDanhSáchToolStripMenuItem";
@@ -213,7 +181,6 @@
             this.xuấtFileĐiểmToolStripMenuItem.Click += new System.EventHandler(this.xuấtFileĐiểmToolStripMenuItem_Click);
             // 
             // frmMain
-=======
             // thêmDanhSáchToolStripMenuItem
             // 
             this.thêmDanhSáchToolStripMenuItem.Name = "thêmDanhSáchToolStripMenuItem";
@@ -232,23 +199,17 @@
             this._btnExport.Click += new System.EventHandler(this._btnExport_Click);
             // 
             // Form1
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 557);
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
-            this.Controls.Add(this.axVLCPlugin21);
-=======
             this.Controls.Add(this._btnExport);
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             this.Controls.Add(this._btnNext);
             this.Controls.Add(this._lblName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this._lblScore);
             this.Controls.Add(this._btnScore);
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
             this.Controls.Add(this._btnCenter);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -257,7 +218,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).EndInit();
-=======
             this.Controls.Add(this._btnOpen);
             this.Controls.Add(this._ptbImage);
             this.Controls.Add(this.menuStrip1);
@@ -265,7 +225,6 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this._ptbImage)).EndInit();
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -281,18 +240,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label _lblName;
         private System.Windows.Forms.Button _btnNext;
-<<<<<<< HEAD:CameraApp/PointMark/frmMain.Designer.cs
         private AxAXVLC.AxVLCPlugin2 axVLCPlugin21;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nhậpDanhSáchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xuấtFileĐiểmToolStripMenuItem;
-=======
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thêmDanhSáchToolStripMenuItem;
         private System.Windows.Forms.Button _btnExport;
->>>>>>> 3422f90fec3cf29ef0d1a4ab998affdcc48eb883:CameraApp/PointMark/Form1.Designer.cs
     }
 }
 

@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using AForge.Video;
 using AForge.Video.DirectShow;
 
+using Excel = Microsoft.Office.Interop.Excel;
+
 namespace CameraApp
 {
     public partial class frmRTSP : Form
@@ -71,7 +73,7 @@ namespace CameraApp
             XCenter = X;
             YCenter = Y;
             //lay tam
-            MessageBox.Show(string.Format("X: {0} Y: {1}", XCenter, YCenter));
+            //MessageBox.Show(string.Format("X: {0} Y: {1}", XCenter, YCenter));
         }
 
         private void _ptbCamera_MouseUp(object sender, MouseEventArgs e)
@@ -130,6 +132,99 @@ namespace CameraApp
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void xuấtFileĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportExcel(GetTable());
+        }
+
+        public void ExportExcel(DataTable dt)
+        {
+            SaveFileDialog sd = new SaveFileDialog();
+            sd.Filter = "xls files (*.xls)|*.xls";
+            sd.FilterIndex = 2;
+            sd.RestoreDirectory = true;
+
+            if (sd.ShowDialog() == DialogResult.OK)
+            {
+                Excel.Application xlApp;
+                Excel.Workbook xlWorkBook;
+                Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+
+                xlApp = new Excel.Application();
+                xlWorkBook = xlApp.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                /*
+                xlWorkSheet.Cells[0, 1] = "Tên";
+                xlWorkSheet.Cells[0, 2] = "Lần 1";
+                xlWorkSheet.Cells[0, 3] = "Lần 2";
+                xlWorkSheet.Cells[0, 4] = "Lần 3";
+                xlWorkSheet.Cells[0, 5] = "Tổng";
+                */
+
+                //chay tu 1, 0 la title
+                for (int i = 1; i <= dt.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j <= dt.Columns.Count - 1; j++)
+                    {
+                        string data = dt.Rows[i].ItemArray[j].ToString();
+                        xlWorkSheet.Cells[i + 1, j + 1] = data;
+                    }
+                }
+                xlWorkBook.SaveAs(sd.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.Close(true, misValue, misValue);
+                xlApp.Quit();
+
+                releaseObject(xlWorkSheet);
+                releaseObject(xlWorkBook);
+                releaseObject(xlApp);
+            }
+        }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                //MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+
+        static DataTable GetTable()
+        {
+            // Here we create a DataTable with four columns.
+            DataTable table = new DataTable();
+            table.Columns.Add("Tên", typeof(string));
+            table.Columns.Add("Lần 1", typeof(int));
+            table.Columns.Add("Lần 2", typeof(int));
+            table.Columns.Add("Lần 3", typeof(int));
+            table.Columns.Add("Tổng", typeof(string));
+
+            // Here we add five DataRows.
+            table.Rows.Add("Nguyễn Văn A", 10, 8, 9, 27);
+            table.Rows.Add("Nguyễn Văn b", 10, 8, 8, 26);
+            table.Rows.Add("Nguyễn Văn c", 10, 8, 7, 25);
+            return table;
+        }
+
+        private void thêmDanhSáchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmAddList frm = new frmAddList();
+            frm.ShowDialog();
+            this.Show();
         }
     }
 }

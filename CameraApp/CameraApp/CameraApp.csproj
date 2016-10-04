@@ -32,14 +32,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AForge">
-      <HintPath>C:\Users\Administrator.1JYBSHQ781IO1PK\Downloads\Compressed\AForge.NET Framework-2.2.5-(libs only)\Release\AForge.dll</HintPath>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\AForge.dll</HintPath>
     </Reference>
-    <Reference Include="AForge.Video">
-      <HintPath>C:\Users\Administrator.1JYBSHQ781IO1PK\Downloads\Compressed\AForge.NET Framework-2.2.5-(libs only)\Release\AForge.Video.dll</HintPath>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\AForge.Video.dll</HintPath>
     </Reference>
-    <Reference Include="AForge.Video.DirectShow">
-      <HintPath>C:\Users\Administrator.1JYBSHQ781IO1PK\Downloads\Compressed\AForge.NET Framework-2.2.5-(libs only)\Release\AForge.Video.DirectShow.dll</HintPath>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>libs\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -59,6 +67,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddList.Designer.cs">
+      <DependentUpon>frmAddList.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRTSP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +83,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddList.resx">
+      <DependentUpon>frmAddList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRTSP.resx">
       <DependentUpon>frmRTSP.cs</DependentUpon>
@@ -113,6 +130,13 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libs\AForge.dll" />
+    <Content Include="libs\AForge.Video.DirectShow.dll" />
+    <Content Include="libs\AForge.Video.dll" />
+    <Content Include="libs\Interop.AXVLC.dll" />
+    <Content Include="libs\Microsoft.Office.Interop.Excel.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
