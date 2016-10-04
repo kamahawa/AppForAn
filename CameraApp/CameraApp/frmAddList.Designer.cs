@@ -49,6 +49,7 @@
             this._btnImport.TabIndex = 1;
             this._btnImport.Text = "Chọn từ file";
             this._btnImport.UseVisualStyleBackColor = true;
+            this._btnImport.Click += new System.EventHandler(this._btnImport_Click);
             // 
             // frmAddList
             // 

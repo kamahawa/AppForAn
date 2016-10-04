@@ -194,7 +194,7 @@ namespace CameraApp
             catch (Exception ex)
             {
                 obj = null;
-                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+                //MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
             }
             finally
             {
