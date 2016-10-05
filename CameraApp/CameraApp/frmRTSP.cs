@@ -12,12 +12,14 @@ using AForge.Video;
 using AForge.Video.DirectShow;
 
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace CameraApp
 {
     public partial class frmRTSP : Form
     {
-        private string urlCamera = "rtsp://192.168.1.12:533/user=admin&password=&channel=1&stream=0.sdp?real_stream--rtp-caching=100";//"http://68.114.48.220:80/videostream.cgi?user=admin&pwd=";
+        //"rtsp://192.168.1.12:533/user=admin&password=&channel=1&stream=0.sdp?real_stream--rtp-caching=100";
+        private string urlCamera = "rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100";
         private FilterInfoCollection _videoCaptureDevices;
 
         private int X;
@@ -89,12 +91,19 @@ namespace CameraApp
         public void drawPoint(int x, int y, Control c)
         {
             Graphics g = Graphics.FromHwnd(c.Handle);
+            /*
             SolidBrush brush = new SolidBrush(Color.Red);
             Point dPoint = new Point(x, y);
             dPoint.X = dPoint.X - 2;
             dPoint.Y = dPoint.Y - 2;
             Rectangle rect = new Rectangle(dPoint, new Size(4, 4));
             g.FillRectangle(brush, rect);
+            */
+            //Icon xIcon = Properties.Resources.x;
+            //g.DrawIcon(Properties.Resources.x, x, y);
+
+            //cho chinh giua file
+            g.DrawImage(Properties.Resources.x, x - 8, y - 8);
             g.Dispose();
         }
 
