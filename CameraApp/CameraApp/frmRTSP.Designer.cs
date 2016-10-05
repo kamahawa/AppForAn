@@ -58,13 +58,16 @@
             this._btnGetCenter.TabIndex = 1;
             this._btnGetCenter.Text = "Lấy tâm";
             this._btnGetCenter.UseVisualStyleBackColor = true;
+            this._btnGetCenter.Visible = false;
             this._btnGetCenter.Click += new System.EventHandler(this._btnGetCenter_Click);
             // 
             // _ptbCamera
             // 
+            this._ptbCamera.Image = ((System.Drawing.Image)(resources.GetObject("_ptbCamera.Image")));
             this._ptbCamera.Location = new System.Drawing.Point(12, 37);
             this._ptbCamera.Name = "_ptbCamera";
             this._ptbCamera.Size = new System.Drawing.Size(640, 480);
+            this._ptbCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._ptbCamera.TabIndex = 2;
             this._ptbCamera.TabStop = false;
             // 
@@ -192,9 +195,9 @@
             this.ClientSize = new System.Drawing.Size(949, 576);
             this.Controls.Add(this._transpCtrl);
             this.Controls.Add(this.axVLCPlugin21);
+            this.Controls.Add(this._ptbCamera);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this._btnScore);
-            this.Controls.Add(this._ptbCamera);
             this.Controls.Add(this._btnGetCenter);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

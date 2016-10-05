@@ -22,12 +22,11 @@ namespace CameraApp
 
         private int X;
         private int Y;
-
-        private int XCenter;
-        private int YCenter;
-
-        private AxAXVLC.AxVLCPlugin2 player;
-
+        
+        // test and get is 318, 218
+        private int XCenter = 318;
+        private int YCenter = 218;
+        
         public frmRTSP()
         {
             InitializeComponent();
@@ -48,7 +47,7 @@ namespace CameraApp
         {
             //LoadCamera();
             axVLCPlugin21.playlist.add(urlCamera, null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
-            axVLCPlugin21.playlist.play();            
+            axVLCPlugin21.playlist.play();
         }
         
         void LoadCamera()
@@ -82,13 +81,14 @@ namespace CameraApp
         {
             XCenter = X;
             YCenter = Y;
+            drawPoint(XCenter, YCenter, _transpCtrl);
             //lay tam
-            //MessageBox.Show(string.Format("X: {0} Y: {1}", XCenter, YCenter));
+            MessageBox.Show(string.Format("X: {0} Y: {1}", XCenter, YCenter));
         }
 
-        public void drawPoint(int x, int y)
+        public void drawPoint(int x, int y, Control c)
         {
-            Graphics g = Graphics.FromHwnd(_ptbCamera.Handle);
+            Graphics g = Graphics.FromHwnd(c.Handle);
             SolidBrush brush = new SolidBrush(Color.Red);
             Point dPoint = new Point(x, y);
             dPoint.X = dPoint.X - 2;
@@ -100,27 +100,27 @@ namespace CameraApp
 
         private void _btnScore_Click(object sender, EventArgs e)
         {
-            if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 55)
+            if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 37.5)
             {
                 _lblScore.Text = "10";
             }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 105)
+            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 75)
             {
                 _lblScore.Text = "9";
             }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 160)
+            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 112.5)
             {
                 _lblScore.Text = "8";
             }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 220)
+            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 150)
             {
                 _lblScore.Text = "7";
             }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 275)
+            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 187.5)
             {
                 _lblScore.Text = "6";
             }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 325)
+            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 225)
             {
                 _lblScore.Text = "5";
             }
@@ -232,7 +232,7 @@ namespace CameraApp
         {
             X = e.X;
             Y = e.Y;
-            drawPoint(X, Y);
+            drawPoint(X, Y, _transpCtrl);
         }
     }
 }
