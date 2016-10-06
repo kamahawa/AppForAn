@@ -11,15 +11,17 @@ using System.Windows.Forms;
 using AForge.Video;
 using AForge.Video.DirectShow;
 
-using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
+using CameraApp.Help;
 
 namespace CameraApp
 {
     public partial class frmRTSP : Form
     {
+        //"http://68.114.48.220:80/videostream.cgi?user=admin&pwd=";
         //"rtsp://192.168.1.12:533/user=admin&password=&channel=1&stream=0.sdp?real_stream--rtp-caching=100";
-        private string urlCamera = "rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100";
+        //"rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100";
+        private string urlCamera = "http://68.114.48.220:80/videostream.cgi?user=admin&pwd=";
         private FilterInfoCollection _videoCaptureDevices;
 
         private int X;
@@ -28,6 +30,9 @@ namespace CameraApp
         // test and get is 318, 218
         private int XCenter = 318;
         private int YCenter = 218;
+
+        //luot ban
+        private int luot = 1;
         
         public frmRTSP()
         {
@@ -39,12 +44,7 @@ namespace CameraApp
             //axVLCPlugin21.playlist.add("rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100", null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
             //axVLCPlugin21.playlist.play();
         }
-
-        void playDC(object sender, EventArgs e)
-        {
-            MessageBox.Show(string.Format("X: {0} Y: {1}", MousePosition.X, MousePosition.Y));
-        }
-
+        
         private void frmRTSP_Load(object sender, EventArgs e)
         {
             //LoadCamera();
@@ -85,7 +85,7 @@ namespace CameraApp
             YCenter = Y;
             drawPoint(XCenter, YCenter, _transpCtrl);
             //lay tam
-            MessageBox.Show(string.Format("X: {0} Y: {1}", XCenter, YCenter));
+            //MessageBox.Show(string.Format("X: {0} Y: {1}", XCenter, YCenter));
         }
 
         public void drawPoint(int x, int y, Control c)
@@ -146,71 +146,10 @@ namespace CameraApp
 
         private void xuấtFileĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExportExcel(GetTable());
+            ExcelHelp.ExportExcel(GetTable());
         }
 
-        public void ExportExcel(DataTable dt)
-        {
-            SaveFileDialog sd = new SaveFileDialog();
-            sd.Filter = "xls files (*.xls)|*.xls";
-            sd.FilterIndex = 2;
-            sd.RestoreDirectory = true;
-
-            if (sd.ShowDialog() == DialogResult.OK)
-            {
-                Excel.Application xlApp;
-                Excel.Workbook xlWorkBook;
-                Excel.Worksheet xlWorkSheet;
-                object misValue = System.Reflection.Missing.Value;
-
-                xlApp = new Excel.Application();
-                xlWorkBook = xlApp.Workbooks.Add(misValue);
-                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-                /*
-                xlWorkSheet.Cells[0, 1] = "Tên";
-                xlWorkSheet.Cells[0, 2] = "Lần 1";
-                xlWorkSheet.Cells[0, 3] = "Lần 2";
-                xlWorkSheet.Cells[0, 4] = "Lần 3";
-                xlWorkSheet.Cells[0, 5] = "Tổng";
-                */
-
-                //chay tu 1, 0 la title
-                for (int i = 1; i <= dt.Rows.Count - 1; i++)
-                {
-                    for (int j = 0; j <= dt.Columns.Count - 1; j++)
-                    {
-                        string data = dt.Rows[i].ItemArray[j].ToString();
-                        xlWorkSheet.Cells[i + 1, j + 1] = data;
-                    }
-                }
-                xlWorkBook.SaveAs(sd.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                xlWorkBook.Close(true, misValue, misValue);
-                xlApp.Quit();
-
-                releaseObject(xlWorkSheet);
-                releaseObject(xlWorkBook);
-                releaseObject(xlApp);
-            }
-        }
-
-        private void releaseObject(object obj)
-        {
-            try
-            {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-                obj = null;
-            }
-            catch (Exception ex)
-            {
-                obj = null;
-                //MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
-            }
-            finally
-            {
-                GC.Collect();
-            }
-        }
+        
 
         static DataTable GetTable()
         {
@@ -231,17 +170,53 @@ namespace CameraApp
 
         private void thêmDanhSáchToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            /*
             this.Hide();
             frmAddList frm = new frmAddList();
             frm.ShowDialog();
             this.Show();
+            */
+            DataTable table = new DataTable();
+            table.Columns.Add("Tên", typeof(string));
+            table.Columns.Add("Lần 1", typeof(int));
+            table.Columns.Add("Lần 2", typeof(int));
+            table.Columns.Add("Lần 3", typeof(int));
+            table.Columns.Add("Tổng", typeof(string));
+
+            // Here we add five DataRows.
+            table.Rows.Add("Nguyễn Văn A", null, null, null, null);
+            table.Rows.Add("Nguyễn Văn b", null, null, null, null);
+            table.Rows.Add("Nguyễn Văn c", null, null, null, null);
+
+            _dtgScore.DataSource = table;
+
+            _lblName.Text = table.Rows[0][0].ToString();
         }
 
         private void _transpCtrl_MouseUp(object sender, MouseEventArgs e)
         {
             X = e.X;
             Y = e.Y;
-            drawPoint(X, Y, _transpCtrl);
+            //drawPoint(X, Y, _transpCtrl);
+            addShotIcon(X, Y);
+        }
+
+        private void addShotIcon(int x, int y)
+        {
+            PictureBox px = new PictureBox();
+            px.Size = new Size(8, 8);
+            px.BackColor = Color.Transparent;
+            px.SizeMode = PictureBoxSizeMode.StretchImage;
+            px.Image = Properties.Resources.x;
+            // tru di 4 don vi de chinh giua hinh
+            px.Location = new Point(x - 4, y - 4);
+            _panCam.Controls.Add(px);
+            px.BringToFront();
+        }
+
+        private void _btnMiss_Click(object sender, EventArgs e)
+        {
+            _lblScore.Text = "0";
         }
     }
 }
