@@ -18,11 +18,12 @@ namespace CameraApp
 {
     public partial class frmRTSP : Form
     {
+        //CCC24QW-D22-21EA7A046N
         //"http://68.114.48.220:80/videostream.cgi?user=admin&pwd=";
         //"rtsp://192.168.1.12:533/user=admin&password=&channel=1&stream=0.sdp?real_stream--rtp-caching=100";
         //"rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100";
-        private string urlCamera = "http://68.114.48.220:80/videostream.cgi?user=admin&pwd=";
-        private FilterInfoCollection _videoCaptureDevices;
+        public static string urlCamera = "rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100";
+        //private FilterInfoCollection _videoCaptureDevices;
 
         private int X;
         private int Y;
@@ -33,6 +34,7 @@ namespace CameraApp
 
         //luot ban
         private int luot = 1;
+        private int currentMember = 0;
         
         public frmRTSP()
         {
@@ -47,13 +49,12 @@ namespace CameraApp
         
         private void frmRTSP_Load(object sender, EventArgs e)
         {
-            //LoadCamera();
-            axVLCPlugin21.playlist.add(urlCamera, null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
-            axVLCPlugin21.playlist.play();
+            LoadCamera();
         }
         
         void LoadCamera()
         {
+            /*
             _videoCaptureDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             try
             {
@@ -68,6 +69,13 @@ namespace CameraApp
             {
                 MessageBox.Show("Get stream fail. Please try again later");
             }
+            */
+            if (axVLCPlugin21.playlist.isPlaying)
+            { 
+                axVLCPlugin21.playlist.stop();
+            }
+            axVLCPlugin21.playlist.add(urlCamera, null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
+            axVLCPlugin21.playlist.play();
         }
 
         void FinalVideoDevice_NewFrame(object sender, NewFrameEventArgs e)
@@ -109,34 +117,43 @@ namespace CameraApp
 
         private void _btnScore_Click(object sender, EventArgs e)
         {
+            int diem = 0;
             if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 37.5)
             {
                 _lblScore.Text = "10";
+                diem = 10;
             }
             else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 75)
             {
                 _lblScore.Text = "9";
+                diem = 9;
             }
             else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 112.5)
             {
                 _lblScore.Text = "8";
+                diem = 8;
             }
             else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 150)
             {
                 _lblScore.Text = "7";
+                diem = 7;
             }
             else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 187.5)
             {
                 _lblScore.Text = "6";
+                diem = 6;
             }
             else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 225)
             {
                 _lblScore.Text = "5";
+                diem = 5;
             }
             else
             {
                 _lblScore.Text = "0";
+                diem = 0;
             }
+            chamDiem(diem);
         }
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
@@ -217,6 +234,52 @@ namespace CameraApp
         private void _btnMiss_Click(object sender, EventArgs e)
         {
             _lblScore.Text = "0";
+            chamDiem(0);
+        }
+
+        private void chamDiem(int diem)
+        {
+
+            try
+            {
+                DataTable dt = (DataTable)_dtgScore.DataSource;
+                dt.Rows[currentMember][luot] = diem;
+
+                if (luot == 3)
+                {
+                    //ban het luot thi tinh tong diem
+                    int l1 = (int)dt.Rows[currentMember][1];
+                    int l2 = (int)dt.Rows[currentMember][2];
+                    int l3 = (int)dt.Rows[currentMember][3];
+
+                    int tong = l1 + l2 + l3;
+
+                    //tong diem
+                    dt.Rows[currentMember][4] = tong;
+
+                    luot = 1;
+                    currentMember++; // het luot thi nguoi khac vao ban
+
+                    //load ten
+                    _lblName.Text = dt.Rows[currentMember][0].ToString();
+                    _lblScore.Text = "";
+                }
+                else
+                {
+                    luot++;
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+
+        private void nhậpĐịaChỉCameraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmConfigCamera frm = new frmConfigCamera();
+            frm.ShowDialog();
+            this.Show();
+            LoadCamera();
         }
     }
 }

@@ -47,6 +47,7 @@
             this._btnMiss = new System.Windows.Forms.Button();
             this._ptbCamera = new System.Windows.Forms.PictureBox();
             this._transpCtrl = new CameraApp.TranspCtrl();
+            this.nhậpĐịaChỉCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).BeginInit();
@@ -81,6 +82,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.thêmDanhSáchToolStripMenuItem,
             this.xuấtFileĐiểmToolStripMenuItem,
+            this.nhậpĐịaChỉCameraToolStripMenuItem,
             this.thoátToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -89,21 +91,21 @@
             // thêmDanhSáchToolStripMenuItem
             // 
             this.thêmDanhSáchToolStripMenuItem.Name = "thêmDanhSáchToolStripMenuItem";
-            this.thêmDanhSáchToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.thêmDanhSáchToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.thêmDanhSáchToolStripMenuItem.Text = "Thêm danh sách";
             this.thêmDanhSáchToolStripMenuItem.Click += new System.EventHandler(this.thêmDanhSáchToolStripMenuItem_Click);
             // 
             // xuấtFileĐiểmToolStripMenuItem
             // 
             this.xuấtFileĐiểmToolStripMenuItem.Name = "xuấtFileĐiểmToolStripMenuItem";
-            this.xuấtFileĐiểmToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.xuấtFileĐiểmToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.xuấtFileĐiểmToolStripMenuItem.Text = "Xuất file điểm";
             this.xuấtFileĐiểmToolStripMenuItem.Click += new System.EventHandler(this.xuấtFileĐiểmToolStripMenuItem_Click);
             // 
             // thoátToolStripMenuItem
             // 
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.thoátToolStripMenuItem.Text = "Thoát";
             this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click);
             // 
@@ -224,6 +226,13 @@
             this._transpCtrl.Text = "transpCtrl1";
             this._transpCtrl.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseUp);
             // 
+            // nhậpĐịaChỉCameraToolStripMenuItem
+            // 
+            this.nhậpĐịaChỉCameraToolStripMenuItem.Name = "nhậpĐịaChỉCameraToolStripMenuItem";
+            this.nhậpĐịaChỉCameraToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.nhậpĐịaChỉCameraToolStripMenuItem.Text = "Nhập địa chỉ Camera";
+            this.nhậpĐịaChỉCameraToolStripMenuItem.Click += new System.EventHandler(this.nhậpĐịaChỉCameraToolStripMenuItem_Click);
+            // 
             // frmRTSP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,5 +283,6 @@
         private System.Windows.Forms.Panel _panCam;
         private System.Windows.Forms.DataGridView _dtgScore;
         private System.Windows.Forms.Button _btnMiss;
+        private System.Windows.Forms.ToolStripMenuItem nhậpĐịaChỉCameraToolStripMenuItem;
     }
 }
