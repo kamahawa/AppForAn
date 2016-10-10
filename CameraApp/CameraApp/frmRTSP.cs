@@ -72,10 +72,14 @@ namespace CameraApp
             */
             if (axVLCPlugin21.playlist.isPlaying)
             { 
-                axVLCPlugin21.playlist.stop();
+                //axVLCPlugin21.playlist.stop();
             }
-            axVLCPlugin21.playlist.add(urlCamera, null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
-            axVLCPlugin21.playlist.play();
+            if(urlCamera.Trim() != "")
+            { 
+                axVLCPlugin21.playlist.add(urlCamera, null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
+                axVLCPlugin21.playlist.next();
+                //axVLCPlugin21.playlist.play();
+            }
         }
 
         void FinalVideoDevice_NewFrame(object sender, NewFrameEventArgs e)
@@ -221,12 +225,12 @@ namespace CameraApp
         private void addShotIcon(int x, int y)
         {
             PictureBox px = new PictureBox();
-            px.Size = new Size(8, 8);
+            px.Size = new Size(6, 6);
             px.BackColor = Color.Transparent;
             px.SizeMode = PictureBoxSizeMode.StretchImage;
             px.Image = Properties.Resources.x;
             // tru di 4 don vi de chinh giua hinh
-            px.Location = new Point(x - 4, y - 4);
+            px.Location = new Point(x - 3, y - 3);
             _panCam.Controls.Add(px);
             px.BringToFront();
         }
