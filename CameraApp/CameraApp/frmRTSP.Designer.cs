@@ -34,6 +34,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmDanhSáchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xuấtFileĐiểmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đổiTênFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nhậpĐịaChỉCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._btnScore = new System.Windows.Forms.Button();
@@ -44,11 +45,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.axVLCPlugin21 = new AxAXVLC.AxVLCPlugin2();
             this._panCam = new System.Windows.Forms.Panel();
+            this._transpCtrl = new CameraApp.TranspCtrl();
             this._ptbCamera = new System.Windows.Forms.PictureBox();
             this._dtgScore = new System.Windows.Forms.DataGridView();
             this._btnMiss = new System.Windows.Forms.Button();
-            this.đổiTênFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this._transpCtrl = new CameraApp.TranspCtrl();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).BeginInit();
@@ -65,6 +65,7 @@
             this._btnGetCenter.TabIndex = 1;
             this._btnGetCenter.Text = "Lấy tâm";
             this._btnGetCenter.UseVisualStyleBackColor = true;
+            this._btnGetCenter.Visible = false;
             this._btnGetCenter.Click += new System.EventHandler(this._btnGetCenter_Click);
             // 
             // menuStrip1
@@ -102,6 +103,13 @@
             this.xuấtFileĐiểmToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.xuấtFileĐiểmToolStripMenuItem.Text = "Xuất file điểm";
             this.xuấtFileĐiểmToolStripMenuItem.Click += new System.EventHandler(this.xuấtFileĐiểmToolStripMenuItem_Click);
+            // 
+            // đổiTênFormToolStripMenuItem
+            // 
+            this.đổiTênFormToolStripMenuItem.Name = "đổiTênFormToolStripMenuItem";
+            this.đổiTênFormToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.đổiTênFormToolStripMenuItem.Text = "Đổi tên form";
+            this.đổiTênFormToolStripMenuItem.Click += new System.EventHandler(this.đổiTênFormToolStripMenuItem_Click);
             // 
             // nhậpĐịaChỉCameraToolStripMenuItem
             // 
@@ -181,18 +189,29 @@
             this.axVLCPlugin21.Location = new System.Drawing.Point(0, 0);
             this.axVLCPlugin21.Name = "axVLCPlugin21";
             this.axVLCPlugin21.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVLCPlugin21.OcxState")));
-            this.axVLCPlugin21.Size = new System.Drawing.Size(639, 480);
+            this.axVLCPlugin21.Size = new System.Drawing.Size(640, 480);
             this.axVLCPlugin21.TabIndex = 6;
             // 
             // _panCam
             // 
             this._panCam.Controls.Add(this._transpCtrl);
-            this._panCam.Controls.Add(this._ptbCamera);
             this._panCam.Controls.Add(this.axVLCPlugin21);
+            this._panCam.Controls.Add(this._ptbCamera);
             this._panCam.Location = new System.Drawing.Point(12, 37);
             this._panCam.Name = "_panCam";
             this._panCam.Size = new System.Drawing.Size(640, 480);
             this._panCam.TabIndex = 8;
+            // 
+            // _transpCtrl
+            // 
+            this._transpCtrl.BackColor = System.Drawing.Color.Transparent;
+            this._transpCtrl.Location = new System.Drawing.Point(0, 0);
+            this._transpCtrl.Name = "_transpCtrl";
+            this._transpCtrl.Opacity = 100;
+            this._transpCtrl.Size = new System.Drawing.Size(640, 480);
+            this._transpCtrl.TabIndex = 7;
+            this._transpCtrl.Text = "transpCtrl1";
+            this._transpCtrl.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseUp);
             // 
             // _ptbCamera
             // 
@@ -222,24 +241,6 @@
             this._btnMiss.Text = "Mất đạn";
             this._btnMiss.UseVisualStyleBackColor = true;
             this._btnMiss.Click += new System.EventHandler(this._btnMiss_Click);
-            // 
-            // đổiTênFormToolStripMenuItem
-            // 
-            this.đổiTênFormToolStripMenuItem.Name = "đổiTênFormToolStripMenuItem";
-            this.đổiTênFormToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.đổiTênFormToolStripMenuItem.Text = "Đổi tên form";
-            this.đổiTênFormToolStripMenuItem.Click += new System.EventHandler(this.đổiTênFormToolStripMenuItem_Click);
-            // 
-            // _transpCtrl
-            // 
-            this._transpCtrl.BackColor = System.Drawing.Color.Transparent;
-            this._transpCtrl.Location = new System.Drawing.Point(0, 0);
-            this._transpCtrl.Name = "_transpCtrl";
-            this._transpCtrl.Opacity = 100;
-            this._transpCtrl.Size = new System.Drawing.Size(640, 480);
-            this._transpCtrl.TabIndex = 7;
-            this._transpCtrl.Text = "transpCtrl1";
-            this._transpCtrl.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseUp);
             // 
             // frmRTSP
             // 
