@@ -136,6 +136,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="software\vlc-2.2.4-win32.exe" />
     <Content Include="x.png" />
   </ItemGroup>
   <ItemGroup>
