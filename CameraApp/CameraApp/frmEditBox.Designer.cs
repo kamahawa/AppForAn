@@ -37,12 +37,12 @@
             // 
             this._txtContent.Location = new System.Drawing.Point(13, 13);
             this._txtContent.Name = "_txtContent";
-            this._txtContent.Size = new System.Drawing.Size(531, 20);
+            this._txtContent.Size = new System.Drawing.Size(436, 20);
             this._txtContent.TabIndex = 0;
             // 
             // _btnOK
             // 
-            this._btnOK.Location = new System.Drawing.Point(185, 43);
+            this._btnOK.Location = new System.Drawing.Point(129, 43);
             this._btnOK.Name = "_btnOK";
             this._btnOK.Size = new System.Drawing.Size(75, 23);
             this._btnOK.TabIndex = 1;
@@ -52,7 +52,7 @@
             // 
             // _btnCancel
             // 
-            this._btnCancel.Location = new System.Drawing.Point(266, 43);
+            this._btnCancel.Location = new System.Drawing.Point(234, 43);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(75, 23);
             this._btnCancel.TabIndex = 2;
@@ -64,12 +64,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 78);
+            this.ClientSize = new System.Drawing.Size(460, 78);
             this.Controls.Add(this._btnCancel);
             this.Controls.Add(this._btnOK);
             this.Controls.Add(this._txtContent);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(476, 117);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(476, 117);
             this.Name = "frmEditBox";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thay đổi tên";
             this.ResumeLayout(false);
             this.PerformLayout();

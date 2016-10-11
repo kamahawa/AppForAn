@@ -189,7 +189,7 @@
             this.axVLCPlugin21.Location = new System.Drawing.Point(0, 0);
             this.axVLCPlugin21.Name = "axVLCPlugin21";
             this.axVLCPlugin21.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVLCPlugin21.OcxState")));
-            this.axVLCPlugin21.Size = new System.Drawing.Size(640, 480);
+            this.axVLCPlugin21.Size = new System.Drawing.Size(639, 480);
             this.axVLCPlugin21.TabIndex = 6;
             // 
             // _panCam
@@ -258,7 +258,7 @@
             this.MinimumSize = new System.Drawing.Size(1131, 615);
             this.Name = "frmRTSP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmRTSP";
+            this.Text = "Chấm điểm";
             this.Load += new System.EventHandler(this.frmRTSP_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
