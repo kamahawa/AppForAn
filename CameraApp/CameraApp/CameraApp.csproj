@@ -79,6 +79,12 @@
     <Compile Include="frmConfigCamera.Designer.cs">
       <DependentUpon>frmConfigCamera.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditBox.Designer.cs">
+      <DependentUpon>frmEditBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRTSP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmConfigCamera.resx">
       <DependentUpon>frmConfigCamera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditBox.resx">
+      <DependentUpon>frmEditBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRTSP.resx">
       <DependentUpon>frmRTSP.cs</DependentUpon>

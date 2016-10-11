@@ -28,9 +28,10 @@ namespace CameraApp
         private int X;
         private int Y;
         
-        // test and get is 318, 218
-        private int XCenter = 318;
-        private int YCenter = 218;
+        // test and get is 322, 226
+        //346 , 294
+        private int XCenter = 321;
+        private int YCenter = 225;
 
         //luot ban
         private int luot = 1;
@@ -91,9 +92,9 @@ namespace CameraApp
         {
             XCenter = X;
             YCenter = Y;
-            drawPoint(XCenter, YCenter, _transpCtrl);
+            addShotIcon(XCenter, YCenter);
             //lay tam
-            //MessageBox.Show(string.Format("X: {0} Y: {1}", XCenter, YCenter));
+            MessageBox.Show(string.Format("X: {0} Y: {1}", XCenter, YCenter));
         }
 
         public void drawPoint(int x, int y, Control c)
@@ -118,32 +119,32 @@ namespace CameraApp
         private void _btnScore_Click(object sender, EventArgs e)
         {
             int diem = 0;
-            if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 37.5)
+            if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 25)
             {
                 _lblScore.Text = "10";
                 diem = 10;
             }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 75)
+            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 50)
             {
                 _lblScore.Text = "9";
                 diem = 9;
             }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 112.5)
+            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 80)
             {
                 _lblScore.Text = "8";
                 diem = 8;
             }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 150)
+            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 105)
             {
                 _lblScore.Text = "7";
                 diem = 7;
             }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 187.5)
+            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 133)
             {
                 _lblScore.Text = "6";
                 diem = 6;
             }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 225)
+            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 158)
             {
                 _lblScore.Text = "5";
                 diem = 5;
@@ -221,12 +222,12 @@ namespace CameraApp
         private void addShotIcon(int x, int y)
         {
             PictureBox px = new PictureBox();
-            px.Size = new Size(8, 8);
+            px.Size = new Size(4, 4);
             px.BackColor = Color.Transparent;
             px.SizeMode = PictureBoxSizeMode.StretchImage;
             px.Image = Properties.Resources.x;
             // tru di 4 don vi de chinh giua hinh
-            px.Location = new Point(x - 4, y - 4);
+            px.Location = new Point(x - 2, y - 2);
             _panCam.Controls.Add(px);
             px.BringToFront();
         }
@@ -280,6 +281,16 @@ namespace CameraApp
             frm.ShowDialog();
             this.Show();
             LoadCamera();
+        }
+
+        private void đổiTênFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEditBox frm = new frmEditBox();
+            frm.ShowDialog();
+            if(frmEditBox.content != "")
+            {
+                this.Text = frmEditBox.content;
+            }
         }
     }
 }
