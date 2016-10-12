@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this._lblName = new System.Windows.Forms.Label();
             this._txtUrlCamera = new System.Windows.Forms.TextBox();
             this._btnOk = new System.Windows.Forms.Button();
             this._btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // _lblName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nhập url camera";
+            this._lblName.AutoSize = true;
+            this._lblName.Location = new System.Drawing.Point(12, 18);
+            this._lblName.Name = "_lblName";
+            this._lblName.Size = new System.Drawing.Size(85, 13);
+            this._lblName.TabIndex = 0;
+            this._lblName.Text = "Nhập url camera";
             // 
             // _txtUrlCamera
             // 
@@ -78,7 +78,7 @@
             this.Controls.Add(this._btnCancel);
             this.Controls.Add(this._btnOk);
             this.Controls.Add(this._txtUrlCamera);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this._lblName);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(620, 120);
             this.MinimumSize = new System.Drawing.Size(620, 120);
@@ -93,7 +93,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label _lblName;
         private System.Windows.Forms.TextBox _txtUrlCamera;
         private System.Windows.Forms.Button _btnOk;
         private System.Windows.Forms.Button _btnCancel;

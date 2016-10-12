@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using AForge.Video;
-using AForge.Video.DirectShow;
-
-using System.IO;
 using CameraApp.Help;
+using Microsoft.VisualBasic;
 
 namespace CameraApp
 {
@@ -36,7 +29,7 @@ namespace CameraApp
         //luot ban
         private int luot = 1;
         private int currentMember = 0;
-        
+                
         public frmRTSP()
         {
             InitializeComponent();
@@ -112,7 +105,7 @@ namespace CameraApp
             //g.DrawIcon(Properties.Resources.x, x, y);
 
             //cho chinh giua file
-            g.DrawImage(Properties.Resources.x, x - 8, y - 8);
+            g.DrawImage(Properties.Resources.x, x - 2, y - 2);
             g.Dispose();
         }
 
@@ -285,9 +278,9 @@ namespace CameraApp
 
         private void đổiTênFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmEditBox frm = new frmEditBox();
+            frmEditBox frm = new frmEditBox("Đổi tên form");
             frm.ShowDialog();
-            if(frmEditBox.content != "")
+            if (frmEditBox.content.Trim() != "")
             {
                 this.Text = frmEditBox.content;
             }
