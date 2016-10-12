@@ -42,7 +42,7 @@
             // 
             // _btnOK
             // 
-            this._btnOK.Location = new System.Drawing.Point(129, 43);
+            this._btnOK.Location = new System.Drawing.Point(142, 43);
             this._btnOK.Name = "_btnOK";
             this._btnOK.Size = new System.Drawing.Size(75, 23);
             this._btnOK.TabIndex = 1;
@@ -62,6 +62,7 @@
             // 
             // frmEditBox
             // 
+            this.AcceptButton = this._btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 78);
@@ -73,7 +74,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(476, 117);
             this.Name = "frmEditBox";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Thay đổi tên";
             this.ResumeLayout(false);
             this.PerformLayout();

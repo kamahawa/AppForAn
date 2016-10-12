@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using AForge.Video;
 using CameraApp.Help;
 using Microsoft.VisualBasic;
+using System.IO;
 
 namespace CameraApp
 {
@@ -15,7 +16,7 @@ namespace CameraApp
         //"http://68.114.48.220:80/videostream.cgi?user=admin&pwd=";
         //"rtsp://192.168.1.12:533/user=admin&password=&channel=1&stream=0.sdp?real_stream--rtp-caching=100";
         //"rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100";
-        public static string urlCamera = "rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100";
+        public static string urlCamera = "";
         //private FilterInfoCollection _videoCaptureDevices;
 
         private int X;
@@ -33,6 +34,7 @@ namespace CameraApp
         public frmRTSP()
         {
             InitializeComponent();
+            urlCamera = LoadUrlCamera();
         }
 
         private void _btnGetStream_Click(object sender, EventArgs e)
@@ -64,12 +66,35 @@ namespace CameraApp
                 MessageBox.Show("Get stream fail. Please try again later");
             }
             */
+            /*
             if (axVLCPlugin21.playlist.isPlaying)
             { 
                 axVLCPlugin21.playlist.stop();
             }
-            axVLCPlugin21.playlist.add(urlCamera, null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
-            axVLCPlugin21.playlist.play();
+            */
+            if(urlCamera != "")
+            {
+                axVLCPlugin21.playlist.add(urlCamera, null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
+                axVLCPlugin21.playlist.next();
+            }
+        }
+
+        string LoadUrlCamera()
+        {
+            string path = @"UrlCamera.txt";
+
+            // This text is added only once to the file.
+            if (!File.Exists(path))
+            {
+                return "";
+            }
+            return File.ReadAllText(path);
+        }
+
+        public static void WriteUrlCamera(string url)
+        {
+            string path = @"UrlCamera.txt";
+            File.WriteAllText(path, url);
         }
 
         void FinalVideoDevice_NewFrame(object sender, NewFrameEventArgs e)
@@ -269,10 +294,9 @@ namespace CameraApp
 
         private void nhậpĐịaChỉCameraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
             frmConfigCamera frm = new frmConfigCamera();
             frm.ShowDialog();
-            this.Show();
+            urlCamera = LoadUrlCamera();
             LoadCamera();
         }
 

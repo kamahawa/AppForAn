@@ -24,7 +24,7 @@ namespace CameraApp
 
         private void _btnOk_Click(object sender, EventArgs e)
         {
-            frmRTSP.urlCamera = _txtUrlCamera.Text;
+            frmRTSP.WriteUrlCamera(_txtUrlCamera.Text.Trim());
             this.Close();
         }
 

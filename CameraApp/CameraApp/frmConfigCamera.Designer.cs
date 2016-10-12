@@ -72,6 +72,7 @@
             // 
             // frmConfigCamera
             // 
+            this.AcceptButton = this._btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 81);
@@ -81,9 +82,10 @@
             this.Controls.Add(this._lblName);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(620, 120);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(620, 120);
             this.Name = "frmConfigCamera";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Camera url";
             this.Load += new System.EventHandler(this.frmConfigCamera_Load);
             this.ResumeLayout(false);
