@@ -137,25 +137,58 @@ namespace CameraApp
         private void _btnScore_Click(object sender, EventArgs e)
         {
             int diem = 0;
-            if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 25)
+            if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 26.5)
             {
-                _lblScore.Text = "10";
-                diem = 10;
+                if(Y > 200 && Y < 250)
+                {
+                    _lblScore.Text = "10";
+                    diem = 10;
+                }
+                else
+                {
+                    _lblScore.Text = "9";
+                    diem = 9;
+                }
             }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 50)
+            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 53)
             {
-                _lblScore.Text = "9";
-                diem = 9;
+                if (Y > 180 && Y < 275)
+                {
+                    _lblScore.Text = "9";
+                    diem = 9;
+                }
+                else
+                {
+                    _lblScore.Text = "8";
+                    diem = 8;
+                }
+                
             }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 80)
+            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 79)
             {
-                _lblScore.Text = "8";
-                diem = 8;
+                if (Y > 158 && Y < 303)
+                {
+                    _lblScore.Text = "8";
+                    diem = 8;
+                }
+                else
+                {
+                    _lblScore.Text = "7";
+                    diem = 7;
+                }                
             }
             else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 105)
             {
-                _lblScore.Text = "7";
-                diem = 7;
+                if (Y > 137 && Y < 330)
+                {
+                    _lblScore.Text = "7";
+                    diem = 7;
+                }
+                else
+                {
+                    _lblScore.Text = "6";
+                    diem = 6;
+                }
             }
             else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 133)
             {
@@ -225,7 +258,8 @@ namespace CameraApp
             table.Rows.Add("Nguyễn Văn c", null, null, null, null);
 
             _dtgScore.DataSource = table;
-
+            //mo rong phan ten
+            _dtgScore.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             _lblName.Text = table.Rows[0][0].ToString();
         }
 
@@ -308,6 +342,16 @@ namespace CameraApp
             {
                 this.Text = frmEditBox.content;
             }
+        }
+
+        private void biaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void biaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

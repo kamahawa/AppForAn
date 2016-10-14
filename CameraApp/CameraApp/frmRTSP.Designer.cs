@@ -45,21 +45,30 @@
             this.label1 = new System.Windows.Forms.Label();
             this.axVLCPlugin21 = new AxAXVLC.AxVLCPlugin2();
             this._panCam = new System.Windows.Forms.Panel();
-            this._transpCtrl = new CameraApp.TranspCtrl();
             this._ptbCamera = new System.Windows.Forms.PictureBox();
             this._dtgScore = new System.Windows.Forms.DataGridView();
             this._btnMiss = new System.Windows.Forms.Button();
+            this.tùyChọnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.biaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.biaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this._tabControl = new System.Windows.Forms.TabControl();
+            this._tabBia4 = new System.Windows.Forms.TabPage();
+            this._tabBia7 = new System.Windows.Forms.TabPage();
+            this._tabBia8 = new System.Windows.Forms.TabPage();
+            this._transpCtrl = new CameraApp.TranspCtrl();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axVLCPlugin21)).BeginInit();
             this._panCam.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._ptbCamera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore)).BeginInit();
+            this._tabControl.SuspendLayout();
+            this._tabBia4.SuspendLayout();
             this.SuspendLayout();
             // 
             // _btnGetCenter
             // 
-            this._btnGetCenter.Location = new System.Drawing.Point(12, 534);
+            this._btnGetCenter.Location = new System.Drawing.Point(199, 497);
             this._btnGetCenter.Name = "_btnGetCenter";
             this._btnGetCenter.Size = new System.Drawing.Size(75, 23);
             this._btnGetCenter.TabIndex = 1;
@@ -71,10 +80,11 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.tùyChọnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1115, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1190, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -127,7 +137,7 @@
             // 
             // _btnScore
             // 
-            this._btnScore.Location = new System.Drawing.Point(93, 534);
+            this._btnScore.Location = new System.Drawing.Point(16, 497);
             this._btnScore.Name = "_btnScore";
             this._btnScore.Size = new System.Drawing.Size(75, 23);
             this._btnScore.TabIndex = 4;
@@ -139,14 +149,15 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this._dtgScore);
             this.panel1.Controls.Add(this._lblScore);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this._lblName);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(669, 37);
+            this.panel1.Location = new System.Drawing.Point(655, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(434, 169);
+            this.panel1.Size = new System.Drawing.Size(524, 480);
             this.panel1.TabIndex = 5;
             // 
             // _lblScore
@@ -189,7 +200,7 @@
             this.axVLCPlugin21.Location = new System.Drawing.Point(0, 0);
             this.axVLCPlugin21.Name = "axVLCPlugin21";
             this.axVLCPlugin21.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axVLCPlugin21.OcxState")));
-            this.axVLCPlugin21.Size = new System.Drawing.Size(639, 480);
+            this.axVLCPlugin21.Size = new System.Drawing.Size(640, 480);
             this.axVLCPlugin21.TabIndex = 6;
             // 
             // _panCam
@@ -197,10 +208,112 @@
             this._panCam.Controls.Add(this._transpCtrl);
             this._panCam.Controls.Add(this.axVLCPlugin21);
             this._panCam.Controls.Add(this._ptbCamera);
-            this._panCam.Location = new System.Drawing.Point(12, 37);
+            this._panCam.Location = new System.Drawing.Point(0, 0);
             this._panCam.Name = "_panCam";
             this._panCam.Size = new System.Drawing.Size(640, 480);
             this._panCam.TabIndex = 8;
+            // 
+            // _ptbCamera
+            // 
+            this._ptbCamera.Image = ((System.Drawing.Image)(resources.GetObject("_ptbCamera.Image")));
+            this._ptbCamera.Location = new System.Drawing.Point(0, 0);
+            this._ptbCamera.Name = "_ptbCamera";
+            this._ptbCamera.Size = new System.Drawing.Size(640, 480);
+            this._ptbCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._ptbCamera.TabIndex = 2;
+            this._ptbCamera.TabStop = false;
+            this._ptbCamera.Visible = false;
+            // 
+            // _dtgScore
+            // 
+            this._dtgScore.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._dtgScore.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this._dtgScore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._dtgScore.Location = new System.Drawing.Point(0, 128);
+            this._dtgScore.Name = "_dtgScore";
+            this._dtgScore.Size = new System.Drawing.Size(521, 352);
+            this._dtgScore.TabIndex = 9;
+            // 
+            // _btnMiss
+            // 
+            this._btnMiss.Location = new System.Drawing.Point(107, 497);
+            this._btnMiss.Name = "_btnMiss";
+            this._btnMiss.Size = new System.Drawing.Size(75, 23);
+            this._btnMiss.TabIndex = 10;
+            this._btnMiss.Text = "Mất đạn";
+            this._btnMiss.UseVisualStyleBackColor = true;
+            this._btnMiss.Click += new System.EventHandler(this._btnMiss_Click);
+            // 
+            // tùyChọnToolStripMenuItem
+            // 
+            this.tùyChọnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.biaToolStripMenuItem,
+            this.biaToolStripMenuItem1});
+            this.tùyChọnToolStripMenuItem.Name = "tùyChọnToolStripMenuItem";
+            this.tùyChọnToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.tùyChọnToolStripMenuItem.Text = "Tùy chọn";
+            // 
+            // biaToolStripMenuItem
+            // 
+            this.biaToolStripMenuItem.Name = "biaToolStripMenuItem";
+            this.biaToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.biaToolStripMenuItem.Text = "1 bia";
+            this.biaToolStripMenuItem.Click += new System.EventHandler(this.biaToolStripMenuItem_Click);
+            // 
+            // biaToolStripMenuItem1
+            // 
+            this.biaToolStripMenuItem1.Name = "biaToolStripMenuItem1";
+            this.biaToolStripMenuItem1.Size = new System.Drawing.Size(99, 22);
+            this.biaToolStripMenuItem1.Text = "3 bia";
+            this.biaToolStripMenuItem1.Click += new System.EventHandler(this.biaToolStripMenuItem1_Click);
+            // 
+            // _tabControl
+            // 
+            this._tabControl.Controls.Add(this._tabBia4);
+            this._tabControl.Controls.Add(this._tabBia7);
+            this._tabControl.Controls.Add(this._tabBia8);
+            this._tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tabControl.Location = new System.Drawing.Point(0, 24);
+            this._tabControl.Name = "_tabControl";
+            this._tabControl.SelectedIndex = 0;
+            this._tabControl.Size = new System.Drawing.Size(1190, 552);
+            this._tabControl.TabIndex = 11;
+            // 
+            // _tabBia4
+            // 
+            this._tabBia4.Controls.Add(this.panel1);
+            this._tabBia4.Controls.Add(this._btnScore);
+            this._tabBia4.Controls.Add(this._btnMiss);
+            this._tabBia4.Controls.Add(this._btnGetCenter);
+            this._tabBia4.Controls.Add(this._panCam);
+            this._tabBia4.Location = new System.Drawing.Point(4, 22);
+            this._tabBia4.Name = "_tabBia4";
+            this._tabBia4.Padding = new System.Windows.Forms.Padding(3);
+            this._tabBia4.Size = new System.Drawing.Size(1182, 526);
+            this._tabBia4.TabIndex = 0;
+            this._tabBia4.Text = "Bia số 4";
+            this._tabBia4.UseVisualStyleBackColor = true;
+            // 
+            // _tabBia7
+            // 
+            this._tabBia7.Location = new System.Drawing.Point(4, 22);
+            this._tabBia7.Name = "_tabBia7";
+            this._tabBia7.Padding = new System.Windows.Forms.Padding(3);
+            this._tabBia7.Size = new System.Drawing.Size(1107, 526);
+            this._tabBia7.TabIndex = 1;
+            this._tabBia7.Text = "Bia số 7";
+            this._tabBia7.UseVisualStyleBackColor = true;
+            // 
+            // _tabBia8
+            // 
+            this._tabBia8.Location = new System.Drawing.Point(4, 22);
+            this._tabBia8.Name = "_tabBia8";
+            this._tabBia8.Padding = new System.Windows.Forms.Padding(3);
+            this._tabBia8.Size = new System.Drawing.Size(1107, 526);
+            this._tabBia8.TabIndex = 2;
+            this._tabBia8.Text = "Bia số 8";
+            this._tabBia8.UseVisualStyleBackColor = true;
             // 
             // _transpCtrl
             // 
@@ -213,46 +326,12 @@
             this._transpCtrl.Text = "transpCtrl1";
             this._transpCtrl.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseUp);
             // 
-            // _ptbCamera
-            // 
-            this._ptbCamera.Image = ((System.Drawing.Image)(resources.GetObject("_ptbCamera.Image")));
-            this._ptbCamera.Location = new System.Drawing.Point(0, 0);
-            this._ptbCamera.Name = "_ptbCamera";
-            this._ptbCamera.Size = new System.Drawing.Size(640, 480);
-            this._ptbCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this._ptbCamera.TabIndex = 2;
-            this._ptbCamera.TabStop = false;
-            // 
-            // _dtgScore
-            // 
-            this._dtgScore.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this._dtgScore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._dtgScore.Location = new System.Drawing.Point(669, 213);
-            this._dtgScore.Name = "_dtgScore";
-            this._dtgScore.Size = new System.Drawing.Size(434, 304);
-            this._dtgScore.TabIndex = 9;
-            // 
-            // _btnMiss
-            // 
-            this._btnMiss.Location = new System.Drawing.Point(174, 534);
-            this._btnMiss.Name = "_btnMiss";
-            this._btnMiss.Size = new System.Drawing.Size(75, 23);
-            this._btnMiss.TabIndex = 10;
-            this._btnMiss.Text = "Mất đạn";
-            this._btnMiss.UseVisualStyleBackColor = true;
-            this._btnMiss.Click += new System.EventHandler(this._btnMiss_Click);
-            // 
             // frmRTSP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 576);
-            this.Controls.Add(this._btnMiss);
-            this.Controls.Add(this._dtgScore);
-            this.Controls.Add(this._panCam);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this._btnScore);
-            this.Controls.Add(this._btnGetCenter);
+            this.ClientSize = new System.Drawing.Size(1190, 576);
+            this.Controls.Add(this._tabControl);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1131, 615);
@@ -268,6 +347,8 @@
             this._panCam.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._ptbCamera)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore)).EndInit();
+            this._tabControl.ResumeLayout(false);
+            this._tabBia4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,5 +375,12 @@
         private System.Windows.Forms.Button _btnMiss;
         private System.Windows.Forms.ToolStripMenuItem nhậpĐịaChỉCameraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đổiTênFormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tùyChọnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem biaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem biaToolStripMenuItem1;
+        private System.Windows.Forms.TabControl _tabControl;
+        private System.Windows.Forms.TabPage _tabBia4;
+        private System.Windows.Forms.TabPage _tabBia7;
+        private System.Windows.Forms.TabPage _tabBia8;
     }
 }
