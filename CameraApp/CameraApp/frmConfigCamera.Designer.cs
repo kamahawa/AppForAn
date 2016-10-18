@@ -32,6 +32,10 @@
             this._txtUrlCamera = new System.Windows.Forms.TextBox();
             this._btnOk = new System.Windows.Forms.Button();
             this._btnCancel = new System.Windows.Forms.Button();
+            this._txtUrlCamera1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this._txtUrlCamera2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // _lblName
@@ -52,7 +56,7 @@
             // 
             // _btnOk
             // 
-            this._btnOk.Location = new System.Drawing.Point(205, 47);
+            this._btnOk.Location = new System.Drawing.Point(210, 96);
             this._btnOk.Name = "_btnOk";
             this._btnOk.Size = new System.Drawing.Size(75, 23);
             this._btnOk.TabIndex = 2;
@@ -62,7 +66,7 @@
             // 
             // _btnCancel
             // 
-            this._btnCancel.Location = new System.Drawing.Point(296, 47);
+            this._btnCancel.Location = new System.Drawing.Point(291, 96);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(75, 23);
             this._btnCancel.TabIndex = 3;
@@ -70,20 +74,56 @@
             this._btnCancel.UseVisualStyleBackColor = true;
             this._btnCancel.Click += new System.EventHandler(this._btnCancel_Click);
             // 
+            // _txtUrlCamera1
+            // 
+            this._txtUrlCamera1.Location = new System.Drawing.Point(104, 41);
+            this._txtUrlCamera1.Name = "_txtUrlCamera1";
+            this._txtUrlCamera1.Size = new System.Drawing.Size(488, 20);
+            this._txtUrlCamera1.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Nhập url camera";
+            // 
+            // _txtUrlCamera2
+            // 
+            this._txtUrlCamera2.Location = new System.Drawing.Point(104, 67);
+            this._txtUrlCamera2.Name = "_txtUrlCamera2";
+            this._txtUrlCamera2.Size = new System.Drawing.Size(488, 20);
+            this._txtUrlCamera2.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 70);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Nhập url camera";
+            // 
             // frmConfigCamera
             // 
             this.AcceptButton = this._btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 81);
+            this.ClientSize = new System.Drawing.Size(604, 131);
+            this.Controls.Add(this._txtUrlCamera2);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this._txtUrlCamera1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this._btnCancel);
             this.Controls.Add(this._btnOk);
             this.Controls.Add(this._txtUrlCamera);
             this.Controls.Add(this._lblName);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(620, 120);
+            this.MaximumSize = new System.Drawing.Size(620, 170);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(620, 120);
+            this.MinimumSize = new System.Drawing.Size(620, 170);
             this.Name = "frmConfigCamera";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Camera url";
@@ -99,5 +139,9 @@
         private System.Windows.Forms.TextBox _txtUrlCamera;
         private System.Windows.Forms.Button _btnOk;
         private System.Windows.Forms.Button _btnCancel;
+        private System.Windows.Forms.TextBox _txtUrlCamera1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox _txtUrlCamera2;
+        private System.Windows.Forms.Label label2;
     }
 }
