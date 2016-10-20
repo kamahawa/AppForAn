@@ -106,7 +106,6 @@
             this._btnGetCenter.TabIndex = 1;
             this._btnGetCenter.Text = "Lấy tâm";
             this._btnGetCenter.UseVisualStyleBackColor = true;
-            this._btnGetCenter.Visible = false;
             this._btnGetCenter.Click += new System.EventHandler(this._btnGetCenter_Click);
             // 
             // menuStrip1
@@ -266,14 +265,14 @@
             this._vlc.Location = new System.Drawing.Point(0, 0);
             this._vlc.Name = "_vlc";
             this._vlc.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc.OcxState")));
-            this._vlc.Size = new System.Drawing.Size(640, 480);
+            this._vlc.Size = new System.Drawing.Size(639, 480);
             this._vlc.TabIndex = 6;
             // 
             // _panCam
             // 
             this._panCam.Controls.Add(this._transpCtrl);
-            this._panCam.Controls.Add(this._vlc);
             this._panCam.Controls.Add(this._ptbCamera);
+            this._panCam.Controls.Add(this._vlc);
             this._panCam.Location = new System.Drawing.Point(0, 0);
             this._panCam.Name = "_panCam";
             this._panCam.Size = new System.Drawing.Size(640, 480);
@@ -288,7 +287,6 @@
             this._ptbCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._ptbCamera.TabIndex = 2;
             this._ptbCamera.TabStop = false;
-            this._ptbCamera.Visible = false;
             // 
             // _btnMiss
             // 
@@ -436,7 +434,7 @@
             this._vlc1.Location = new System.Drawing.Point(0, 0);
             this._vlc1.Name = "_vlc1";
             this._vlc1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc1.OcxState")));
-            this._vlc1.Size = new System.Drawing.Size(639, 480);
+            this._vlc1.Size = new System.Drawing.Size(640, 480);
             this._vlc1.TabIndex = 6;
             // 
             // _tabBia8
@@ -548,7 +546,7 @@
             this._vlc2.Location = new System.Drawing.Point(0, 0);
             this._vlc2.Name = "_vlc2";
             this._vlc2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc2.OcxState")));
-            this._vlc2.Size = new System.Drawing.Size(639, 480);
+            this._vlc2.Size = new System.Drawing.Size(640, 480);
             this._vlc2.TabIndex = 6;
             // 
             // _transpCtrl

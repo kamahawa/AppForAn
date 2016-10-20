@@ -7,6 +7,7 @@ using AForge.Video;
 using CameraApp.Help;
 using Microsoft.VisualBasic;
 using System.IO;
+using ImageMagick;
 
 namespace CameraApp
 {
@@ -170,11 +171,44 @@ namespace CameraApp
         #region be so 1
         private void _btnGetCenter_Click(object sender, EventArgs e)
         {
+            //224,134  416,133  204,333   438,334
+            //toa do do bang pts : 285,85    646,85   238,483    689,484
+            /*
             XCenter = X;
             YCenter = Y;
             addShotIcon(XCenter, YCenter, _panCam);
             //lay tam
             MessageBox.Show(string.Format("X: {0} Y: {1}", XCenter, YCenter));
+            */
+            double h = _ptbCamera.Height;//578 is real height
+            double w = _ptbCamera.Width;//928 is real widht
+
+            double _lenghtDistort = 430;
+
+            using (MagickImage image = new MagickImage("D:\\bia.png"))
+            {
+                image.VirtualPixelMethod = VirtualPixelMethod.Tile;
+                //224,134,  0,0,  416,133,  500,0,  204,333,  0,h,  438,334,  500,h
+                double[] args =
+                {
+                    285,85, // toa do diem dau
+                    0,0, // toa do dat diem dau tien
+
+                    646,85, // toa do diem 2
+                    400,0, // toa do dat diem 2
+                    
+                    238,483, // toa do diem 3
+                    0,400, // toa do dat diem 3
+
+                    689,484, // toa do diem 4
+                    400,400 // toa do dat diem 4
+                };
+
+                image.Distort(DistortMethod.Perspective, args);
+                image.Crop(400, 400, Gravity.Northwest);
+                //image.Write("D:\\test.png");
+                _ptbCamera.Image = image.ToBitmap();
+            }
         }
 
         private void _btnScore_Click(object sender, EventArgs e)
