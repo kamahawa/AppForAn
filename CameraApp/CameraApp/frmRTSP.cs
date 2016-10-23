@@ -8,6 +8,8 @@ using CameraApp.Help;
 using Microsoft.VisualBasic;
 using System.IO;
 using ImageMagick;
+using System.Media;
+using System.Threading;
 
 namespace CameraApp
 {
@@ -213,7 +215,7 @@ namespace CameraApp
 
         private void _btnScore_Click(object sender, EventArgs e)
         {
-            ShowScore(ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore);
+            ShowScore(ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, 1);
         }
 
         private void _transpCtrl_MouseUp(object sender, MouseEventArgs e)
@@ -226,20 +228,20 @@ namespace CameraApp
         private void _btnMiss_Click(object sender, EventArgs e)
         {
             _lblScore.Text = "0";
-            chamDiem(0, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore);
+            chamDiem(0, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, 1);
         }
         #endregion
 
         #region be so 2
         private void _btnScore2_Click(object sender, EventArgs e)
         {
-            ShowScore(ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2);
+            ShowScore(ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, 2);
         }
 
         private void _btnMiss2_Click(object sender, EventArgs e)
         {
             _lblScore2.Text = "0";
-            chamDiem(0, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2);
+            chamDiem(0, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, 2);
         }
 
         private void _transpCtrl2_MouseUp(object sender, MouseEventArgs e)
@@ -253,13 +255,13 @@ namespace CameraApp
         #region be so 3
         private void _btnScore3_Click(object sender, EventArgs e)
         {
-            ShowScore(ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3);
+            ShowScore(ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, 3);
         }
 
         private void _btnMiss3_Click(object sender, EventArgs e)
         {
             _lblScore3.Text = "0";
-            chamDiem(0, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3);
+            chamDiem(0, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, 3);
         }
 
         private void _transpCtrl3_MouseUp(object sender, MouseEventArgs e)
@@ -285,7 +287,7 @@ namespace CameraApp
             px.BringToFront();
         }
 
-        private void ShowScore(ref int luotBia, ref int currentMemberBia,DataGridView dtgScore, Label lblName, Label lblScore)
+        private void ShowScore(ref int luotBia, ref int currentMemberBia,DataGridView dtgScore, Label lblName, Label lblScore, int be)
         {
             int diem = 0;
             if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 26.5)
@@ -356,17 +358,41 @@ namespace CameraApp
                 lblScore.Text = "0";
                 diem = 0;
             }
-            chamDiem(diem, ref luotBia, ref currentMemberBia, dtgScore, lblName, lblScore);
+            chamDiem(diem, ref luotBia, ref currentMemberBia, dtgScore, lblName, lblScore, be);
         }
 
-        private void chamDiem(int diem, ref int luot, ref int currentMember, DataGridView dtgScore, Label lblName, Label lblScore)
+        private void chamDiem(int diem, ref int luot, ref int currentMember, DataGridView dtgScore, Label lblName, Label lblScore, int be)
         {
-
             try
             {
                 //DataTable dt = (DataTable)_dtgScore.DataSource;
                 DataTable dt = (DataTable)dtgScore.DataSource;
                 dt.Rows[currentMember][luot] = diem;
+
+                switch (diem)
+                {
+                    case 0:
+                        playSound(@"ScoreSound\0_diem.wav");
+                        break;
+                    case 5:
+                        playSound(@"ScoreSound\5_diem.wav");
+                        break;
+                    case 6:
+                        playSound(@"ScoreSound\6_diem.wav");
+                        break;
+                    case 7:
+                        playSound(@"ScoreSound\7_diem.wav");
+                        break;
+                    case 8:
+                        playSound(@"ScoreSound\8_diem.wav");
+                        break;
+                    case 9:
+                        playSound(@"ScoreSound\9_diem.wav");
+                        break;
+                    case 10:
+                        playSound(@"ScoreSound\10_diem.wav");
+                        break;
+                }
 
                 if (luot == 3)
                 {
@@ -386,8 +412,15 @@ namespace CameraApp
                     //load ten
                     //_lblName.Text = dt.Rows[currentMember][0].ToString();
                     //_lblScore.Text = "";
-                    lblName.Text = dt.Rows[currentMember][0].ToString();
-                    lblScore.Text = "";
+                    if(dt.Rows.Count < currentMember)
+                    { 
+                        lblName.Text = dt.Rows[currentMember][0].ToString();
+                        lblScore.Text = "";
+                    }
+
+                    Thread thread = new Thread(() => soundDiem(be, tong));
+                    thread.Start();
+                    //soundDiem(be, tong);
                 }
                 else
                 {
@@ -395,8 +428,123 @@ namespace CameraApp
                 }
             }
             catch (Exception ex)
-            { }
+            {
+                Console.WriteLine(ex);
+            }
         }
+
+        private void soundDiem(int be, int tong)
+        {
+
+            //nghi 1 giay de doc so diem o luot 3
+            Thread.Sleep(1000);
+            //neu la o be nao thi phat len tong o be do
+            if (be == 1)
+            {
+                playSound(@"ScoreSound\Tong_diem_be_so_1_la.wav");
+            }
+            else if (be == 2)
+            {
+                playSound(@"ScoreSound\Tong_diem_be_so_2_la.wav");
+            }
+            else if (be == 3)
+            {
+                playSound(@"ScoreSound\Tong_diem_be_so_3_la.wav");
+            }
+            //nghi 2 giay de doc so diem o luot tong diem be
+            Thread.Sleep(2000);
+            switch (tong)
+            {
+                case 0:
+                    playSound(@"ScoreSound\0_diem.wav");
+                    break;
+                case 5:
+                    playSound(@"ScoreSound\5_diem.wav");
+                    break;
+                case 6:
+                    playSound(@"ScoreSound\6_diem.wav");
+                    break;
+                case 7:
+                    playSound(@"ScoreSound\7_diem.wav");
+                    break;
+                case 8:
+                    playSound(@"ScoreSound\8_diem.wav");
+                    break;
+                case 9:
+                    playSound(@"ScoreSound\9_diem.wav");
+                    break;
+                case 10:
+                    playSound(@"ScoreSound\10_diem.wav");
+                    break;
+                case 11:
+                    playSound(@"ScoreSound\11_diem.wav");
+                    break;
+                case 12:
+                    playSound(@"ScoreSound\12_diem.wav");
+                    break;
+                case 13:
+                    playSound(@"ScoreSound\13_diem.wav");
+                    break;
+                case 14:
+                    playSound(@"ScoreSound\14_diem.wav");
+                    break;
+                case 15:
+                    playSound(@"ScoreSound\15_diem.wav");
+                    break;
+                case 16:
+                    playSound(@"ScoreSound\16_diem.wav");
+                    break;
+                case 17:
+                    playSound(@"ScoreSound\17_diem.wav");
+                    break;
+                case 18:
+                    playSound(@"ScoreSound\18_diem.wav");
+                    break;
+                case 19:
+                    playSound(@"ScoreSound\19_diem.wav");
+                    break;
+                case 20:
+                    playSound(@"ScoreSound\20_diem.wav");
+                    break;
+                case 21:
+                    playSound(@"ScoreSound\21_diem.wav");
+                    break;
+                case 22:
+                    playSound(@"ScoreSound\22_diem.wav");
+                    break;
+                case 23:
+                    playSound(@"ScoreSound\23_diem.wav");
+                    break;
+                case 24:
+                    playSound(@"ScoreSound\24_diem.wav");
+                    break;
+                case 25:
+                    playSound(@"ScoreSound\25_diem.wav");
+                    break;
+                case 26:
+                    playSound(@"ScoreSound\26_diem.wav");
+                    break;
+                case 27:
+                    playSound(@"ScoreSound\27_diem.wav");
+                    break;
+                case 28:
+                    playSound(@"ScoreSound\28_diem.wav");
+                    break;
+                case 29:
+                    playSound(@"ScoreSound\29_diem.wav");
+                    break;
+                case 30:
+                    playSound(@"ScoreSound\30_diem.wav");
+                    break;
+            }
+        }
+
+        private void playSound(string fileName)
+        {
+            SoundPlayer simpleSound = new SoundPlayer(fileName);
+            simpleSound.Play();
+        }
+
         #endregion
 
         #region menu progress
