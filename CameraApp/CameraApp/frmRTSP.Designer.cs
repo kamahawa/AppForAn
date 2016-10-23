@@ -272,8 +272,8 @@
             // _panCam
             // 
             this._panCam.Controls.Add(this._transpCtrl);
-            this._panCam.Controls.Add(this._ptbCamera);
             this._panCam.Controls.Add(this._vlc);
+            this._panCam.Controls.Add(this._ptbCamera);
             this._panCam.Location = new System.Drawing.Point(0, 0);
             this._panCam.Name = "_panCam";
             this._panCam.Size = new System.Drawing.Size(640, 480);
@@ -288,6 +288,7 @@
             this._ptbCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._ptbCamera.TabIndex = 2;
             this._ptbCamera.TabStop = false;
+            this._ptbCamera.Visible = false;
             // 
             // _btnMiss
             // 
