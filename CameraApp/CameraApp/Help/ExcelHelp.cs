@@ -30,7 +30,7 @@ namespace CameraApp.Help
                 xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
                 
                 //chay tu 1, 0 la title
-                for (int i = 1; i <= dt.Rows.Count - 1; i++)
+                for (int i = 0; i <= dt.Rows.Count - 1; i++)
                 {
                     for (int j = 0; j <= dt.Columns.Count - 1; j++)
                     {

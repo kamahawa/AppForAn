@@ -8,6 +8,7 @@ using CameraApp.Help;
 using Microsoft.VisualBasic;
 using System.IO;
 using ImageMagick;
+using AxAXVLC;
 
 namespace CameraApp
 {
@@ -22,7 +23,7 @@ namespace CameraApp
 
         private int X;
         private int Y;
-        
+
         // test and get is 322, 226
         //346 , 294
         private int XCenter = 321;
@@ -31,7 +32,7 @@ namespace CameraApp
         //luot ban
         private int luotBia1 = 1, luotBia2 = 1, luotBia3 = 1;
         private int currentMemberBia1 = 0, currentMemberBia2 = 0, currentMemberBia3 = 0;
-                
+
         public frmRTSP()
         {
             InitializeComponent();
@@ -44,12 +45,12 @@ namespace CameraApp
             //axVLCPlugin21.playlist.add("rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100", null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
             //axVLCPlugin21.playlist.play();
         }
-        
+
         private void frmRTSP_Load(object sender, EventArgs e)
         {
             LoadCamera();
         }
-        
+
         void LoadCamera()
         {
             /*
@@ -109,16 +110,16 @@ namespace CameraApp
             else
             {
                 try
-                { 
+                {
                     //Pass the file path and file name to the StreamReader constructor
                     StreamReader sr = new StreamReader(path);
 
                     //Read the first line of text
                     String line = sr.ReadLine();
 
-                    for(int i = 0; i < 3; i++)
+                    for (int i = 0; i < 3; i++)
                     {
-                        if(line != null)
+                        if (line != null)
                         {
                             urlCamera[i] = line;
 
@@ -168,6 +169,7 @@ namespace CameraApp
             }
             catch { }
         }
+
         #region be so 1
         private void _btnGetCenter_Click(object sender, EventArgs e)
         {
@@ -213,7 +215,14 @@ namespace CameraApp
 
         private void _btnScore_Click(object sender, EventArgs e)
         {
-            ShowScore(ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore);
+            //ShowScore(ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore);
+            if (_ptbCamera.Visible == false)
+                _ptbCamera.Visible = true;
+            else
+            {
+                _ptbCamera.Visible = false;
+            }
+            ShowPictureCrop(_vlc, _ptbCamera);
         }
 
         private void _transpCtrl_MouseUp(object sender, MouseEventArgs e)
@@ -271,6 +280,14 @@ namespace CameraApp
         #endregion
 
         #region xu ly cham diem
+
+        private void ShowPictureCrop(AxVLCPlugin2 vlc, PictureBox picCamera)
+        {
+            vlc.video.takeSnapshot();
+            
+            picCamera.Image = Image.FromFile("CAXVLC24C0S1.bmp");
+        }
+
         private void addShotIcon(int x, int y, Panel panCam)
         {
             PictureBox px = new PictureBox();
