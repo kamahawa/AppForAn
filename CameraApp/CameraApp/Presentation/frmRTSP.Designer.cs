@@ -49,7 +49,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this._vlc = new AxAXVLC.AxVLCPlugin2();
             this._panCam = new System.Windows.Forms.Panel();
-            this._transpCtrl = new CameraApp.TranspCtrl();
             this._ptbCamera = new System.Windows.Forms.PictureBox();
             this._btnMiss = new System.Windows.Forms.Button();
             this._tabControl = new System.Windows.Forms.TabControl();
@@ -64,7 +63,6 @@
             this._btnScore2 = new System.Windows.Forms.Button();
             this._btnMiss2 = new System.Windows.Forms.Button();
             this._panCam2 = new System.Windows.Forms.Panel();
-            this._transpCtrl2 = new CameraApp.TranspCtrl();
             this._vlc1 = new AxAXVLC.AxVLCPlugin2();
             this._tabBia8 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -76,8 +74,11 @@
             this._btnScore3 = new System.Windows.Forms.Button();
             this._btnMiss3 = new System.Windows.Forms.Button();
             this._panCam3 = new System.Windows.Forms.Panel();
-            this._transpCtrl3 = new CameraApp.TranspCtrl();
             this._vlc2 = new AxAXVLC.AxVLCPlugin2();
+            this._ptbShow = new System.Windows.Forms.PictureBox();
+            this._transpCtrl = new CameraApp.TranspCtrl();
+            this._transpCtrl2 = new CameraApp.TranspCtrl();
+            this._transpCtrl3 = new CameraApp.TranspCtrl();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore)).BeginInit();
@@ -96,6 +97,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore3)).BeginInit();
             this._panCam3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._vlc2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._ptbShow)).BeginInit();
             this.SuspendLayout();
             // 
             // _btnGetCenter
@@ -106,7 +108,6 @@
             this._btnGetCenter.TabIndex = 1;
             this._btnGetCenter.Text = "Lấy tâm";
             this._btnGetCenter.UseVisualStyleBackColor = true;
-            this._btnGetCenter.Visible = false;
             this._btnGetCenter.Click += new System.EventHandler(this._btnGetCenter_Click);
             // 
             // menuStrip1
@@ -204,6 +205,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this._ptbShow);
             this.panel1.Controls.Add(this._dtgScore);
             this.panel1.Controls.Add(this._lblScore);
             this.panel1.Controls.Add(this.label2);
@@ -272,23 +274,12 @@
             // _panCam
             // 
             this._panCam.Controls.Add(this._transpCtrl);
-            this._panCam.Controls.Add(this._vlc);
             this._panCam.Controls.Add(this._ptbCamera);
+            this._panCam.Controls.Add(this._vlc);
             this._panCam.Location = new System.Drawing.Point(0, 0);
             this._panCam.Name = "_panCam";
             this._panCam.Size = new System.Drawing.Size(640, 480);
             this._panCam.TabIndex = 8;
-            // 
-            // _transpCtrl
-            // 
-            this._transpCtrl.BackColor = System.Drawing.Color.Transparent;
-            this._transpCtrl.Location = new System.Drawing.Point(0, 0);
-            this._transpCtrl.Name = "_transpCtrl";
-            this._transpCtrl.Opacity = 100;
-            this._transpCtrl.Size = new System.Drawing.Size(640, 480);
-            this._transpCtrl.TabIndex = 7;
-            this._transpCtrl.Text = "transpCtrl1";
-            this._transpCtrl.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseUp);
             // 
             // _ptbCamera
             // 
@@ -299,7 +290,6 @@
             this._ptbCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._ptbCamera.TabIndex = 2;
             this._ptbCamera.TabStop = false;
-            this._ptbCamera.Visible = false;
             // 
             // _btnMiss
             // 
@@ -441,17 +431,6 @@
             this._panCam2.Size = new System.Drawing.Size(640, 480);
             this._panCam2.TabIndex = 13;
             // 
-            // _transpCtrl2
-            // 
-            this._transpCtrl2.BackColor = System.Drawing.Color.Transparent;
-            this._transpCtrl2.Location = new System.Drawing.Point(0, 0);
-            this._transpCtrl2.Name = "_transpCtrl2";
-            this._transpCtrl2.Opacity = 100;
-            this._transpCtrl2.Size = new System.Drawing.Size(640, 480);
-            this._transpCtrl2.TabIndex = 7;
-            this._transpCtrl2.Text = "transpCtrl1";
-            this._transpCtrl2.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl2_MouseUp);
-            // 
             // _vlc1
             // 
             this._vlc1.Enabled = true;
@@ -564,6 +543,46 @@
             this._panCam3.Size = new System.Drawing.Size(640, 480);
             this._panCam3.TabIndex = 9;
             // 
+            // _vlc2
+            // 
+            this._vlc2.Enabled = true;
+            this._vlc2.Location = new System.Drawing.Point(0, 0);
+            this._vlc2.Name = "_vlc2";
+            this._vlc2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc2.OcxState")));
+            this._vlc2.Size = new System.Drawing.Size(640, 480);
+            this._vlc2.TabIndex = 6;
+            // 
+            // _ptbShow
+            // 
+            this._ptbShow.Location = new System.Drawing.Point(12, 0);
+            this._ptbShow.Name = "_ptbShow";
+            this._ptbShow.Size = new System.Drawing.Size(480, 480);
+            this._ptbShow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._ptbShow.TabIndex = 10;
+            this._ptbShow.TabStop = false;
+            // 
+            // _transpCtrl
+            // 
+            this._transpCtrl.BackColor = System.Drawing.Color.Transparent;
+            this._transpCtrl.Location = new System.Drawing.Point(0, 0);
+            this._transpCtrl.Name = "_transpCtrl";
+            this._transpCtrl.Opacity = 100;
+            this._transpCtrl.Size = new System.Drawing.Size(640, 480);
+            this._transpCtrl.TabIndex = 7;
+            this._transpCtrl.Text = "transpCtrl1";
+            this._transpCtrl.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseUp);
+            // 
+            // _transpCtrl2
+            // 
+            this._transpCtrl2.BackColor = System.Drawing.Color.Transparent;
+            this._transpCtrl2.Location = new System.Drawing.Point(0, 0);
+            this._transpCtrl2.Name = "_transpCtrl2";
+            this._transpCtrl2.Opacity = 100;
+            this._transpCtrl2.Size = new System.Drawing.Size(640, 480);
+            this._transpCtrl2.TabIndex = 7;
+            this._transpCtrl2.Text = "transpCtrl1";
+            this._transpCtrl2.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl2_MouseUp);
+            // 
             // _transpCtrl3
             // 
             this._transpCtrl3.BackColor = System.Drawing.Color.Transparent;
@@ -574,15 +593,6 @@
             this._transpCtrl3.TabIndex = 7;
             this._transpCtrl3.Text = "transpCtrl1";
             this._transpCtrl3.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl3_MouseUp);
-            // 
-            // _vlc2
-            // 
-            this._vlc2.Enabled = true;
-            this._vlc2.Location = new System.Drawing.Point(0, 0);
-            this._vlc2.Name = "_vlc2";
-            this._vlc2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc2.OcxState")));
-            this._vlc2.Size = new System.Drawing.Size(640, 480);
-            this._vlc2.TabIndex = 6;
             // 
             // frmRTSP
             // 
@@ -619,6 +629,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore3)).EndInit();
             this._panCam3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._vlc2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._ptbShow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -674,5 +685,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button _btnScore2;
         private System.Windows.Forms.Button _btnMiss2;
+        private System.Windows.Forms.PictureBox _ptbShow;
     }
 }

@@ -64,34 +64,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Business\ProcessImage.cs" />
+    <Compile Include="Presentation\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Presentation\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAddList.cs">
+    <Compile Include="Presentation\frmAddList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddList.Designer.cs">
+    <Compile Include="Presentation\frmAddList.Designer.cs">
       <DependentUpon>frmAddList.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmConfigCamera.cs">
+    <Compile Include="Presentation\frmConfigCamera.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmConfigCamera.Designer.cs">
+    <Compile Include="Presentation\frmConfigCamera.Designer.cs">
       <DependentUpon>frmConfigCamera.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEditBox.cs">
+    <Compile Include="Presentation\frmEditBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmEditBox.Designer.cs">
+    <Compile Include="Presentation\frmEditBox.Designer.cs">
       <DependentUpon>frmEditBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRTSP.cs">
+    <Compile Include="Presentation\frmRTSP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRTSP.Designer.cs">
+    <Compile Include="Presentation\frmRTSP.Designer.cs">
       <DependentUpon>frmRTSP.cs</DependentUpon>
     </Compile>
     <Compile Include="Help\ExcelHelp.cs" />
@@ -105,19 +106,19 @@
     <Compile Include="TranspCtrl .cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Presentation\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAddList.resx">
+    <EmbeddedResource Include="Presentation\frmAddList.resx">
       <DependentUpon>frmAddList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmConfigCamera.resx">
+    <EmbeddedResource Include="Presentation\frmConfigCamera.resx">
       <DependentUpon>frmConfigCamera.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmEditBox.resx">
+    <EmbeddedResource Include="Presentation\frmEditBox.resx">
       <DependentUpon>frmEditBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRTSP.resx">
+    <EmbeddedResource Include="Presentation\frmRTSP.resx">
       <DependentUpon>frmRTSP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -11,6 +11,7 @@ using ImageMagick;
 using AxAXVLC;
 using System.Media;
 using System.Threading;
+using CameraApp.Business;
 
 namespace CameraApp
 {
@@ -187,32 +188,89 @@ namespace CameraApp
             double h = _ptbCamera.Height;//578 is real height
             double w = _ptbCamera.Width;//928 is real widht
 
-            double _lenghtDistort = 430;
+            double _widthDistort = 400; // do rong se luu anh moi
+            double _heightDistort = 400; // do dai se luu anh moi
 
-            using (MagickImage image = new MagickImage("D:\\bia.png"))
+            //bitmap xu ly anh
+            Bitmap bm, bm1;
+
+            using (MagickImage image = new MagickImage("bia.png"))
             {
                 image.VirtualPixelMethod = VirtualPixelMethod.Tile;
                 //224,134,  0,0,  416,133,  500,0,  204,333,  0,h,  438,334,  500,h
                 double[] args =
                 {
-                    285,85, // toa do diem dau
+                    285,85, // toa do diem dau can chuyen
                     0,0, // toa do dat diem dau tien
 
-                    646,85, // toa do diem 2
-                    400,0, // toa do dat diem 2
+                    646,85, // toa do diem 2 can chuyen
+                    _widthDistort,0, // toa do dat diem 2
                     
-                    238,483, // toa do diem 3
-                    0,400, // toa do dat diem 3
+                    238,483, // toa do diem 3 can chuyen
+                    0,_heightDistort, // toa do dat diem 3
 
-                    689,484, // toa do diem 4
-                    400,400 // toa do dat diem 4
+                    689,484, // toa do diem 4 can chuyen
+                    _widthDistort,_heightDistort // toa do dat diem 4
                 };
 
                 image.Distort(DistortMethod.Perspective, args);
-                image.Crop(400, 400, Gravity.Northwest);
+                image.Crop((int)_widthDistort, (int)_heightDistort, Gravity.Northwest);
                 //image.Write("D:\\test.png");
-                _ptbCamera.Image = image.ToBitmap();
+
+                bm = image.ToBitmap();
+                
+                /*
+                //chuyen ve anh xam      
+                Bitmap bm1 = image.ToBitmap();
+                bm1 = ProcessImage.Convert2GrayScaleFast(bm1);
+                bm1 = ProcessImage.ConvertToBinaryImage(bm1, 94);
+
+                _ptbShow.Image = bm1;
+                */
             }
+
+            using (MagickImage image = new MagickImage("bia1.png"))
+            {
+                image.VirtualPixelMethod = VirtualPixelMethod.Tile;
+                //224,134,  0,0,  416,133,  500,0,  204,333,  0,h,  438,334,  500,h
+                double[] args =
+                {
+                    285,85, // toa do diem dau can chuyen
+                    0,0, // toa do dat diem dau tien
+
+                    646,85, // toa do diem 2 can chuyen
+                    _widthDistort,0, // toa do dat diem 2
+                    
+                    238,483, // toa do diem 3 can chuyen
+                    0,_heightDistort, // toa do dat diem 3
+
+                    689,484, // toa do diem 4 can chuyen
+                    _widthDistort,_heightDistort // toa do dat diem 4
+                };
+
+                image.Distort(DistortMethod.Perspective, args);
+                image.Crop((int)_widthDistort, (int)_heightDistort, Gravity.Northwest);
+
+                bm1 = image.ToBitmap();                
+            }
+
+
+            ProcessImage pi = new ProcessImage(bm);
+            //xu ly anh
+            pi.Process();
+            //anh tra ve
+            bm = pi.Result();
+            _ptbCamera.Image = bm;
+
+            ProcessImage pi1 = new ProcessImage(bm1);
+            //xu ly anh
+            pi1.Process();
+            //anh tra ve
+            bm1 = pi1.Result();
+
+
+            _ptbShow.Image = ProcessImage.Compare(bm,bm1);
+            MessageBox.Show(ProcessImage.diem.ToString());
         }
 
         private void _btnScore_Click(object sender, EventArgs e)
