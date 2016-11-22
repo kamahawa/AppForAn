@@ -49,6 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this._vlc = new AxAXVLC.AxVLCPlugin2();
             this._panCam = new System.Windows.Forms.Panel();
+            this._transpCtrl = new CameraApp.TranspCtrl();
             this._ptbCamera = new System.Windows.Forms.PictureBox();
             this._btnMiss = new System.Windows.Forms.Button();
             this._tabControl = new System.Windows.Forms.TabControl();
@@ -63,6 +64,7 @@
             this._btnScore2 = new System.Windows.Forms.Button();
             this._btnMiss2 = new System.Windows.Forms.Button();
             this._panCam2 = new System.Windows.Forms.Panel();
+            this._transpCtrl2 = new CameraApp.TranspCtrl();
             this._vlc1 = new AxAXVLC.AxVLCPlugin2();
             this._tabBia8 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -74,11 +76,8 @@
             this._btnScore3 = new System.Windows.Forms.Button();
             this._btnMiss3 = new System.Windows.Forms.Button();
             this._panCam3 = new System.Windows.Forms.Panel();
-            this._vlc2 = new AxAXVLC.AxVLCPlugin2();
-            this._ptbShow = new System.Windows.Forms.PictureBox();
-            this._transpCtrl = new CameraApp.TranspCtrl();
-            this._transpCtrl2 = new CameraApp.TranspCtrl();
             this._transpCtrl3 = new CameraApp.TranspCtrl();
+            this._vlc2 = new AxAXVLC.AxVLCPlugin2();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore)).BeginInit();
@@ -97,17 +96,17 @@
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore3)).BeginInit();
             this._panCam3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._vlc2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._ptbShow)).BeginInit();
             this.SuspendLayout();
             // 
             // _btnGetCenter
             // 
-            this._btnGetCenter.Location = new System.Drawing.Point(199, 497);
+            this._btnGetCenter.Location = new System.Drawing.Point(345, 420);
             this._btnGetCenter.Name = "_btnGetCenter";
-            this._btnGetCenter.Size = new System.Drawing.Size(75, 23);
+            this._btnGetCenter.Size = new System.Drawing.Size(150, 55);
             this._btnGetCenter.TabIndex = 1;
             this._btnGetCenter.Text = "Lấy tâm";
             this._btnGetCenter.UseVisualStyleBackColor = true;
+            this._btnGetCenter.Visible = false;
             this._btnGetCenter.Click += new System.EventHandler(this._btnGetCenter_Click);
             // 
             // menuStrip1
@@ -117,7 +116,7 @@
             this.tùyChọnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1190, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1302, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -193,9 +192,9 @@
             // 
             // _btnScore
             // 
-            this._btnScore.Location = new System.Drawing.Point(16, 497);
+            this._btnScore.Location = new System.Drawing.Point(15, 420);
             this._btnScore.Name = "_btnScore";
-            this._btnScore.Size = new System.Drawing.Size(75, 23);
+            this._btnScore.Size = new System.Drawing.Size(150, 55);
             this._btnScore.TabIndex = 4;
             this._btnScore.Text = "Chấm điểm";
             this._btnScore.UseVisualStyleBackColor = true;
@@ -205,7 +204,6 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this._ptbShow);
             this.panel1.Controls.Add(this._dtgScore);
             this.panel1.Controls.Add(this._lblScore);
             this.panel1.Controls.Add(this.label2);
@@ -214,7 +212,7 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(655, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(524, 480);
+            this.panel1.Size = new System.Drawing.Size(636, 480);
             this.panel1.TabIndex = 5;
             // 
             // _dtgScore
@@ -225,7 +223,7 @@
             this._dtgScore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._dtgScore.Location = new System.Drawing.Point(0, 128);
             this._dtgScore.Name = "_dtgScore";
-            this._dtgScore.Size = new System.Drawing.Size(521, 352);
+            this._dtgScore.Size = new System.Drawing.Size(633, 352);
             this._dtgScore.TabIndex = 9;
             // 
             // _lblScore
@@ -268,7 +266,7 @@
             this._vlc.Location = new System.Drawing.Point(0, 0);
             this._vlc.Name = "_vlc";
             this._vlc.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc.OcxState")));
-            this._vlc.Size = new System.Drawing.Size(640, 480);
+            this._vlc.Size = new System.Drawing.Size(639, 399);
             this._vlc.TabIndex = 6;
             // 
             // _panCam
@@ -278,24 +276,35 @@
             this._panCam.Controls.Add(this._vlc);
             this._panCam.Location = new System.Drawing.Point(0, 0);
             this._panCam.Name = "_panCam";
-            this._panCam.Size = new System.Drawing.Size(640, 480);
+            this._panCam.Size = new System.Drawing.Size(640, 400);
             this._panCam.TabIndex = 8;
+            // 
+            // _transpCtrl
+            // 
+            this._transpCtrl.BackColor = System.Drawing.Color.Transparent;
+            this._transpCtrl.Location = new System.Drawing.Point(0, 0);
+            this._transpCtrl.Name = "_transpCtrl";
+            this._transpCtrl.Opacity = 100;
+            this._transpCtrl.Size = new System.Drawing.Size(640, 400);
+            this._transpCtrl.TabIndex = 7;
+            this._transpCtrl.Text = "transpCtrl1";
+            this._transpCtrl.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseUp);
             // 
             // _ptbCamera
             // 
             this._ptbCamera.Image = ((System.Drawing.Image)(resources.GetObject("_ptbCamera.Image")));
             this._ptbCamera.Location = new System.Drawing.Point(0, 0);
             this._ptbCamera.Name = "_ptbCamera";
-            this._ptbCamera.Size = new System.Drawing.Size(640, 480);
+            this._ptbCamera.Size = new System.Drawing.Size(640, 400);
             this._ptbCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._ptbCamera.TabIndex = 2;
             this._ptbCamera.TabStop = false;
             // 
             // _btnMiss
             // 
-            this._btnMiss.Location = new System.Drawing.Point(107, 497);
+            this._btnMiss.Location = new System.Drawing.Point(180, 420);
             this._btnMiss.Name = "_btnMiss";
-            this._btnMiss.Size = new System.Drawing.Size(75, 23);
+            this._btnMiss.Size = new System.Drawing.Size(150, 55);
             this._btnMiss.TabIndex = 10;
             this._btnMiss.Text = "Mất đạn";
             this._btnMiss.UseVisualStyleBackColor = true;
@@ -310,7 +319,7 @@
             this._tabControl.Location = new System.Drawing.Point(0, 24);
             this._tabControl.Name = "_tabControl";
             this._tabControl.SelectedIndex = 0;
-            this._tabControl.Size = new System.Drawing.Size(1190, 552);
+            this._tabControl.Size = new System.Drawing.Size(1302, 517);
             this._tabControl.TabIndex = 11;
             // 
             // _tabBia4
@@ -323,7 +332,7 @@
             this._tabBia4.Location = new System.Drawing.Point(4, 22);
             this._tabBia4.Name = "_tabBia4";
             this._tabBia4.Padding = new System.Windows.Forms.Padding(3);
-            this._tabBia4.Size = new System.Drawing.Size(1182, 526);
+            this._tabBia4.Size = new System.Drawing.Size(1294, 491);
             this._tabBia4.TabIndex = 0;
             this._tabBia4.Text = "Bệ số 1";
             this._tabBia4.UseVisualStyleBackColor = true;
@@ -337,7 +346,7 @@
             this._tabBia7.Location = new System.Drawing.Point(4, 22);
             this._tabBia7.Name = "_tabBia7";
             this._tabBia7.Padding = new System.Windows.Forms.Padding(3);
-            this._tabBia7.Size = new System.Drawing.Size(1182, 526);
+            this._tabBia7.Size = new System.Drawing.Size(1294, 491);
             this._tabBia7.TabIndex = 1;
             this._tabBia7.Text = "Bệ số 2";
             this._tabBia7.UseVisualStyleBackColor = true;
@@ -354,7 +363,7 @@
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(655, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(524, 480);
+            this.panel2.Size = new System.Drawing.Size(636, 480);
             this.panel2.TabIndex = 17;
             // 
             // _dtgScore2
@@ -365,7 +374,7 @@
             this._dtgScore2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._dtgScore2.Location = new System.Drawing.Point(0, 128);
             this._dtgScore2.Name = "_dtgScore2";
-            this._dtgScore2.Size = new System.Drawing.Size(521, 352);
+            this._dtgScore2.Size = new System.Drawing.Size(633, 352);
             this._dtgScore2.TabIndex = 9;
             // 
             // _lblScore2
@@ -404,9 +413,9 @@
             // 
             // _btnScore2
             // 
-            this._btnScore2.Location = new System.Drawing.Point(16, 497);
+            this._btnScore2.Location = new System.Drawing.Point(15, 420);
             this._btnScore2.Name = "_btnScore2";
-            this._btnScore2.Size = new System.Drawing.Size(75, 23);
+            this._btnScore2.Size = new System.Drawing.Size(150, 55);
             this._btnScore2.TabIndex = 16;
             this._btnScore2.Text = "Chấm điểm";
             this._btnScore2.UseVisualStyleBackColor = true;
@@ -414,9 +423,9 @@
             // 
             // _btnMiss2
             // 
-            this._btnMiss2.Location = new System.Drawing.Point(107, 497);
+            this._btnMiss2.Location = new System.Drawing.Point(180, 420);
             this._btnMiss2.Name = "_btnMiss2";
-            this._btnMiss2.Size = new System.Drawing.Size(75, 23);
+            this._btnMiss2.Size = new System.Drawing.Size(150, 55);
             this._btnMiss2.TabIndex = 15;
             this._btnMiss2.Text = "Mất đạn";
             this._btnMiss2.UseVisualStyleBackColor = true;
@@ -428,8 +437,19 @@
             this._panCam2.Controls.Add(this._vlc1);
             this._panCam2.Location = new System.Drawing.Point(0, 0);
             this._panCam2.Name = "_panCam2";
-            this._panCam2.Size = new System.Drawing.Size(640, 480);
+            this._panCam2.Size = new System.Drawing.Size(640, 400);
             this._panCam2.TabIndex = 13;
+            // 
+            // _transpCtrl2
+            // 
+            this._transpCtrl2.BackColor = System.Drawing.Color.Transparent;
+            this._transpCtrl2.Location = new System.Drawing.Point(0, 0);
+            this._transpCtrl2.Name = "_transpCtrl2";
+            this._transpCtrl2.Opacity = 100;
+            this._transpCtrl2.Size = new System.Drawing.Size(640, 400);
+            this._transpCtrl2.TabIndex = 7;
+            this._transpCtrl2.Text = "transpCtrl1";
+            this._transpCtrl2.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl2_MouseUp);
             // 
             // _vlc1
             // 
@@ -437,7 +457,7 @@
             this._vlc1.Location = new System.Drawing.Point(0, 0);
             this._vlc1.Name = "_vlc1";
             this._vlc1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc1.OcxState")));
-            this._vlc1.Size = new System.Drawing.Size(639, 480);
+            this._vlc1.Size = new System.Drawing.Size(639, 399);
             this._vlc1.TabIndex = 6;
             // 
             // _tabBia8
@@ -449,7 +469,7 @@
             this._tabBia8.Location = new System.Drawing.Point(4, 22);
             this._tabBia8.Name = "_tabBia8";
             this._tabBia8.Padding = new System.Windows.Forms.Padding(3);
-            this._tabBia8.Size = new System.Drawing.Size(1182, 526);
+            this._tabBia8.Size = new System.Drawing.Size(1294, 491);
             this._tabBia8.TabIndex = 2;
             this._tabBia8.Text = "Bệ số 3";
             this._tabBia8.UseVisualStyleBackColor = true;
@@ -466,7 +486,7 @@
             this.panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel5.Location = new System.Drawing.Point(655, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(524, 480);
+            this.panel5.Size = new System.Drawing.Size(636, 480);
             this.panel5.TabIndex = 13;
             // 
             // _dtgScore3
@@ -477,7 +497,7 @@
             this._dtgScore3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._dtgScore3.Location = new System.Drawing.Point(0, 128);
             this._dtgScore3.Name = "_dtgScore3";
-            this._dtgScore3.Size = new System.Drawing.Size(521, 352);
+            this._dtgScore3.Size = new System.Drawing.Size(633, 352);
             this._dtgScore3.TabIndex = 9;
             // 
             // _lblScore3
@@ -516,9 +536,9 @@
             // 
             // _btnScore3
             // 
-            this._btnScore3.Location = new System.Drawing.Point(16, 497);
+            this._btnScore3.Location = new System.Drawing.Point(15, 420);
             this._btnScore3.Name = "_btnScore3";
-            this._btnScore3.Size = new System.Drawing.Size(75, 23);
+            this._btnScore3.Size = new System.Drawing.Size(150, 55);
             this._btnScore3.TabIndex = 12;
             this._btnScore3.Text = "Chấm điểm";
             this._btnScore3.UseVisualStyleBackColor = true;
@@ -526,9 +546,9 @@
             // 
             // _btnMiss3
             // 
-            this._btnMiss3.Location = new System.Drawing.Point(107, 497);
+            this._btnMiss3.Location = new System.Drawing.Point(180, 420);
             this._btnMiss3.Name = "_btnMiss3";
-            this._btnMiss3.Size = new System.Drawing.Size(75, 23);
+            this._btnMiss3.Size = new System.Drawing.Size(150, 55);
             this._btnMiss3.TabIndex = 11;
             this._btnMiss3.Text = "Mất đạn";
             this._btnMiss3.UseVisualStyleBackColor = true;
@@ -540,48 +560,8 @@
             this._panCam3.Controls.Add(this._vlc2);
             this._panCam3.Location = new System.Drawing.Point(0, 0);
             this._panCam3.Name = "_panCam3";
-            this._panCam3.Size = new System.Drawing.Size(640, 480);
+            this._panCam3.Size = new System.Drawing.Size(640, 400);
             this._panCam3.TabIndex = 9;
-            // 
-            // _vlc2
-            // 
-            this._vlc2.Enabled = true;
-            this._vlc2.Location = new System.Drawing.Point(0, 0);
-            this._vlc2.Name = "_vlc2";
-            this._vlc2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc2.OcxState")));
-            this._vlc2.Size = new System.Drawing.Size(640, 480);
-            this._vlc2.TabIndex = 6;
-            // 
-            // _ptbShow
-            // 
-            this._ptbShow.Location = new System.Drawing.Point(12, 0);
-            this._ptbShow.Name = "_ptbShow";
-            this._ptbShow.Size = new System.Drawing.Size(480, 480);
-            this._ptbShow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this._ptbShow.TabIndex = 10;
-            this._ptbShow.TabStop = false;
-            // 
-            // _transpCtrl
-            // 
-            this._transpCtrl.BackColor = System.Drawing.Color.Transparent;
-            this._transpCtrl.Location = new System.Drawing.Point(0, 0);
-            this._transpCtrl.Name = "_transpCtrl";
-            this._transpCtrl.Opacity = 100;
-            this._transpCtrl.Size = new System.Drawing.Size(640, 480);
-            this._transpCtrl.TabIndex = 7;
-            this._transpCtrl.Text = "transpCtrl1";
-            this._transpCtrl.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseUp);
-            // 
-            // _transpCtrl2
-            // 
-            this._transpCtrl2.BackColor = System.Drawing.Color.Transparent;
-            this._transpCtrl2.Location = new System.Drawing.Point(0, 0);
-            this._transpCtrl2.Name = "_transpCtrl2";
-            this._transpCtrl2.Opacity = 100;
-            this._transpCtrl2.Size = new System.Drawing.Size(640, 480);
-            this._transpCtrl2.TabIndex = 7;
-            this._transpCtrl2.Text = "transpCtrl1";
-            this._transpCtrl2.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl2_MouseUp);
             // 
             // _transpCtrl3
             // 
@@ -589,20 +569,29 @@
             this._transpCtrl3.Location = new System.Drawing.Point(0, 0);
             this._transpCtrl3.Name = "_transpCtrl3";
             this._transpCtrl3.Opacity = 100;
-            this._transpCtrl3.Size = new System.Drawing.Size(640, 480);
+            this._transpCtrl3.Size = new System.Drawing.Size(640, 400);
             this._transpCtrl3.TabIndex = 7;
             this._transpCtrl3.Text = "transpCtrl1";
             this._transpCtrl3.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl3_MouseUp);
+            // 
+            // _vlc2
+            // 
+            this._vlc2.Enabled = true;
+            this._vlc2.Location = new System.Drawing.Point(0, 0);
+            this._vlc2.Name = "_vlc2";
+            this._vlc2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc2.OcxState")));
+            this._vlc2.Size = new System.Drawing.Size(639, 399);
+            this._vlc2.TabIndex = 6;
             // 
             // frmRTSP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1190, 576);
+            this.ClientSize = new System.Drawing.Size(1302, 541);
             this.Controls.Add(this._tabControl);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(1131, 615);
+            this.MinimumSize = new System.Drawing.Size(1200, 580);
             this.Name = "frmRTSP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chấm điểm";
@@ -629,7 +618,6 @@
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore3)).EndInit();
             this._panCam3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._vlc2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._ptbShow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -685,6 +673,5 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button _btnScore2;
         private System.Windows.Forms.Button _btnMiss2;
-        private System.Windows.Forms.PictureBox _ptbShow;
     }
 }

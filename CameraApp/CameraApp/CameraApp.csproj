@@ -140,6 +140,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\bia4-10.png" />
+    <Content Include="img\bia4-5.png" />
+    <Content Include="img\bia4-6.png" />
+    <Content Include="img\bia4-7.png" />
+    <Content Include="img\bia4-8.png" />
+    <Content Include="img\bia4-9.png" />
     <Content Include="software\vlc-2.2.4-win32.exe" />
     <Content Include="x.png" />
   </ItemGroup>

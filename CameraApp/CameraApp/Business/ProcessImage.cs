@@ -284,6 +284,85 @@ namespace CameraApp.Business
         }
         public static int diem = 0;
         public static int X = 0, Y = 0;
+
+
+        public static int[,] ConvertBitmapToArray(Bitmap bm)
+        {
+            int[,] data = new int[bm.Width, bm.Height];            
+            BitmapData bmData = bm.LockBits(new Rectangle(0, 0, bm.Width, bm.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            //lay dia chi cua dong dau
+            IntPtr ptr = bmData.Scan0;
+
+            //khai bao 1 mang de chua byte cua bitmap
+            int bytes = Math.Abs(bmData.Stride) * bmData.Height;
+            byte[] rgbValues = new byte[bytes];
+
+            //copy gia tri rgb vao mang
+            System.Runtime.InteropServices.Marshal.Copy(ptr, rgbValues, 0, bytes);
+
+
+            for (int i = 0; i < bm.Height; i++)
+            {
+                int t = 0;
+                for (int j = 0; j < bm.Width * 3; j += 3)
+                {
+                    int index = i * bmData.Stride + j;
+                    data[t, i] = rgbValues[index];
+                    /*
+                    if (rgbValues[index] == 255)
+                    {
+                        data[t, i] = 255;
+                    }
+                    else
+                    {
+                        data[t, i] = 0;
+                    }
+                    */
+                    t++;
+                }
+            }
+            return data;
+        }
+
+        public static Bitmap ConvertArrayToBitmap(int[,] data)
+        {
+            Bitmap bmp = new Bitmap(data.GetLength(0), data.GetLength(1));
+            BitmapData bmData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            //lay dia chi cua dong dau
+            IntPtr ptr = bmData.Scan0;
+
+            //khai bao 1 mang de chua int cua bitmap
+            int bytes = Math.Abs(bmData.Stride) * bmData.Height;
+            Byte[] rgbValues = new Byte[bytes];
+
+            //copy gia tri rgb vao mang
+            System.Runtime.InteropServices.Marshal.Copy(ptr, rgbValues, 0, bytes);
+
+            for (int i = 0; i < data.GetLength(1); i++)
+            {
+                int t = 0;
+                for (int j = 0; j < data.GetLength(0) * 3; j += 3)
+                {
+                    int index = i * bmData.Stride + j;
+                    rgbValues[index] = (byte)data[t, i];
+                    rgbValues[index + 1] = rgbValues[index];
+                    rgbValues[index + 2] = rgbValues[index];
+                    t++;
+                }
+            }
+
+            //copy gia tri rgb tro ve lai bitmap
+            System.Runtime.InteropServices.Marshal.Copy(rgbValues, 0, ptr, bytes);
+
+            //unlock the bits
+            bmp.UnlockBits(bmData);
+
+            return bmp;
+        }
+
+
         #endregion
 
         #region

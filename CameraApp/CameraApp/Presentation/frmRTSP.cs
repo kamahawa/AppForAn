@@ -12,6 +12,7 @@ using AxAXVLC;
 using System.Media;
 using System.Threading;
 using CameraApp.Business;
+using System.Drawing.Imaging;
 
 namespace CameraApp
 {
@@ -36,17 +37,13 @@ namespace CameraApp
         private int luotBia1 = 1, luotBia2 = 1, luotBia3 = 1;
         private int currentMemberBia1 = 0, currentMemberBia2 = 0, currentMemberBia3 = 0;
 
+        int[,] _dt_bia4_10, _dt_bia4_9, _dt_bia4_8, _dt_bia4_7, _dt_bia4_6, _dt_bia4_5;
+        
         public frmRTSP()
         {
             InitializeComponent();
             //urlCamera = LoadUrlCamera();
-            LoadUrlCamera();
-        }
-
-        private void _btnGetStream_Click(object sender, EventArgs e)
-        {
-            //axVLCPlugin21.playlist.add("rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100", null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
-            //axVLCPlugin21.playlist.play();
+            LoadUrlCamera();                        
         }
 
         private void frmRTSP_Load(object sender, EventArgs e)
@@ -61,6 +58,7 @@ namespace CameraApp
             try
             {
                 //rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100
+                // http://47.20.99.105:81/videostream.cgi?loginuse=admin&loginpas=
                 //test link : http://68.114.48.220:80/videostream.cgi?user=admin&pwd=
                 //test link : http://68.186.171.207:86/videostream.cgi?user=admin&pwd=
                 MJPEGStream stream = new MJPEGStream("http://68.114.48.220:80/videostream.cgi?user=admin&pwd=");
@@ -151,7 +149,7 @@ namespace CameraApp
             }
             //return File.ReadAllText(path);
         }
-
+        
         public static void WriteUrlCamera(string url)
         {
             string path = @"UrlCamera.txt";
@@ -269,7 +267,7 @@ namespace CameraApp
             bm1 = pi1.Result();
 
 
-            _ptbShow.Image = ProcessImage.Compare(bm,bm1);
+            //_ptbShow.Image = ProcessImage.Compare(bm,bm1);
             MessageBox.Show(ProcessImage.diem.ToString());
         }
 
@@ -293,6 +291,73 @@ namespace CameraApp
             X = e.X;
             Y = e.Y;
             addShotIcon(X, Y, _panCam);
+            ChamDiem(e.X, e.Y);
+        }
+
+        
+        private void ChamDiem(int x, int y)
+        {
+            Bitmap bitmap = Properties.Resources.bia4_8;
+            
+            Color c = bitmap.GetPixel(x, y);
+            //dung thuat toan quicksort
+            if (c.ToArgb().Equals(Color.Red.ToArgb()))
+            {
+                bitmap = Properties.Resources.bia4_9;
+                c = bitmap.GetPixel(x, y);
+                if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                {
+                    bitmap = Properties.Resources.bia4_10;
+                    c = bitmap.GetPixel(x, y);
+                    // neu nam o tam 10 thi la 10, khong la 9
+                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                    {
+                        _lblScore.Text = "10";
+                    }
+                    else
+                    {
+                        _lblScore.Text = "9";
+                    }
+                }
+                else
+                {
+                    // neu khong nam trong 9 thi la 8 diem
+                    _lblScore.Text = "8";
+                }
+            }
+            else
+            {
+                bitmap = Properties.Resources.bia4_6;
+                c = bitmap.GetPixel(x, y);
+                if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                {
+                    bitmap = Properties.Resources.bia4_7;
+                    c = bitmap.GetPixel(x, y);
+                    // neu nam o tam 7 thi la 7, khong la 6
+                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                    {
+                        _lblScore.Text = "7";
+                    }
+                    else
+                    {
+                        _lblScore.Text = "6";
+                    }
+                }
+                else
+                {
+                    bitmap = Properties.Resources.bia4_5;
+                    c = bitmap.GetPixel(x, y);
+                    //neu nam o trong 5 thi la 5, con o ngoai la truot
+                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                    {
+                        _lblScore.Text = "5";
+                    }
+                    else
+                    {
+                        _lblScore.Text = "0";
+                    }
+                }
+            }
         }
 
         private void _btnMiss_Click(object sender, EventArgs e)
