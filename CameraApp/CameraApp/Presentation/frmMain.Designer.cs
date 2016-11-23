@@ -1,6 +1,6 @@
 ﻿namespace CameraApp
 {
-    partial class frmRTSP
+    partial class frmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRTSP));
-            this._btnGetCenter = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thêmDanhSáchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,6 +39,9 @@
             this.tùyChọnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.biaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.biaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.vềPhầnMềmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bảnQuyềnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đăngKýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._btnScore = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this._dtgScore = new System.Windows.Forms.DataGridView();
@@ -98,22 +100,12 @@
             ((System.ComponentModel.ISupportInitialize)(this._vlc2)).BeginInit();
             this.SuspendLayout();
             // 
-            // _btnGetCenter
-            // 
-            this._btnGetCenter.Location = new System.Drawing.Point(345, 420);
-            this._btnGetCenter.Name = "_btnGetCenter";
-            this._btnGetCenter.Size = new System.Drawing.Size(150, 55);
-            this._btnGetCenter.TabIndex = 1;
-            this._btnGetCenter.Text = "Lấy tâm";
-            this._btnGetCenter.UseVisualStyleBackColor = true;
-            this._btnGetCenter.Visible = false;
-            this._btnGetCenter.Click += new System.EventHandler(this._btnGetCenter_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.tùyChọnToolStripMenuItem});
+            this.tùyChọnToolStripMenuItem,
+            this.vềPhầnMềmToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1302, 24);
@@ -189,6 +181,29 @@
             this.biaToolStripMenuItem1.Size = new System.Drawing.Size(99, 22);
             this.biaToolStripMenuItem1.Text = "3 bia";
             this.biaToolStripMenuItem1.Click += new System.EventHandler(this.biaToolStripMenuItem1_Click);
+            // 
+            // vềPhầnMềmToolStripMenuItem
+            // 
+            this.vềPhầnMềmToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bảnQuyềnToolStripMenuItem,
+            this.đăngKýToolStripMenuItem});
+            this.vềPhầnMềmToolStripMenuItem.Name = "vềPhầnMềmToolStripMenuItem";
+            this.vềPhầnMềmToolStripMenuItem.Size = new System.Drawing.Size(132, 20);
+            this.vềPhầnMềmToolStripMenuItem.Text = "Thông tin phần mềm";
+            // 
+            // bảnQuyềnToolStripMenuItem
+            // 
+            this.bảnQuyềnToolStripMenuItem.Name = "bảnQuyềnToolStripMenuItem";
+            this.bảnQuyềnToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.bảnQuyềnToolStripMenuItem.Text = "Thông tin bản quyền";
+            this.bảnQuyềnToolStripMenuItem.Click += new System.EventHandler(this.bảnQuyềnToolStripMenuItem_Click);
+            // 
+            // đăngKýToolStripMenuItem
+            // 
+            this.đăngKýToolStripMenuItem.Name = "đăngKýToolStripMenuItem";
+            this.đăngKýToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.đăngKýToolStripMenuItem.Text = "Đăng ký";
+            this.đăngKýToolStripMenuItem.Click += new System.EventHandler(this.đăngKýToolStripMenuItem_Click);
             // 
             // _btnScore
             // 
@@ -266,7 +281,7 @@
             this._vlc.Location = new System.Drawing.Point(0, 0);
             this._vlc.Name = "_vlc";
             this._vlc.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc.OcxState")));
-            this._vlc.Size = new System.Drawing.Size(639, 399);
+            this._vlc.Size = new System.Drawing.Size(640, 400);
             this._vlc.TabIndex = 6;
             // 
             // _panCam
@@ -327,7 +342,6 @@
             this._tabBia4.Controls.Add(this.panel1);
             this._tabBia4.Controls.Add(this._btnScore);
             this._tabBia4.Controls.Add(this._btnMiss);
-            this._tabBia4.Controls.Add(this._btnGetCenter);
             this._tabBia4.Controls.Add(this._panCam);
             this._tabBia4.Location = new System.Drawing.Point(4, 22);
             this._tabBia4.Name = "_tabBia4";
@@ -457,7 +471,7 @@
             this._vlc1.Location = new System.Drawing.Point(0, 0);
             this._vlc1.Name = "_vlc1";
             this._vlc1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc1.OcxState")));
-            this._vlc1.Size = new System.Drawing.Size(639, 399);
+            this._vlc1.Size = new System.Drawing.Size(640, 400);
             this._vlc1.TabIndex = 6;
             // 
             // _tabBia8
@@ -580,7 +594,7 @@
             this._vlc2.Location = new System.Drawing.Point(0, 0);
             this._vlc2.Name = "_vlc2";
             this._vlc2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc2.OcxState")));
-            this._vlc2.Size = new System.Drawing.Size(639, 399);
+            this._vlc2.Size = new System.Drawing.Size(640, 400);
             this._vlc2.TabIndex = 6;
             // 
             // frmRTSP
@@ -624,7 +638,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button _btnGetCenter;
         private System.Windows.Forms.PictureBox _ptbCamera;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -673,5 +686,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button _btnScore2;
         private System.Windows.Forms.Button _btnMiss2;
+        private System.Windows.Forms.ToolStripMenuItem vềPhầnMềmToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bảnQuyềnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem đăngKýToolStripMenuItem;
     }
 }

@@ -44,8 +44,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>libs\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
-    <Reference Include="Magick.NET-Q8-x86">
-      <HintPath>libs\Magick.NET\Magick.NET-Q8-x86.dll</HintPath>
+    <Reference Include="FoxLearn.License">
+      <HintPath>libs\FoxLearn.License.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -71,6 +71,12 @@
     <Compile Include="Presentation\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\frmAddList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,11 +95,17 @@
     <Compile Include="Presentation\frmEditBox.Designer.cs">
       <DependentUpon>frmEditBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\frmRTSP.cs">
+    <Compile Include="Presentation\frmRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\frmRTSP.Designer.cs">
-      <DependentUpon>frmRTSP.cs</DependentUpon>
+    <Compile Include="Presentation\frmRegistration.Designer.cs">
+      <DependentUpon>frmRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Help\ExcelHelp.cs" />
     <Compile Include="Program.cs" />
@@ -109,6 +121,9 @@
     <EmbeddedResource Include="Presentation\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\frmAddList.resx">
       <DependentUpon>frmAddList.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,8 +133,11 @@
     <EmbeddedResource Include="Presentation\frmEditBox.resx">
       <DependentUpon>frmEditBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\frmRTSP.resx">
-      <DependentUpon>frmRTSP.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\frmRegistration.resx">
+      <DependentUpon>frmRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

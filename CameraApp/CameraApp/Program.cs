@@ -16,7 +16,7 @@ namespace CameraApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmRTSP());
+            Application.Run(new frmMain());
         }
     }
 }

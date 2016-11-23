@@ -25,15 +25,15 @@ namespace CameraApp
         private void _btnOk_Click(object sender, EventArgs e)
         {
             string[] urlArr = { _txtUrlCamera.Text.Trim(), _txtUrlCamera1.Text.Trim(), _txtUrlCamera2.Text.Trim() };
-            frmRTSP.WriteUrlCameraArray(urlArr);
+            frmMain.WriteUrlCameraArray(urlArr);
             this.Close();
         }
 
         private void frmConfigCamera_Load(object sender, EventArgs e)
         {
-            _txtUrlCamera.Text = frmRTSP.urlCamera[0];
-            _txtUrlCamera1.Text = frmRTSP.urlCamera[1];
-            _txtUrlCamera2.Text = frmRTSP.urlCamera[2];
+            _txtUrlCamera.Text = frmMain.urlCamera[0];
+            _txtUrlCamera1.Text = frmMain.urlCamera[1];
+            _txtUrlCamera2.Text = frmMain.urlCamera[2];
         }
     }
 }

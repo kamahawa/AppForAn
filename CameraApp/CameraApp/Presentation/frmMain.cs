@@ -7,43 +7,71 @@ using AForge.Video;
 using CameraApp.Help;
 using Microsoft.VisualBasic;
 using System.IO;
-using ImageMagick;
+//using ImageMagick;
 using AxAXVLC;
 using System.Media;
 using System.Threading;
 using CameraApp.Business;
 using System.Drawing.Imaging;
+using FoxLearn.License;
 
 namespace CameraApp
 {
-    public partial class frmRTSP : Form
+    public partial class frmMain : Form
     {
-        //CCC24QW-D22-21EA7A046N
+        //ECJ72-E7F17-J57G9-G5PPD-BEPG0-43ZTF
         //"http://68.114.48.220:80/videostream.cgi?user=admin&pwd=";
         //"rtsp://192.168.1.12:533/user=admin&password=&channel=1&stream=0.sdp?real_stream--rtp-caching=100";
         //"rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100";
         public static string[] urlCamera = new string[3];
-        //private FilterInfoCollection _videoCaptureDevices;
-
-        private int X;
-        private int Y;
-
-        // test and get is 322, 226
-        //346 , 294
-        private int XCenter = 321;
-        private int YCenter = 225;
-
+        
         //luot ban
         private int luotBia1 = 1, luotBia2 = 1, luotBia3 = 1;
+        //nguoi ban hien tai o cac bia
         private int currentMemberBia1 = 0, currentMemberBia2 = 0, currentMemberBia3 = 0;
-
-        int[,] _dt_bia4_10, _dt_bia4_9, _dt_bia4_8, _dt_bia4_7, _dt_bia4_6, _dt_bia4_5;
-        
-        public frmRTSP()
+                
+        public frmMain()
         {
             InitializeComponent();
-            //urlCamera = LoadUrlCamera();
-            LoadUrlCamera();                        
+            
+            //kiem tra license
+            KeyManager km = new KeyManager(ComputerInfo.GetComputerId());
+            LicenseInfo lic = new LicenseInfo();
+            int value = km.LoadSuretyFile(string.Format(@"{0}\Key.lic", Application.StartupPath), ref lic);
+            string productKey = lic.ProductKey;
+            bool isActive = false;//bien kiem tra kich hoat
+            if (km.ValidKey(ref productKey))
+            {
+                KeyValuesClass kv = new KeyValuesClass();
+                if (km.DisassembleKey(productKey, ref kv))
+                {
+                    if (kv.Type == LicenseType.TRIAL)
+                    {
+                        //dung thu ma con ngay thi cho chay
+                        if((kv.Expiration - DateTime.Now.Date).Days > 0)
+                        {
+                            isActive = true;
+                        }
+                    }
+                    else
+                    {
+                        isActive = true;
+                    }
+                }
+            }      
+
+            if(isActive)
+            {
+                //da kich hoat thi load url camera
+                LoadUrlCamera();
+            }
+            else
+            {
+                using (frmRegistration frm = new frmRegistration())
+                {
+                    frm.ShowDialog();
+                }
+            }
         }
 
         private void frmRTSP_Load(object sender, EventArgs e)
@@ -51,138 +79,11 @@ namespace CameraApp
             LoadCamera();
         }
 
-        void LoadCamera()
-        {
-            /*
-            _videoCaptureDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            try
-            {
-                //rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100
-                // http://47.20.99.105:81/videostream.cgi?loginuse=admin&loginpas=
-                //test link : http://68.114.48.220:80/videostream.cgi?user=admin&pwd=
-                //test link : http://68.186.171.207:86/videostream.cgi?user=admin&pwd=
-                MJPEGStream stream = new MJPEGStream("http://68.114.48.220:80/videostream.cgi?user=admin&pwd=");
-                stream.NewFrame += new NewFrameEventHandler(FinalVideoDevice_NewFrame);
-                stream.Start();
-            }
-            catch
-            {
-                MessageBox.Show("Get stream fail. Please try again later");
-            }
-            */
-            /*
-            if (axVLCPlugin21.playlist.isPlaying)
-            { 
-                axVLCPlugin21.playlist.stop();
-            }
-            */
-            try
-            {
-                if (urlCamera[0] != "")
-                {
-                    _vlc.playlist.add(urlCamera[0], null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
-                    _vlc.playlist.next();
-                }
-                if (urlCamera[1] != "")
-                {
-                    _vlc1.playlist.add(urlCamera[1], null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
-                    _vlc1.playlist.next();
-                }
-                if (urlCamera[2] != "")
-                {
-                    _vlc2.playlist.add(urlCamera[2], null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
-                    _vlc2.playlist.next();
-                }
-            }
-            catch
-            { }
-        }
-
-        void LoadUrlCamera()
-        {
-            string path = @"UrlCamera.txt";
-
-            // This text is added only once to the file.
-            if (!File.Exists(path))
-            {
-                MessageBox.Show("Vui lòng nhập đường dẫn camera.");
-                //return "";
-            }
-            else
-            {
-                try
-                {
-                    //Pass the file path and file name to the StreamReader constructor
-                    StreamReader sr = new StreamReader(path);
-
-                    //Read the first line of text
-                    String line = sr.ReadLine();
-
-                    for (int i = 0; i < 3; i++)
-                    {
-                        if (line != null)
-                        {
-                            urlCamera[i] = line;
-
-                            //Read the next line
-                            line = sr.ReadLine();
-                        }
-                    }
-
-                    /*
-                    //Continue to read until you reach end of file
-                    while (line != null)
-                    {
-                        //write the lie to console window
-                        //Console.WriteLine(line);
-
-                        //Read the next line
-                        line = sr.ReadLine();
-                    }
-                    */
-
-                    //close the file
-                    sr.Close();
-                }
-                catch (Exception ex)
-                { }
-            }
-            //return File.ReadAllText(path);
-        }
-        
-        public static void WriteUrlCamera(string url)
-        {
-            string path = @"UrlCamera.txt";
-            File.WriteAllText(path, url);
-        }
-
-        public static void WriteUrlCameraArray(string[] urlArr)
-        {
-            string path = @"UrlCamera.txt";
-            File.WriteAllLines(path, urlArr);
-        }
-
-        void FinalVideoDevice_NewFrame(object sender, NewFrameEventArgs e)
-        {
-            try
-            {
-                _ptbCamera.Image = (Bitmap)e.Frame.Clone();
-            }
-            catch { }
-        }
-
         #region be so 1
         private void _btnGetCenter_Click(object sender, EventArgs e)
         {
-            //224,134  416,133  204,333   438,334
-            //toa do do bang pts : 285,85    646,85   238,483    689,484
             /*
-            XCenter = X;
-            YCenter = Y;
-            addShotIcon(XCenter, YCenter, _panCam);
-            //lay tam
-            MessageBox.Show(string.Format("X: {0} Y: {1}", XCenter, YCenter));
-            */
+            
             double h = _ptbCamera.Height;//578 is real height
             double w = _ptbCamera.Width;//928 is real widht
 
@@ -217,14 +118,7 @@ namespace CameraApp
 
                 bm = image.ToBitmap();
                 
-                /*
-                //chuyen ve anh xam      
-                Bitmap bm1 = image.ToBitmap();
-                bm1 = ProcessImage.Convert2GrayScaleFast(bm1);
-                bm1 = ProcessImage.ConvertToBinaryImage(bm1, 94);
-
-                _ptbShow.Image = bm1;
-                */
+                
             }
 
             using (MagickImage image = new MagickImage("bia1.png"))
@@ -269,36 +163,25 @@ namespace CameraApp
 
             //_ptbShow.Image = ProcessImage.Compare(bm,bm1);
             MessageBox.Show(ProcessImage.diem.ToString());
+            */
         }
 
         private void _btnScore_Click(object sender, EventArgs e)
         {
-            ShowScore(ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, 1);
-            //ShowScore(ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore);
-            /*
-            if (_ptbCamera.Visible == false)
-                _ptbCamera.Visible = true;
-            else
-            {
-                _ptbCamera.Visible = false;
-            }
-            ShowPictureCrop(_vlc, _ptbCamera);
-            */
+            //ShowScore(ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, 1);
         }
 
         private void _transpCtrl_MouseUp(object sender, MouseEventArgs e)
         {
-            X = e.X;
-            Y = e.Y;
-            addShotIcon(X, Y, _panCam);
-            ChamDiem(e.X, e.Y);
+            addShotIcon(e.X, e.Y, _panCam);
+            XuLyBe1(e.X, e.Y);
         }
 
         
-        private void ChamDiem(int x, int y)
+        private void XuLyBe1(int x, int y)
         {
             Bitmap bitmap = Properties.Resources.bia4_8;
-            
+            int be = 1;// ban o be so 1
             Color c = bitmap.GetPixel(x, y);
             //dung thuat toan quicksort
             if (c.ToArgb().Equals(Color.Red.ToArgb()))
@@ -312,17 +195,20 @@ namespace CameraApp
                     // neu nam o tam 10 thi la 10, khong la 9
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        _lblScore.Text = "10";
+                        //10 diem
+                        ChamDiem(10, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                     }
                     else
                     {
-                        _lblScore.Text = "9";
+                        //9 diem
+                        ChamDiem(9, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                     }
                 }
                 else
                 {
                     // neu khong nam trong 9 thi la 8 diem
-                    _lblScore.Text = "8";
+                    //8 diem
+                    ChamDiem(8, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                 }
             }
             else
@@ -336,11 +222,13 @@ namespace CameraApp
                     // neu nam o tam 7 thi la 7, khong la 6
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        _lblScore.Text = "7";
+                        //7 diem
+                        ChamDiem(7, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                     }
                     else
                     {
-                        _lblScore.Text = "6";
+                        //6 diem
+                        ChamDiem(6, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                     }
                 }
                 else
@@ -350,11 +238,13 @@ namespace CameraApp
                     //neu nam o trong 5 thi la 5, con o ngoai la truot
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        _lblScore.Text = "5";
+                        //5 diem
+                        ChamDiem(5, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                     }
                     else
                     {
-                        _lblScore.Text = "0";
+                        //0 diem
+                        ChamDiem(0, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                     }
                 }
             }
@@ -363,47 +253,189 @@ namespace CameraApp
         private void _btnMiss_Click(object sender, EventArgs e)
         {
             _lblScore.Text = "0";
-            chamDiem(0, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, 1);
+            ChamDiem(0, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, 1);
         }
         #endregion
 
         #region be so 2
         private void _btnScore2_Click(object sender, EventArgs e)
         {
-            ShowScore(ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, 2);
+            //ShowScore(ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, 2);
         }
 
         private void _btnMiss2_Click(object sender, EventArgs e)
         {
             _lblScore2.Text = "0";
-            chamDiem(0, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, 2);
+            ChamDiem(0, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, 2);
         }
 
         private void _transpCtrl2_MouseUp(object sender, MouseEventArgs e)
         {
-            X = e.X;
-            Y = e.Y;
-            addShotIcon(X, Y, _panCam2);
+            addShotIcon(e.X, e.Y, _panCam2);
+            XuLyBe2(e.X, e.Y);
+        }
+
+        private void XuLyBe2(int x, int y)
+        {
+            Bitmap bitmap = Properties.Resources.bia4_8;
+            int be = 2;// ban o be so 2
+            Color c = bitmap.GetPixel(x, y);
+            //dung thuat toan quicksort
+            if (c.ToArgb().Equals(Color.Red.ToArgb()))
+            {
+                bitmap = Properties.Resources.bia4_9;
+                c = bitmap.GetPixel(x, y);
+                if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                {
+                    bitmap = Properties.Resources.bia4_10;
+                    c = bitmap.GetPixel(x, y);
+                    // neu nam o tam 10 thi la 10, khong la 9
+                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                    {
+                        //10 diem
+                        ChamDiem(10, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    }
+                    else
+                    {
+                        //9 diem
+                        ChamDiem(9, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    }
+                }
+                else
+                {
+                    // neu khong nam trong 9 thi la 8 diem
+                    //8 diem
+                    ChamDiem(8, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                }
+            }
+            else
+            {
+                bitmap = Properties.Resources.bia4_6;
+                c = bitmap.GetPixel(x, y);
+                if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                {
+                    bitmap = Properties.Resources.bia4_7;
+                    c = bitmap.GetPixel(x, y);
+                    // neu nam o tam 7 thi la 7, khong la 6
+                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                    {
+                        //7 diem
+                        ChamDiem(7, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    }
+                    else
+                    {
+                        //6 diem
+                        ChamDiem(6, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    }
+                }
+                else
+                {
+                    bitmap = Properties.Resources.bia4_5;
+                    c = bitmap.GetPixel(x, y);
+                    //neu nam o trong 5 thi la 5, con o ngoai la truot
+                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                    {
+                        //5 diem
+                        ChamDiem(5, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    }
+                    else
+                    {
+                        //0 diem
+                        ChamDiem(0, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    }
+                }
+            }
         }
         #endregion
 
         #region be so 3
         private void _btnScore3_Click(object sender, EventArgs e)
         {
-            ShowScore(ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, 3);
+            //ShowScore(ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, 3);
         }
 
         private void _btnMiss3_Click(object sender, EventArgs e)
         {
             _lblScore3.Text = "0";
-            chamDiem(0, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, 3);
+            ChamDiem(0, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, 3);
         }
 
         private void _transpCtrl3_MouseUp(object sender, MouseEventArgs e)
         {
-            X = e.X;
-            Y = e.Y;
-            addShotIcon(X, Y, _panCam3);
+            addShotIcon(e.X, e.Y, _panCam3);
+            XuLyBe3(e.X, e.Y);
+        }
+
+        private void XuLyBe3(int x, int y)
+        {
+            Bitmap bitmap = Properties.Resources.bia4_8;
+            int be = 3;// ban o be so 2
+            Color c = bitmap.GetPixel(x, y);
+            //dung thuat toan quicksort
+            if (c.ToArgb().Equals(Color.Red.ToArgb()))
+            {
+                bitmap = Properties.Resources.bia4_9;
+                c = bitmap.GetPixel(x, y);
+                if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                {
+                    bitmap = Properties.Resources.bia4_10;
+                    c = bitmap.GetPixel(x, y);
+                    // neu nam o tam 10 thi la 10, khong la 9
+                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                    {
+                        //10 diem
+                        ChamDiem(10, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    }
+                    else
+                    {
+                        //9 diem
+                        ChamDiem(9, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    }
+                }
+                else
+                {
+                    // neu khong nam trong 9 thi la 8 diem
+                    //8 diem
+                    ChamDiem(8, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                }
+            }
+            else
+            {
+                bitmap = Properties.Resources.bia4_6;
+                c = bitmap.GetPixel(x, y);
+                if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                {
+                    bitmap = Properties.Resources.bia4_7;
+                    c = bitmap.GetPixel(x, y);
+                    // neu nam o tam 7 thi la 7, khong la 6
+                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                    {
+                        //7 diem
+                        ChamDiem(7, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    }
+                    else
+                    {
+                        //6 diem
+                        ChamDiem(6, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    }
+                }
+                else
+                {
+                    bitmap = Properties.Resources.bia4_5;
+                    c = bitmap.GetPixel(x, y);
+                    //neu nam o trong 5 thi la 5, con o ngoai la truot
+                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                    {
+                        //5 diem
+                        ChamDiem(5, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    }
+                    else
+                    {
+                        //0 diem
+                        ChamDiem(0, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    }
+                }
+            }
         }
         #endregion
 
@@ -430,81 +462,7 @@ namespace CameraApp
             px.BringToFront();
         }
 
-        private void ShowScore(ref int luotBia, ref int currentMemberBia,DataGridView dtgScore, Label lblName, Label lblScore, int be)
-        {
-            int diem = 0;
-            if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 26.5)
-            {
-                if (Y > 200 && Y < 250)
-                {
-                    lblScore.Text = "10";
-                    diem = 10;
-                }
-                else
-                {
-                    lblScore.Text = "9";
-                    diem = 9;
-                }
-            }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 53)
-            {
-                if (Y > 180 && Y < 275)
-                {
-                    lblScore.Text = "9";
-                    diem = 9;
-                }
-                else
-                {
-                    lblScore.Text = "8";
-                    diem = 8;
-                }
-
-            }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 79)
-            {
-                if (Y > 158 && Y < 303)
-                {
-                    lblScore.Text = "8";
-                    diem = 8;
-                }
-                else
-                {
-                    lblScore.Text = "7";
-                    diem = 7;
-                }
-            }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 105)
-            {
-                if (Y > 137 && Y < 330)
-                {
-                    lblScore.Text = "7";
-                    diem = 7;
-                }
-                else
-                {
-                    lblScore.Text = "6";
-                    diem = 6;
-                }
-            }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 133)
-            {
-                lblScore.Text = "6";
-                diem = 6;
-            }
-            else if (Math.Sqrt(Math.Pow((X - XCenter), 2) + Math.Pow((Y - YCenter), 2)) <= 158)
-            {
-                lblScore.Text = "5";
-                diem = 5;
-            }
-            else
-            {
-                lblScore.Text = "0";
-                diem = 0;
-            }
-            chamDiem(diem, ref luotBia, ref currentMemberBia, dtgScore, lblName, lblScore, be);
-        }
-
-        private void chamDiem(int diem, ref int luot, ref int currentMember, DataGridView dtgScore, Label lblName, Label lblScore, int be)
+        private void ChamDiem(int diem, ref int luot, ref int currentMember, DataGridView dtgScore, Label lblName, Label lblScore, int be)
         {
             try
             {
@@ -691,6 +649,128 @@ namespace CameraApp
         #endregion
 
         #region menu progress
+        
+        void LoadCamera()
+        {
+            /*
+            _videoCaptureDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            try
+            {
+                //rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100
+                // http://47.20.99.105:81/videostream.cgi?loginuse=admin&loginpas=
+                //test link : http://68.114.48.220:80/videostream.cgi?user=admin&pwd=
+                //test link : http://68.186.171.207:86/videostream.cgi?user=admin&pwd=
+                MJPEGStream stream = new MJPEGStream("http://68.114.48.220:80/videostream.cgi?user=admin&pwd=");
+                stream.NewFrame += new NewFrameEventHandler(FinalVideoDevice_NewFrame);
+                stream.Start();
+            }
+            catch
+            {
+                MessageBox.Show("Get stream fail. Please try again later");
+            }
+            */
+            /*
+            if (axVLCPlugin21.playlist.isPlaying)
+            { 
+                axVLCPlugin21.playlist.stop();
+            }
+            */
+            try
+            {
+                if (urlCamera[0] != "")
+                {
+                    _vlc.playlist.add(urlCamera[0], null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
+                    _vlc.playlist.next();
+                }
+                if (urlCamera[1] != "")
+                {
+                    _vlc1.playlist.add(urlCamera[1], null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
+                    _vlc1.playlist.next();
+                }
+                if (urlCamera[2] != "")
+                {
+                    _vlc2.playlist.add(urlCamera[2], null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
+                    _vlc2.playlist.next();
+                }
+            }
+            catch
+            { }
+        }
+
+        void LoadUrlCamera()
+        {
+            string path = @"UrlCamera.txt";
+
+            // This text is added only once to the file.
+            if (!File.Exists(path))
+            {
+                MessageBox.Show("Vui lòng nhập đường dẫn camera.");
+                //return "";
+            }
+            else
+            {
+                try
+                {
+                    //Pass the file path and file name to the StreamReader constructor
+                    StreamReader sr = new StreamReader(path);
+
+                    //Read the first line of text
+                    String line = sr.ReadLine();
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (line != null)
+                        {
+                            urlCamera[i] = line;
+
+                            //Read the next line
+                            line = sr.ReadLine();
+                        }
+                    }
+
+                    /*
+                    //Continue to read until you reach end of file
+                    while (line != null)
+                    {
+                        //write the lie to console window
+                        //Console.WriteLine(line);
+
+                        //Read the next line
+                        line = sr.ReadLine();
+                    }
+                    */
+
+                    //close the file
+                    sr.Close();
+                }
+                catch (Exception ex)
+                { }
+            }
+            //return File.ReadAllText(path);
+        }
+
+        public static void WriteUrlCamera(string url)
+        {
+            string path = @"UrlCamera.txt";
+            File.WriteAllText(path, url);
+        }
+
+        public static void WriteUrlCameraArray(string[] urlArr)
+        {
+            string path = @"UrlCamera.txt";
+            File.WriteAllLines(path, urlArr);
+        }
+
+        void FinalVideoDevice_NewFrame(object sender, NewFrameEventArgs e)
+        {
+            try
+            {
+                _ptbCamera.Image = (Bitmap)e.Frame.Clone();
+            }
+            catch { }
+        }
+
+
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -776,6 +856,23 @@ namespace CameraApp
         {
 
         }
+        
+        private void bảnQuyềnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmAbout frm = new frmAbout())
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void đăngKýToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmRegistration frm = new frmRegistration())
+            {
+                frm.ShowDialog();
+            }
+        }
+
         #endregion
 
     }
