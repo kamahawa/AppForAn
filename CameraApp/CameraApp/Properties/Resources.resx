@@ -136,6 +136,66 @@
   <data name="bia4_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\bia4-9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bia7_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia7-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia7_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia7-10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia7_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia7-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia7_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia7-3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia7_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia7-4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia7_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia7-5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia7_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia7-6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia7_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia7-7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia7_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia7-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia7_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia7-9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia8_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia8-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia8_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia8-10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia8_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia8-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia8_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia8-3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia8_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia8-4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia8_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia8-5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia8_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia8-6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia8_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia8-7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia8_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia8-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bia8_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\bia8-9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

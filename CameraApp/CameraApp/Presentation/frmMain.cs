@@ -287,72 +287,111 @@ namespace CameraApp
 
         private void XuLyBe2(int x, int y)
         {
-            Bitmap bitmap = Properties.Resources.bia4_8;
+            Bitmap bitmap = Properties.Resources.bia7_5;
             int be = 2;// ban o be so 2
             Color c = bitmap.GetPixel(x, y);
             //dung thuat toan quicksort
             if (c.ToArgb().Equals(Color.Red.ToArgb()))
             {
-                bitmap = Properties.Resources.bia4_9;
+                bitmap = Properties.Resources.bia7_8;
                 c = bitmap.GetPixel(x, y);
                 if (c.ToArgb().Equals(Color.Red.ToArgb()))
                 {
-                    bitmap = Properties.Resources.bia4_10;
+                    bitmap = Properties.Resources.bia7_9;
                     c = bitmap.GetPixel(x, y);
-                    // neu nam o tam 10 thi la 10, khong la 9
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        //10 diem
-                        _lblScore2.Text = "10";
-                        ChamDiem(10, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
+                        bitmap = Properties.Resources.bia7_10;
+                        c = bitmap.GetPixel(x, y);
+                        if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                        {
+                            //10 diem
+                            _lblScore2.Text = "10";
+                            ChamDiem(10, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
+                        }
+                        else
+                        {
+                            //9 diem
+                            _lblScore2.Text = "9";
+                            ChamDiem(9, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
+                        }
                     }
                     else
                     {
-                        //9 diem
-                        _lblScore2.Text = "9";
-                        ChamDiem(9, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
+                        _lblScore2.Text = "8";
+                        ChamDiem(8, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
                     }
                 }
                 else
                 {
-                    // neu khong nam trong 9 thi la 8 diem
-                    //8 diem
-                    _lblScore2.Text = "8";
-                    ChamDiem(8, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
-                }
-            }
-            else
-            {
-                bitmap = Properties.Resources.bia4_6;
-                c = bitmap.GetPixel(x, y);
-                if (c.ToArgb().Equals(Color.Red.ToArgb()))
-                {
-                    bitmap = Properties.Resources.bia4_7;
+                    bitmap = Properties.Resources.bia7_6;
                     c = bitmap.GetPixel(x, y);
-                    // neu nam o tam 7 thi la 7, khong la 6
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        //7 diem
-                        _lblScore2.Text = "7";
-                        ChamDiem(7, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
+                        bitmap = Properties.Resources.bia7_7;
+                        c = bitmap.GetPixel(x, y);
+                        if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                        {
+                            //7 diem
+                            _lblScore2.Text = "7";
+                            ChamDiem(7, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
+                        }
+                        else
+                        {
+                            //6 diem
+                            _lblScore2.Text = "6";
+                            ChamDiem(6, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
+                        }
                     }
                     else
-                    {
-                        //6 diem
-                        _lblScore2.Text = "6";
-                        ChamDiem(6, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
-                    }
-                }
-                else
-                {
-                    bitmap = Properties.Resources.bia4_5;
-                    c = bitmap.GetPixel(x, y);
-                    //neu nam o trong 5 thi la 5, con o ngoai la truot
-                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
                         //5 diem
                         _lblScore2.Text = "5";
                         ChamDiem(5, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
+                    }
+                }
+            }
+            else
+            {
+                bitmap = Properties.Resources.bia7_3;
+                c = bitmap.GetPixel(x, y);
+                if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                {
+                    bitmap = Properties.Resources.bia7_4;
+                    c = bitmap.GetPixel(x, y);
+                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                    {
+                        //4 diem
+                        _lblScore2.Text = "4";
+                        ChamDiem(4, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
+                    }
+                    else
+                    {
+                        //3 diem
+                        _lblScore2.Text = "3";
+                        ChamDiem(3, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
+                    }
+                }
+                else
+                {
+                    bitmap = Properties.Resources.bia7_1;
+                    c = bitmap.GetPixel(x, y);
+                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                    {
+                        bitmap = Properties.Resources.bia7_2;
+                        c = bitmap.GetPixel(x, y);
+                        if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                        {
+                            //2 diem
+                            _lblScore2.Text = "2";
+                            ChamDiem(2, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
+                        }
+                        else
+                        {
+                            //1 diem
+                            _lblScore2.Text = "1";
+                            ChamDiem(1, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
+                        }
                     }
                     else
                     {
@@ -385,77 +424,116 @@ namespace CameraApp
 
         private void XuLyBe3(int x, int y)
         {
-            Bitmap bitmap = Properties.Resources.bia4_8;
-            int be = 3;// ban o be so 2
+            Bitmap bitmap = Properties.Resources.bia8_5;
+            int be = 3;// ban o be so 3
             Color c = bitmap.GetPixel(x, y);
             //dung thuat toan quicksort
             if (c.ToArgb().Equals(Color.Red.ToArgb()))
             {
-                bitmap = Properties.Resources.bia4_9;
+                bitmap = Properties.Resources.bia8_8;
                 c = bitmap.GetPixel(x, y);
                 if (c.ToArgb().Equals(Color.Red.ToArgb()))
                 {
-                    bitmap = Properties.Resources.bia4_10;
+                    bitmap = Properties.Resources.bia8_9;
                     c = bitmap.GetPixel(x, y);
-                    // neu nam o tam 10 thi la 10, khong la 9
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        //10 diem
-                        _lblScore3.Text = "10";
-                        ChamDiem(10, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                        bitmap = Properties.Resources.bia8_10;
+                        c = bitmap.GetPixel(x, y);
+                        if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                        {
+                            //10 diem
+                            _lblScore2.Text = "10";
+                            ChamDiem(10, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                        }
+                        else
+                        {
+                            //9 diem
+                            _lblScore2.Text = "9";
+                            ChamDiem(9, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                        }
                     }
                     else
                     {
-                        //9 diem
-                        _lblScore3.Text = "9";
-                        ChamDiem(9, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                        _lblScore2.Text = "8";
+                        ChamDiem(8, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                 }
                 else
                 {
-                    // neu khong nam trong 9 thi la 8 diem
-                    //8 diem
-                    _lblScore3.Text = "8";
-                    ChamDiem(8, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                    bitmap = Properties.Resources.bia8_6;
+                    c = bitmap.GetPixel(x, y);
+                    if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                    {
+                        bitmap = Properties.Resources.bia8_7;
+                        c = bitmap.GetPixel(x, y);
+                        if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                        {
+                            //7 diem
+                            _lblScore2.Text = "7";
+                            ChamDiem(7, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                        }
+                        else
+                        {
+                            //6 diem
+                            _lblScore2.Text = "6";
+                            ChamDiem(6, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                        }
+                    }
+                    else
+                    {
+                        //5 diem
+                        _lblScore2.Text = "5";
+                        ChamDiem(5, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                    }
                 }
             }
             else
             {
-                bitmap = Properties.Resources.bia4_6;
+                bitmap = Properties.Resources.bia8_3;
                 c = bitmap.GetPixel(x, y);
                 if (c.ToArgb().Equals(Color.Red.ToArgb()))
                 {
-                    bitmap = Properties.Resources.bia4_7;
+                    bitmap = Properties.Resources.bia8_4;
                     c = bitmap.GetPixel(x, y);
-                    // neu nam o tam 7 thi la 7, khong la 6
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        //7 diem
-                        _lblScore3.Text = "7";
-                        ChamDiem(7, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                        //4 diem
+                        _lblScore2.Text = "4";
+                        ChamDiem(4, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                     else
                     {
-                        //6 diem
-                        _lblScore3.Text = "6";
-                        ChamDiem(6, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                        //3 diem
+                        _lblScore2.Text = "3";
+                        ChamDiem(3, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                 }
                 else
                 {
-                    bitmap = Properties.Resources.bia4_5;
+                    bitmap = Properties.Resources.bia8_1;
                     c = bitmap.GetPixel(x, y);
-                    //neu nam o trong 5 thi la 5, con o ngoai la truot
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        //5 diem
-                        _lblScore3.Text = "5";
-                        ChamDiem(5, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                        bitmap = Properties.Resources.bia8_2;
+                        c = bitmap.GetPixel(x, y);
+                        if (c.ToArgb().Equals(Color.Red.ToArgb()))
+                        {
+                            //2 diem
+                            _lblScore2.Text = "2";
+                            ChamDiem(2, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                        }
+                        else
+                        {
+                            //1 diem
+                            _lblScore2.Text = "1";
+                            ChamDiem(1, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
+                        }
                     }
                     else
                     {
                         //0 diem
-                        _lblScore3.Text = "0";
+                        _lblScore2.Text = "0";
                         ChamDiem(0, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                 }
@@ -498,6 +576,18 @@ namespace CameraApp
                 {
                     case 0:
                         playSound(@"ScoreSound\0_diem.wav");
+                        break;
+                    case 1:
+                        playSound(@"ScoreSound\1_diem.wav");
+                        break;
+                    case 2:
+                        playSound(@"ScoreSound\2_diem.wav");
+                        break;
+                    case 3:
+                        playSound(@"ScoreSound\3_diem.wav");
+                        break;
+                    case 4:
+                        playSound(@"ScoreSound\4_diem.wav");
                         break;
                     case 5:
                         playSound(@"ScoreSound\5_diem.wav");
@@ -582,6 +672,18 @@ namespace CameraApp
             {
                 case 0:
                     playSound(@"ScoreSound\0_diem.wav");
+                    break;
+                case 1:
+                    playSound(@"ScoreSound\1_diem.wav");
+                    break;
+                case 2:
+                    playSound(@"ScoreSound\2_diem.wav");
+                    break;
+                case 3:
+                    playSound(@"ScoreSound\3_diem.wav");
+                    break;
+                case 4:
+                    playSound(@"ScoreSound\4_diem.wav");
                     break;
                 case 5:
                     playSound(@"ScoreSound\5_diem.wav");

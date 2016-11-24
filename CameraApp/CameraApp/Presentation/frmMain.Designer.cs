@@ -49,9 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this._lblName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this._vlc = new AxAXVLC.AxVLCPlugin2();
             this._panCam = new System.Windows.Forms.Panel();
-            this._transpCtrl = new CameraApp.TranspCtrl();
             this._ptbCamera = new System.Windows.Forms.PictureBox();
             this._btnMiss = new System.Windows.Forms.Button();
             this._tabControl = new System.Windows.Forms.TabControl();
@@ -66,8 +64,6 @@
             this._btnScore2 = new System.Windows.Forms.Button();
             this._btnMiss2 = new System.Windows.Forms.Button();
             this._panCam2 = new System.Windows.Forms.Panel();
-            this._transpCtrl2 = new CameraApp.TranspCtrl();
-            this._vlc1 = new AxAXVLC.AxVLCPlugin2();
             this._tabBia8 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this._dtgScore3 = new System.Windows.Forms.DataGridView();
@@ -78,12 +74,17 @@
             this._btnScore3 = new System.Windows.Forms.Button();
             this._btnMiss3 = new System.Windows.Forms.Button();
             this._panCam3 = new System.Windows.Forms.Panel();
-            this._transpCtrl3 = new CameraApp.TranspCtrl();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this._vlc = new AxAXVLC.AxVLCPlugin2();
+            this._vlc1 = new AxAXVLC.AxVLCPlugin2();
             this._vlc2 = new AxAXVLC.AxVLCPlugin2();
+            this._transpCtrl = new CameraApp.TranspCtrl();
+            this._transpCtrl2 = new CameraApp.TranspCtrl();
+            this._transpCtrl3 = new CameraApp.TranspCtrl();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._vlc)).BeginInit();
             this._panCam.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._ptbCamera)).BeginInit();
             this._tabControl.SuspendLayout();
@@ -92,12 +93,15 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore2)).BeginInit();
             this._panCam2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._vlc1)).BeginInit();
             this._tabBia8.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore3)).BeginInit();
             this._panCam3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._vlc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._vlc1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._vlc2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -275,15 +279,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Họ và tên : ";
             // 
-            // _vlc
-            // 
-            this._vlc.Enabled = true;
-            this._vlc.Location = new System.Drawing.Point(0, 0);
-            this._vlc.Name = "_vlc";
-            this._vlc.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc.OcxState")));
-            this._vlc.Size = new System.Drawing.Size(640, 400);
-            this._vlc.TabIndex = 6;
-            // 
             // _panCam
             // 
             this._panCam.Controls.Add(this._transpCtrl);
@@ -293,17 +288,6 @@
             this._panCam.Name = "_panCam";
             this._panCam.Size = new System.Drawing.Size(640, 400);
             this._panCam.TabIndex = 8;
-            // 
-            // _transpCtrl
-            // 
-            this._transpCtrl.BackColor = System.Drawing.Color.Transparent;
-            this._transpCtrl.Location = new System.Drawing.Point(0, 0);
-            this._transpCtrl.Name = "_transpCtrl";
-            this._transpCtrl.Opacity = 100;
-            this._transpCtrl.Size = new System.Drawing.Size(640, 400);
-            this._transpCtrl.TabIndex = 7;
-            this._transpCtrl.Text = "transpCtrl1";
-            this._transpCtrl.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseUp);
             // 
             // _ptbCamera
             // 
@@ -448,31 +432,12 @@
             // _panCam2
             // 
             this._panCam2.Controls.Add(this._transpCtrl2);
+            this._panCam2.Controls.Add(this.pictureBox1);
             this._panCam2.Controls.Add(this._vlc1);
             this._panCam2.Location = new System.Drawing.Point(0, 0);
             this._panCam2.Name = "_panCam2";
             this._panCam2.Size = new System.Drawing.Size(640, 400);
             this._panCam2.TabIndex = 13;
-            // 
-            // _transpCtrl2
-            // 
-            this._transpCtrl2.BackColor = System.Drawing.Color.Transparent;
-            this._transpCtrl2.Location = new System.Drawing.Point(0, 0);
-            this._transpCtrl2.Name = "_transpCtrl2";
-            this._transpCtrl2.Opacity = 100;
-            this._transpCtrl2.Size = new System.Drawing.Size(640, 400);
-            this._transpCtrl2.TabIndex = 7;
-            this._transpCtrl2.Text = "transpCtrl1";
-            this._transpCtrl2.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl2_MouseUp);
-            // 
-            // _vlc1
-            // 
-            this._vlc1.Enabled = true;
-            this._vlc1.Location = new System.Drawing.Point(0, 0);
-            this._vlc1.Name = "_vlc1";
-            this._vlc1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc1.OcxState")));
-            this._vlc1.Size = new System.Drawing.Size(640, 400);
-            this._vlc1.TabIndex = 6;
             // 
             // _tabBia8
             // 
@@ -571,11 +536,71 @@
             // _panCam3
             // 
             this._panCam3.Controls.Add(this._transpCtrl3);
+            this._panCam3.Controls.Add(this.pictureBox2);
             this._panCam3.Controls.Add(this._vlc2);
             this._panCam3.Location = new System.Drawing.Point(0, 0);
             this._panCam3.Name = "_panCam3";
             this._panCam3.Size = new System.Drawing.Size(640, 400);
             this._panCam3.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(640, 400);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // _vlc
+            // 
+            this._vlc.Enabled = true;
+            this._vlc.Location = new System.Drawing.Point(0, 0);
+            this._vlc.Name = "_vlc";
+            this._vlc.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc.OcxState")));
+            this._vlc.Size = new System.Drawing.Size(640, 400);
+            this._vlc.TabIndex = 6;
+            // 
+            // _vlc1
+            // 
+            this._vlc1.Enabled = true;
+            this._vlc1.Location = new System.Drawing.Point(0, 0);
+            this._vlc1.Name = "_vlc1";
+            this._vlc1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc1.OcxState")));
+            this._vlc1.Size = new System.Drawing.Size(640, 400);
+            this._vlc1.TabIndex = 6;
+            // 
+            // _vlc2
+            // 
+            this._vlc2.Enabled = true;
+            this._vlc2.Location = new System.Drawing.Point(0, 0);
+            this._vlc2.Name = "_vlc2";
+            this._vlc2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc2.OcxState")));
+            this._vlc2.Size = new System.Drawing.Size(640, 400);
+            this._vlc2.TabIndex = 6;
+            // 
+            // _transpCtrl
+            // 
+            this._transpCtrl.BackColor = System.Drawing.Color.Transparent;
+            this._transpCtrl.Location = new System.Drawing.Point(0, 0);
+            this._transpCtrl.Name = "_transpCtrl";
+            this._transpCtrl.Opacity = 100;
+            this._transpCtrl.Size = new System.Drawing.Size(640, 400);
+            this._transpCtrl.TabIndex = 7;
+            this._transpCtrl.Text = "transpCtrl1";
+            this._transpCtrl.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseUp);
+            // 
+            // _transpCtrl2
+            // 
+            this._transpCtrl2.BackColor = System.Drawing.Color.Transparent;
+            this._transpCtrl2.Location = new System.Drawing.Point(0, 0);
+            this._transpCtrl2.Name = "_transpCtrl2";
+            this._transpCtrl2.Opacity = 100;
+            this._transpCtrl2.Size = new System.Drawing.Size(640, 400);
+            this._transpCtrl2.TabIndex = 7;
+            this._transpCtrl2.Text = "transpCtrl1";
+            this._transpCtrl2.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl2_MouseUp);
             // 
             // _transpCtrl3
             // 
@@ -588,16 +613,17 @@
             this._transpCtrl3.Text = "transpCtrl1";
             this._transpCtrl3.MouseUp += new System.Windows.Forms.MouseEventHandler(this._transpCtrl3_MouseUp);
             // 
-            // _vlc2
+            // pictureBox2
             // 
-            this._vlc2.Enabled = true;
-            this._vlc2.Location = new System.Drawing.Point(0, 0);
-            this._vlc2.Name = "_vlc2";
-            this._vlc2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc2.OcxState")));
-            this._vlc2.Size = new System.Drawing.Size(640, 400);
-            this._vlc2.TabIndex = 6;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(640, 400);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
             // 
-            // frmRTSP
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -606,7 +632,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1200, 580);
-            this.Name = "frmRTSP";
+            this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chấm điểm";
             this.Load += new System.EventHandler(this.frmRTSP_Load);
@@ -615,7 +641,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._vlc)).EndInit();
             this._panCam.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._ptbCamera)).EndInit();
             this._tabControl.ResumeLayout(false);
@@ -625,13 +650,16 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore2)).EndInit();
             this._panCam2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._vlc1)).EndInit();
             this._tabBia8.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore3)).EndInit();
             this._panCam3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._vlc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._vlc1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._vlc2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -689,5 +717,7 @@
         private System.Windows.Forms.ToolStripMenuItem vềPhầnMềmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bảnQuyềnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đăngKýToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
