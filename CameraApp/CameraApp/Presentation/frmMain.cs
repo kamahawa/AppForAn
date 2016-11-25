@@ -20,6 +20,9 @@ namespace CameraApp
     public partial class frmMain : Form
     {
         //ECJ72-E7F17-J57G9-G5PPD-BEPG0-43ZTF
+        //B62RB-HVZRB-TH3G9-091K1-5N8N5-05373 1 days
+        //BP8R4-65Z6B-28PG9-X0JY2-84CF7-E09G6 1 days
+        //AFLY0-PJB03-WY909-5H0SC-SCHDC-N4P7B 30days
         //"http://68.114.48.220:80/videostream.cgi?user=admin&pwd=";
         //"rtsp://192.168.1.12:533/user=admin&password=&channel=1&stream=0.sdp?real_stream--rtp-caching=100";
         //"rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100";
@@ -196,11 +199,13 @@ namespace CameraApp
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
                         //10 diem
+                        _lblScore.Text = "10";
                         ChamDiem(10, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                     }
                     else
                     {
                         //9 diem
+                        _lblScore.Text = "9";
                         ChamDiem(9, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                     }
                 }
@@ -208,6 +213,7 @@ namespace CameraApp
                 {
                     // neu khong nam trong 9 thi la 8 diem
                     //8 diem
+                    _lblScore.Text = "8";
                     ChamDiem(8, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                 }
             }
@@ -223,11 +229,13 @@ namespace CameraApp
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
                         //7 diem
+                        _lblScore.Text = "7";
                         ChamDiem(7, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                     }
                     else
                     {
                         //6 diem
+                        _lblScore.Text = "6";
                         ChamDiem(6, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                     }
                 }
@@ -239,11 +247,13 @@ namespace CameraApp
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
                         //5 diem
+                        _lblScore.Text = "5";
                         ChamDiem(5, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                     }
                     else
                     {
                         //0 diem
+                        _lblScore.Text = "0";
                         ChamDiem(0, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
                     }
                 }
@@ -293,19 +303,22 @@ namespace CameraApp
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
                         //10 diem
-                        ChamDiem(10, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                        _lblScore2.Text = "10";
+                        ChamDiem(10, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
                     }
                     else
                     {
                         //9 diem
-                        ChamDiem(9, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                        _lblScore2.Text = "9";
+                        ChamDiem(9, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
                     }
                 }
                 else
                 {
                     // neu khong nam trong 9 thi la 8 diem
                     //8 diem
-                    ChamDiem(8, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    _lblScore2.Text = "8";
+                    ChamDiem(8, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
                 }
             }
             else
@@ -320,12 +333,14 @@ namespace CameraApp
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
                         //7 diem
-                        ChamDiem(7, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                        _lblScore2.Text = "7";
+                        ChamDiem(7, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
                     }
                     else
                     {
                         //6 diem
-                        ChamDiem(6, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                        _lblScore2.Text = "6";
+                        ChamDiem(6, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
                     }
                 }
                 else
@@ -336,12 +351,14 @@ namespace CameraApp
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
                         //5 diem
-                        ChamDiem(5, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                        _lblScore2.Text = "5";
+                        ChamDiem(5, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
                     }
                     else
                     {
                         //0 diem
-                        ChamDiem(0, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                        _lblScore2.Text = "0";
+                        ChamDiem(0, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, be);
                     }
                 }
             }
@@ -384,19 +401,22 @@ namespace CameraApp
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
                         //10 diem
-                        ChamDiem(10, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                        _lblScore3.Text = "10";
+                        ChamDiem(10, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                     else
                     {
                         //9 diem
-                        ChamDiem(9, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                        _lblScore3.Text = "9";
+                        ChamDiem(9, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                 }
                 else
                 {
                     // neu khong nam trong 9 thi la 8 diem
                     //8 diem
-                    ChamDiem(8, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                    _lblScore3.Text = "8";
+                    ChamDiem(8, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                 }
             }
             else
@@ -411,12 +431,14 @@ namespace CameraApp
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
                         //7 diem
-                        ChamDiem(7, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                        _lblScore3.Text = "7";
+                        ChamDiem(7, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                     else
                     {
                         //6 diem
-                        ChamDiem(6, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                        _lblScore3.Text = "6";
+                        ChamDiem(6, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                 }
                 else
@@ -427,12 +449,14 @@ namespace CameraApp
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
                         //5 diem
-                        ChamDiem(5, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                        _lblScore3.Text = "5";
+                        ChamDiem(5, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                     else
                     {
                         //0 diem
-                        ChamDiem(0, ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, be);
+                        _lblScore3.Text = "0";
+                        ChamDiem(0, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                 }
             }

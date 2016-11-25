@@ -32,7 +32,7 @@ namespace CameraApp
                 KeyValuesClass kv = new KeyValuesClass();
                 if(km.DisassembleKey(productKey, ref kv))
                 {
-                    _lblProductName.Text = "Phần mềm chấm điểm";
+                    //_lblProductName.Text = "Phần mềm chấm điểm";
                     _lblProductKey.Text = productKey;
                     if(kv.Type == LicenseType.TRIAL)
                     {
@@ -49,6 +49,6 @@ namespace CameraApp
         private void _btnOK_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
+        }        
     }
 }

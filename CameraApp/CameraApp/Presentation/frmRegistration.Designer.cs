@@ -32,7 +32,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this._txtProductId = new System.Windows.Forms.TextBox();
             this._txtProductKey = new System.Windows.Forms.TextBox();
-            this._btnOK = new System.Windows.Forms.Button();
+            this._btnRegistration = new System.Windows.Forms.Button();
+            this._btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -68,26 +69,38 @@
             this._txtProductKey.Size = new System.Drawing.Size(449, 20);
             this._txtProductKey.TabIndex = 2;
             // 
-            // _btnOK
+            // _btnRegistration
             // 
-            this._btnOK.Location = new System.Drawing.Point(392, 66);
-            this._btnOK.Name = "_btnOK";
-            this._btnOK.Size = new System.Drawing.Size(158, 23);
-            this._btnOK.TabIndex = 3;
-            this._btnOK.Text = "Đăng ký";
-            this._btnOK.UseVisualStyleBackColor = true;
-            this._btnOK.Click += new System.EventHandler(this._btnOK_Click);
+            this._btnRegistration.Location = new System.Drawing.Point(222, 64);
+            this._btnRegistration.Name = "_btnRegistration";
+            this._btnRegistration.Size = new System.Drawing.Size(158, 23);
+            this._btnRegistration.TabIndex = 3;
+            this._btnRegistration.Text = "Đăng ký";
+            this._btnRegistration.UseVisualStyleBackColor = true;
+            this._btnRegistration.Click += new System.EventHandler(this._btnRegistration_Click);
+            // 
+            // _btnClose
+            // 
+            this._btnClose.Location = new System.Drawing.Point(393, 64);
+            this._btnClose.Name = "_btnClose";
+            this._btnClose.Size = new System.Drawing.Size(158, 23);
+            this._btnClose.TabIndex = 3;
+            this._btnClose.Text = "Đóng";
+            this._btnClose.UseVisualStyleBackColor = true;
+            this._btnClose.Click += new System.EventHandler(this._btnClose_Click);
             // 
             // frmRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 103);
-            this.Controls.Add(this._btnOK);
+            this.Controls.Add(this._btnClose);
+            this.Controls.Add(this._btnRegistration);
             this.Controls.Add(this._txtProductKey);
             this.Controls.Add(this._txtProductId);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "frmRegistration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Đăng ký";
@@ -104,6 +117,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox _txtProductId;
         private System.Windows.Forms.TextBox _txtProductKey;
-        private System.Windows.Forms.Button _btnOK;
+        private System.Windows.Forms.Button _btnRegistration;
+        private System.Windows.Forms.Button _btnClose;
     }
 }
