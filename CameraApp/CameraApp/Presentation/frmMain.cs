@@ -3,9 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
-using AForge.Video;
 using CameraApp.Help;
-using Microsoft.VisualBasic;
 using System.IO;
 //using ImageMagick;
 using AxAXVLC;
@@ -443,19 +441,19 @@ namespace CameraApp
                         if (c.ToArgb().Equals(Color.Red.ToArgb()))
                         {
                             //10 diem
-                            _lblScore2.Text = "10";
+                            _lblScore3.Text = "10";
                             ChamDiem(10, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                         }
                         else
                         {
                             //9 diem
-                            _lblScore2.Text = "9";
+                            _lblScore3.Text = "9";
                             ChamDiem(9, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                         }
                     }
                     else
                     {
-                        _lblScore2.Text = "8";
+                        _lblScore3.Text = "8";
                         ChamDiem(8, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                 }
@@ -470,20 +468,20 @@ namespace CameraApp
                         if (c.ToArgb().Equals(Color.Red.ToArgb()))
                         {
                             //7 diem
-                            _lblScore2.Text = "7";
+                            _lblScore3.Text = "7";
                             ChamDiem(7, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                         }
                         else
                         {
                             //6 diem
-                            _lblScore2.Text = "6";
+                            _lblScore3.Text = "6";
                             ChamDiem(6, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                         }
                     }
                     else
                     {
                         //5 diem
-                        _lblScore2.Text = "5";
+                        _lblScore3.Text = "5";
                         ChamDiem(5, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                 }
@@ -499,13 +497,13 @@ namespace CameraApp
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
                         //4 diem
-                        _lblScore2.Text = "4";
+                        _lblScore3.Text = "4";
                         ChamDiem(4, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                     else
                     {
                         //3 diem
-                        _lblScore2.Text = "3";
+                        _lblScore3.Text = "3";
                         ChamDiem(3, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                 }
@@ -520,20 +518,20 @@ namespace CameraApp
                         if (c.ToArgb().Equals(Color.Red.ToArgb()))
                         {
                             //2 diem
-                            _lblScore2.Text = "2";
+                            _lblScore3.Text = "2";
                             ChamDiem(2, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                         }
                         else
                         {
                             //1 diem
-                            _lblScore2.Text = "1";
+                            _lblScore3.Text = "1";
                             ChamDiem(1, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                         }
                     }
                     else
                     {
                         //0 diem
-                        _lblScore2.Text = "0";
+                        _lblScore3.Text = "0";
                         ChamDiem(0, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, be);
                     }
                 }
@@ -886,17 +884,7 @@ namespace CameraApp
             string path = @"UrlCamera.txt";
             File.WriteAllLines(path, urlArr);
         }
-
-        void FinalVideoDevice_NewFrame(object sender, NewFrameEventArgs e)
-        {
-            try
-            {
-                _ptbCamera.Image = (Bitmap)e.Frame.Clone();
-            }
-            catch { }
-        }
-
-
+        
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();

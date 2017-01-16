@@ -1,0 +1,10 @@
+D:\Research\KuAn\AppForAn\AppForAn\CameraApp\GenerateLicense\bin\Release\GenerateLicense.exe.config
+D:\Research\KuAn\AppForAn\AppForAn\CameraApp\GenerateLicense\bin\Release\GenerateLicense.exe
+D:\Research\KuAn\AppForAn\AppForAn\CameraApp\GenerateLicense\bin\Release\GenerateLicense.pdb
+D:\Research\KuAn\AppForAn\AppForAn\CameraApp\GenerateLicense\bin\Release\FoxLearn.License.dll
+D:\Research\KuAn\AppForAn\AppForAn\CameraApp\GenerateLicense\obj\Release\GenerateLicense.csprojResolveAssemblyReference.cache
+D:\Research\KuAn\AppForAn\AppForAn\CameraApp\GenerateLicense\obj\Release\GenerateLicense.frmGenerate.resources
+D:\Research\KuAn\AppForAn\AppForAn\CameraApp\GenerateLicense\obj\Release\GenerateLicense.Properties.Resources.resources
+D:\Research\KuAn\AppForAn\AppForAn\CameraApp\GenerateLicense\obj\Release\GenerateLicense.csproj.GenerateResource.Cache
+D:\Research\KuAn\AppForAn\AppForAn\CameraApp\GenerateLicense\obj\Release\GenerateLicense.exe
+D:\Research\KuAn\AppForAn\AppForAn\CameraApp\GenerateLicense\obj\Release\GenerateLicense.pdb
