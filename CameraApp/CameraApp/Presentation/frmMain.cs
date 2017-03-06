@@ -892,7 +892,7 @@ namespace CameraApp
 
         private void xuấtFileĐiểmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExcelHelp.ExportExcel((DataTable)_dtgScore.DataSource);
+            ExcelHelp.ExportExcel((DataTable)_dtgScore.DataSource, (DataTable)_dtgScore2.DataSource, (DataTable)_dtgScore3.DataSource);
         }
         
         private void thêmDanhSáchToolStripMenuItem_Click(object sender, EventArgs e)
