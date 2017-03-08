@@ -207,6 +207,8 @@ namespace CameraApp.Help
             dt.Columns.Add("Lần 2");
             dt.Columns.Add("Lần 3");
             dt.Columns.Add("Tổng");
+            dt.Columns.Add("Tổng 3 bia");
+            dt.Columns.Add("Xếp loại");
             try
             {
                 Excel.Application app = new Excel.Application();
@@ -230,6 +232,8 @@ namespace CameraApp.Help
                         row[2] = "";//Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 3]).Value2);
                         row[3] = "";//Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 4]).Value2);
                         row[4] = "";//Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 5]).Value2);
+                        row[5] = "";
+                        row[6] = "";
                         index++;
                         dt.Rows.Add(row);
                     }

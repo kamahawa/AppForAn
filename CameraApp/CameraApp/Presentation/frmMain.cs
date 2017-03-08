@@ -30,6 +30,7 @@ namespace CameraApp
         private int luotBia1 = 1, luotBia2 = 1, luotBia3 = 1;
         //nguoi ban hien tai o cac bia
         private int currentMemberBia1 = 0, currentMemberBia2 = 0, currentMemberBia3 = 0;
+        private int[] tong3Bia;
                 
         public frmMain()
         {
@@ -570,6 +571,28 @@ namespace CameraApp
                 DataTable dt = (DataTable)dtgScore.DataSource;
                 dt.Rows[currentMember][luot] = diem;
 
+                //set tong diem
+                tong3Bia[currentMember] += diem;
+                dt.Rows[currentMember][5] = tong3Bia[currentMember];
+                //luot cuoi thi show dat hoac khong dat
+                if(be == 3 && luot == 3)
+                {
+                    string xeploai = "Không đạt";// ngoai dieu kien ben duoi la khong dat thanh tich
+                    if (tong3Bia[currentMember] >= 72)
+                    {
+                        xeploai = "Giỏi";
+                    }
+                    else if (tong3Bia[currentMember] >= 59 && tong3Bia[currentMember] <= 71)
+                    {
+                        xeploai = "Khá";
+                    }
+                    else if (tong3Bia[currentMember] >= 45 && tong3Bia[currentMember] <= 58)
+                    {
+                        xeploai = "Đạt";
+                    }
+                    dt.Rows[currentMember][6] = xeploai;
+                }
+
                 switch (diem)
                 {
                     case 0:
@@ -899,55 +922,46 @@ namespace CameraApp
         {
             OpenFileDialog op = new OpenFileDialog();
             op.Filter = "xls, xlsx|*.xls;*.xlsx";
-            op.ShowDialog();
-            //load info be so 1
-            DataTable table = ExcelHelp.getDataTableExcel(op.FileName);//new DataTable();
-            /*
-            table.Columns.Add("Tên", typeof(string));
-            table.Columns.Add("Lần 1", typeof(int));
-            table.Columns.Add("Lần 2", typeof(int));
-            table.Columns.Add("Lần 3", typeof(int));
-            table.Columns.Add("Tổng", typeof(string));            
-            table.Rows.Add("Nguyễn Văn A", null, null, null, null);
-            table.Rows.Add("Nguyễn Văn b", null, null, null, null);
-            table.Rows.Add("Nguyễn Văn c", null, null, null, null);
-            */
-            _dtgScore.DataSource = table;
-            //mo rong phan ten
-            _dtgScore.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            _lblName.Text = table.Rows[0][0].ToString();
-            
-            //load info be so 2
-            DataTable table2 = ExcelHelp.getDataTableExcel(op.FileName);//new DataTable();
-            /*
-            table2.Columns.Add("Tên", typeof(string));
-            table2.Columns.Add("Lần 1", typeof(int));
-            table2.Columns.Add("Lần 2", typeof(int));
-            table2.Columns.Add("Lần 3", typeof(int));
-            table2.Columns.Add("Tổng", typeof(string));
-            table2.Rows.Add("Nguyễn Văn A", null, null, null, null);
-            table2.Rows.Add("Nguyễn Văn b", null, null, null, null);
-            table2.Rows.Add("Nguyễn Văn c", null, null, null, null);
-            */
-            _dtgScore2.DataSource = table2;
-            _dtgScore2.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            _lblName2.Text = table.Rows[0][0].ToString();
+            try
+            {
+                if(op.ShowDialog() == DialogResult.OK)
+                { 
+                    //load info be so 1
+                    DataTable table = ExcelHelp.getDataTableExcel(op.FileName);//new DataTable();
 
-            //load info be so 3
-            DataTable table3 = ExcelHelp.getDataTableExcel(op.FileName);//new DataTable();
-            /*
-            table3.Columns.Add("Tên", typeof(string));
-            table3.Columns.Add("Lần 1", typeof(int));
-            table3.Columns.Add("Lần 2", typeof(int));
-            table3.Columns.Add("Lần 3", typeof(int));
-            table3.Columns.Add("Tổng", typeof(string));
-            table3.Rows.Add("Nguyễn Văn A", null, null, null, null);
-            table3.Rows.Add("Nguyễn Văn b", null, null, null, null);
-            table3.Rows.Add("Nguyễn Văn c", null, null, null, null);
-            */
-            _dtgScore3.DataSource = table3;
-            _dtgScore3.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            _lblName3.Text = table.Rows[0][0].ToString();
+                    //khoi tao tinh tong 3 bia
+                    tong3Bia = new int[table.Rows.Count];
+
+                    /*
+                    table.Columns.Add("Tên", typeof(string));
+                    table.Columns.Add("Lần 1", typeof(int));
+                    table.Columns.Add("Lần 2", typeof(int));
+                    table.Columns.Add("Lần 3", typeof(int));
+                    table.Columns.Add("Tổng", typeof(string));            
+                    table.Rows.Add("Nguyễn Văn A", null, null, null, null);
+                    table.Rows.Add("Nguyễn Văn b", null, null, null, null);
+                    table.Rows.Add("Nguyễn Văn c", null, null, null, null);
+                    */
+                    _dtgScore.DataSource = table;
+                    //mo rong phan ten
+                    _dtgScore.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                    _lblName.Text = table.Rows[0][0].ToString();
+            
+                    //load info be so 2
+                    DataTable table2 = ExcelHelp.getDataTableExcel(op.FileName);//new DataTable();
+                    _dtgScore2.DataSource = table2;
+                    _dtgScore2.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                    _lblName2.Text = table.Rows[0][0].ToString();
+
+                    //load info be so 3
+                    DataTable table3 = ExcelHelp.getDataTableExcel(op.FileName);//new DataTable();
+                    _dtgScore3.DataSource = table3;
+                    _dtgScore3.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                    _lblName3.Text = table.Rows[0][0].ToString();
+                }
+            }
+            catch(Exception ex)
+            { }
         }
 
 
