@@ -610,9 +610,9 @@ namespace CameraApp
                 if (luot == 3)
                 {
                     //ban het luot thi tinh tong diem
-                    int l1 = (int)dt.Rows[currentMember][1];
-                    int l2 = (int)dt.Rows[currentMember][2];
-                    int l3 = (int)dt.Rows[currentMember][3];
+                    int l1 = Int32.Parse(dt.Rows[currentMember][1].ToString());
+                    int l2 = Int32.Parse(dt.Rows[currentMember][2].ToString());
+                    int l3 = Int32.Parse(dt.Rows[currentMember][3].ToString());
 
                     int tong = l1 + l2 + l3;
 
@@ -897,8 +897,12 @@ namespace CameraApp
         
         private void thêmDanhSáchToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OpenFileDialog op = new OpenFileDialog();
+            op.Filter = "xls, xlsx|*.xls;*.xlsx";
+            op.ShowDialog();
             //load info be so 1
-            DataTable table = new DataTable();
+            DataTable table = ExcelHelp.getDataTableExcel(op.FileName);//new DataTable();
+            /*
             table.Columns.Add("Tên", typeof(string));
             table.Columns.Add("Lần 1", typeof(int));
             table.Columns.Add("Lần 2", typeof(int));
@@ -907,13 +911,15 @@ namespace CameraApp
             table.Rows.Add("Nguyễn Văn A", null, null, null, null);
             table.Rows.Add("Nguyễn Văn b", null, null, null, null);
             table.Rows.Add("Nguyễn Văn c", null, null, null, null);
+            */
             _dtgScore.DataSource = table;
             //mo rong phan ten
             _dtgScore.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             _lblName.Text = table.Rows[0][0].ToString();
             
             //load info be so 2
-            DataTable table2 = new DataTable();
+            DataTable table2 = ExcelHelp.getDataTableExcel(op.FileName);//new DataTable();
+            /*
             table2.Columns.Add("Tên", typeof(string));
             table2.Columns.Add("Lần 1", typeof(int));
             table2.Columns.Add("Lần 2", typeof(int));
@@ -922,12 +928,14 @@ namespace CameraApp
             table2.Rows.Add("Nguyễn Văn A", null, null, null, null);
             table2.Rows.Add("Nguyễn Văn b", null, null, null, null);
             table2.Rows.Add("Nguyễn Văn c", null, null, null, null);
+            */
             _dtgScore2.DataSource = table2;
             _dtgScore2.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             _lblName2.Text = table.Rows[0][0].ToString();
 
             //load info be so 3
-            DataTable table3 = new DataTable();
+            DataTable table3 = ExcelHelp.getDataTableExcel(op.FileName);//new DataTable();
+            /*
             table3.Columns.Add("Tên", typeof(string));
             table3.Columns.Add("Lần 1", typeof(int));
             table3.Columns.Add("Lần 2", typeof(int));
@@ -936,6 +944,7 @@ namespace CameraApp
             table3.Rows.Add("Nguyễn Văn A", null, null, null, null);
             table3.Rows.Add("Nguyễn Văn b", null, null, null, null);
             table3.Rows.Add("Nguyễn Văn c", null, null, null, null);
+            */
             _dtgScore3.DataSource = table3;
             _dtgScore3.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             _lblName3.Text = table.Rows[0][0].ToString();

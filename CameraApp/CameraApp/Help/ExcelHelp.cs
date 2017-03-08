@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -50,7 +51,12 @@ namespace CameraApp.Help
                             //cong tong diem, j = 0 la ten
                             if(j > 0 && j < dtBia3.Columns.Count - 1)
                             {
-                                tongDiem[i] += Int16.Parse(data);
+                                try
+                                {
+                                    tongDiem[i] += Int16.Parse(data);
+                                }
+                                catch (Exception exInt)
+                                { }
                             }
                         }
                     }
@@ -73,7 +79,12 @@ namespace CameraApp.Help
                             //cong tong diem, j = 0 la ten
                             if (j > 0 && j < dtBia3.Columns.Count - 1)
                             {
-                                tongDiem[i] += Int16.Parse(data);
+                                try
+                                {
+                                    tongDiem[i] += Int16.Parse(data);
+                                }
+                                catch (Exception exInt)
+                                { }
                             }
                         }
                     }
@@ -96,7 +107,12 @@ namespace CameraApp.Help
                             //cong tong diem, j = 0 : la ten, j = dtBia3.Columns.Count - 1 : la tong diem
                             if (j > 0 && j < dtBia3.Columns.Count - 1)
                             {
-                                tongDiem[i] += Int16.Parse(data);
+                                try
+                                {
+                                    tongDiem[i] += Int16.Parse(data);
+                                }
+                                catch (Exception exInt)
+                                { }
                             }
                         }
                     }
@@ -175,11 +191,56 @@ namespace CameraApp.Help
                     releaseObject(worksheetBia3);
                     releaseObject(workbook);
                     releaseObject(xlApp);
+                    MessageBox.Show("Xuất file hoàn tất.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
             }
             catch (Exception ex)
             { }
+        }
+
+        public static DataTable getDataTableExcel(string fileName)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Tên");
+            dt.Columns.Add("Lần 1");
+            dt.Columns.Add("Lần 2");
+            dt.Columns.Add("Lần 3");
+            dt.Columns.Add("Tổng");
+            try
+            {
+                Excel.Application app = new Excel.Application();
+                //Excel.Workbook workBook = app.Workbooks.Open(fileName, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                Excel.Workbook workBook = app.Workbooks.Open(fileName);
+                Microsoft.Office.Interop.Excel.Worksheet workSheet = (Microsoft.Office.Interop.Excel.Worksheet)workBook.ActiveSheet;
+
+                int index = 0;
+                object rowIndex = 2;
+
+                while (((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 1]).Value2 != null)
+                {
+                    rowIndex = 2 + index;
+                    string value = Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 1]).Value2);
+                    if (value != "")
+                    {
+                        DataRow row;
+                        row = dt.NewRow();
+                        row[0] = Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 1]).Value2);
+                        row[1] = "";//Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 2]).Value2);
+                        row[2] = "";//Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 3]).Value2);
+                        row[3] = "";//Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 4]).Value2);
+                        row[4] = "";//Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 5]).Value2);
+                        index++;
+                        dt.Rows.Add(row);
+                    }
+                }
+                app.Workbooks.Close();
+                releaseObject(workBook);
+                releaseObject(app);
+            }
+            catch (Exception ex)
+            { }
+            return dt;
         }
 
         private static void releaseObject(object obj)

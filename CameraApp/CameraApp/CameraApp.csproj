@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -22,9 +23,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <TargetCulture>vi</TargetCulture>
+    <ProductName>ChamDiem</ProductName>
+    <PublisherName>HuyCuong</PublisherName>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -46,6 +49,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>M4A1.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FoxLearn.License">
@@ -179,6 +185,7 @@
     <None Include="img\bia8-8.png" />
     <None Include="img\bia8-9.png" />
     <None Include="img\bia8-10.png" />
+    <Content Include="M4A1.ico" />
     <Content Include="software\vlc-2.2.4-win32.exe" />
     <Content Include="x.png" />
   </ItemGroup>
