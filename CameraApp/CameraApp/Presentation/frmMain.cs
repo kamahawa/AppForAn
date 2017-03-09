@@ -171,6 +171,15 @@ namespace CameraApp
         private void _btnScore_Click(object sender, EventArgs e)
         {
             //ShowScore(ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, 1);
+            //_panCam.Controls.Clear();
+            for (int i = _panCam.Controls.Count - 1; i >= 0; i--)
+            {
+                PictureBox control = _panCam.Controls[i] as PictureBox;
+                if (control == null)
+                    continue;
+
+                control.Dispose();
+            }
         }
 
         private void _transpCtrl_MouseDown(object sender, MouseEventArgs e)
@@ -275,6 +284,15 @@ namespace CameraApp
         private void _btnScore2_Click(object sender, EventArgs e)
         {
             //ShowScore(ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, 2);
+            //_panCam2.Controls.Clear();
+            for (int i = _panCam2.Controls.Count - 1; i >= 0; i--)
+            {
+                PictureBox control = _panCam2.Controls[i] as PictureBox;
+                if (control == null)
+                    continue;
+
+                control.Dispose();
+            }
         }
 
         private void _btnMiss2_Click(object sender, EventArgs e)
@@ -417,6 +435,15 @@ namespace CameraApp
         private void _btnScore3_Click(object sender, EventArgs e)
         {
             //ShowScore(ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, 3);
+            //_panCam3.Controls.Clear();
+            for (int i = _panCam3.Controls.Count - 1; i >= 0; i--)
+            {
+                PictureBox control = _panCam3.Controls[i] as PictureBox;
+                if (control == null)
+                    continue;
+
+                control.Dispose();
+            }
         }
 
         private void _btnMiss3_Click(object sender, EventArgs e)
@@ -588,25 +615,9 @@ namespace CameraApp
 
                 //set tong diem
                 tong3Bia[currentMember] += diem;
-                dt.Rows[currentMember][5] = tong3Bia[currentMember];
-                //luot cuoi thi show dat hoac khong dat
-                if(be == 3 && luot == 3)
-                {
-                    string xeploai = "Không đạt";// ngoai dieu kien ben duoi la khong dat thanh tich
-                    if (tong3Bia[currentMember] >= 72)
-                    {
-                        xeploai = "Giỏi";
-                    }
-                    else if (tong3Bia[currentMember] >= 59 && tong3Bia[currentMember] <= 71)
-                    {
-                        xeploai = "Khá";
-                    }
-                    else if (tong3Bia[currentMember] >= 45 && tong3Bia[currentMember] <= 58)
-                    {
-                        xeploai = "Đạt";
-                    }
-                    dt.Rows[currentMember][6] = xeploai;
-                }
+                //dt.Rows[currentMember][5] = tong3Bia[currentMember];
+                //set tong diem
+                setTongDiem3Bia(currentMember);                
 
                 switch (diem)
                 {
@@ -806,6 +817,35 @@ namespace CameraApp
         {
             SoundPlayer simpleSound = new SoundPlayer(fileName);
             simpleSound.Play();
+        }
+
+        private void setTongDiem3Bia(int currentMember)
+        {
+            string xeploai = "Không đạt";// ngoai dieu kien ben duoi la khong dat thanh tich
+            if (tong3Bia[currentMember] >= 72)
+            {
+                xeploai = "Giỏi";
+            }
+            else if (tong3Bia[currentMember] >= 59 && tong3Bia[currentMember] <= 71)
+            {
+                xeploai = "Khá";
+            }
+            else if (tong3Bia[currentMember] >= 45 && tong3Bia[currentMember] <= 58)
+            {
+                xeploai = "Đạt";
+            }
+            DataTable dt = (DataTable)_dtgScore.DataSource;
+            dt.Rows[currentMember][5] = tong3Bia[currentMember];
+            dt.Rows[currentMember][6] = xeploai;
+
+            DataTable dt2 = (DataTable)_dtgScore2.DataSource;
+            dt2.Rows[currentMember][5] = tong3Bia[currentMember];
+            dt2.Rows[currentMember][6] = xeploai;
+
+            DataTable dt3 = (DataTable)_dtgScore3.DataSource;
+            dt3.Rows[currentMember][5] = tong3Bia[currentMember];
+            dt3.Rows[currentMember][6] = xeploai;
+            
         }
 
         #endregion

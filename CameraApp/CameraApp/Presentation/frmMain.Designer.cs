@@ -50,7 +50,6 @@
             this._lblName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this._panCam = new System.Windows.Forms.Panel();
-            this._transpCtrl = new CameraApp.TranspCtrl();
             this._vlc = new AxAXVLC.AxVLCPlugin2();
             this._ptbCamera = new System.Windows.Forms.PictureBox();
             this._btnMiss = new System.Windows.Forms.Button();
@@ -66,7 +65,6 @@
             this._btnScore2 = new System.Windows.Forms.Button();
             this._btnMiss2 = new System.Windows.Forms.Button();
             this._panCam2 = new System.Windows.Forms.Panel();
-            this._transpCtrl2 = new CameraApp.TranspCtrl();
             this._vlc1 = new AxAXVLC.AxVLCPlugin2();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this._tabBia8 = new System.Windows.Forms.TabPage();
@@ -79,9 +77,11 @@
             this._btnScore3 = new System.Windows.Forms.Button();
             this._btnMiss3 = new System.Windows.Forms.Button();
             this._panCam3 = new System.Windows.Forms.Panel();
-            this._transpCtrl3 = new CameraApp.TranspCtrl();
             this._vlc2 = new AxAXVLC.AxVLCPlugin2();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this._transpCtrl = new CameraApp.TranspCtrl();
+            this._transpCtrl2 = new CameraApp.TranspCtrl();
+            this._transpCtrl3 = new CameraApp.TranspCtrl();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dtgScore)).BeginInit();
@@ -215,7 +215,7 @@
             this._btnScore.Name = "_btnScore";
             this._btnScore.Size = new System.Drawing.Size(150, 55);
             this._btnScore.TabIndex = 4;
-            this._btnScore.Text = "Chấm điểm";
+            this._btnScore.Text = "Xóa điểm bắn";
             this._btnScore.UseVisualStyleBackColor = true;
             this._btnScore.Click += new System.EventHandler(this._btnScore_Click);
             // 
@@ -290,24 +290,13 @@
             this._panCam.Size = new System.Drawing.Size(640, 400);
             this._panCam.TabIndex = 8;
             // 
-            // _transpCtrl
-            // 
-            this._transpCtrl.BackColor = System.Drawing.Color.Transparent;
-            this._transpCtrl.Location = new System.Drawing.Point(0, 0);
-            this._transpCtrl.Name = "_transpCtrl";
-            this._transpCtrl.Opacity = 100;
-            this._transpCtrl.Size = new System.Drawing.Size(640, 400);
-            this._transpCtrl.TabIndex = 7;
-            this._transpCtrl.Text = "transpCtrl1";
-            this._transpCtrl.MouseDown += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseDown);
-            // 
             // _vlc
             // 
             this._vlc.Enabled = true;
             this._vlc.Location = new System.Drawing.Point(0, 0);
             this._vlc.Name = "_vlc";
             this._vlc.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc.OcxState")));
-            this._vlc.Size = new System.Drawing.Size(640, 400);
+            this._vlc.Size = new System.Drawing.Size(639, 399);
             this._vlc.TabIndex = 6;
             // 
             // _ptbCamera
@@ -437,7 +426,7 @@
             this._btnScore2.Name = "_btnScore2";
             this._btnScore2.Size = new System.Drawing.Size(150, 55);
             this._btnScore2.TabIndex = 16;
-            this._btnScore2.Text = "Chấm điểm";
+            this._btnScore2.Text = "Xóa điểm bắn";
             this._btnScore2.UseVisualStyleBackColor = true;
             this._btnScore2.Click += new System.EventHandler(this._btnScore2_Click);
             // 
@@ -461,24 +450,13 @@
             this._panCam2.Size = new System.Drawing.Size(640, 400);
             this._panCam2.TabIndex = 13;
             // 
-            // _transpCtrl2
-            // 
-            this._transpCtrl2.BackColor = System.Drawing.Color.Transparent;
-            this._transpCtrl2.Location = new System.Drawing.Point(0, 0);
-            this._transpCtrl2.Name = "_transpCtrl2";
-            this._transpCtrl2.Opacity = 100;
-            this._transpCtrl2.Size = new System.Drawing.Size(640, 400);
-            this._transpCtrl2.TabIndex = 7;
-            this._transpCtrl2.Text = "transpCtrl1";
-            this._transpCtrl2.MouseDown += new System.Windows.Forms.MouseEventHandler(this._transpCtrl2_MouseDown);
-            // 
             // _vlc1
             // 
             this._vlc1.Enabled = true;
             this._vlc1.Location = new System.Drawing.Point(0, 0);
             this._vlc1.Name = "_vlc1";
             this._vlc1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc1.OcxState")));
-            this._vlc1.Size = new System.Drawing.Size(640, 400);
+            this._vlc1.Size = new System.Drawing.Size(639, 399);
             this._vlc1.TabIndex = 6;
             // 
             // pictureBox1
@@ -572,7 +550,7 @@
             this._btnScore3.Name = "_btnScore3";
             this._btnScore3.Size = new System.Drawing.Size(150, 55);
             this._btnScore3.TabIndex = 12;
-            this._btnScore3.Text = "Chấm điểm";
+            this._btnScore3.Text = "Xóa điểm bắn";
             this._btnScore3.UseVisualStyleBackColor = true;
             this._btnScore3.Click += new System.EventHandler(this._btnScore3_Click);
             // 
@@ -596,24 +574,13 @@
             this._panCam3.Size = new System.Drawing.Size(640, 400);
             this._panCam3.TabIndex = 9;
             // 
-            // _transpCtrl3
-            // 
-            this._transpCtrl3.BackColor = System.Drawing.Color.Transparent;
-            this._transpCtrl3.Location = new System.Drawing.Point(0, 0);
-            this._transpCtrl3.Name = "_transpCtrl3";
-            this._transpCtrl3.Opacity = 100;
-            this._transpCtrl3.Size = new System.Drawing.Size(640, 400);
-            this._transpCtrl3.TabIndex = 7;
-            this._transpCtrl3.Text = "transpCtrl1";
-            this._transpCtrl3.MouseDown += new System.Windows.Forms.MouseEventHandler(this._transpCtrl3_MouseDown);
-            // 
             // _vlc2
             // 
             this._vlc2.Enabled = true;
             this._vlc2.Location = new System.Drawing.Point(0, 0);
             this._vlc2.Name = "_vlc2";
             this._vlc2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("_vlc2.OcxState")));
-            this._vlc2.Size = new System.Drawing.Size(640, 400);
+            this._vlc2.Size = new System.Drawing.Size(639, 399);
             this._vlc2.TabIndex = 6;
             // 
             // pictureBox2
@@ -625,6 +592,39 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
+            // 
+            // _transpCtrl
+            // 
+            this._transpCtrl.BackColor = System.Drawing.Color.Transparent;
+            this._transpCtrl.Location = new System.Drawing.Point(0, 0);
+            this._transpCtrl.Name = "_transpCtrl";
+            this._transpCtrl.Opacity = 100;
+            this._transpCtrl.Size = new System.Drawing.Size(640, 400);
+            this._transpCtrl.TabIndex = 7;
+            this._transpCtrl.Text = "transpCtrl1";
+            this._transpCtrl.MouseDown += new System.Windows.Forms.MouseEventHandler(this._transpCtrl_MouseDown);
+            // 
+            // _transpCtrl2
+            // 
+            this._transpCtrl2.BackColor = System.Drawing.Color.Transparent;
+            this._transpCtrl2.Location = new System.Drawing.Point(0, 0);
+            this._transpCtrl2.Name = "_transpCtrl2";
+            this._transpCtrl2.Opacity = 100;
+            this._transpCtrl2.Size = new System.Drawing.Size(640, 400);
+            this._transpCtrl2.TabIndex = 7;
+            this._transpCtrl2.Text = "transpCtrl1";
+            this._transpCtrl2.MouseDown += new System.Windows.Forms.MouseEventHandler(this._transpCtrl2_MouseDown);
+            // 
+            // _transpCtrl3
+            // 
+            this._transpCtrl3.BackColor = System.Drawing.Color.Transparent;
+            this._transpCtrl3.Location = new System.Drawing.Point(0, 0);
+            this._transpCtrl3.Name = "_transpCtrl3";
+            this._transpCtrl3.Opacity = 100;
+            this._transpCtrl3.Size = new System.Drawing.Size(640, 400);
+            this._transpCtrl3.TabIndex = 7;
+            this._transpCtrl3.Text = "transpCtrl1";
+            this._transpCtrl3.MouseDown += new System.Windows.Forms.MouseEventHandler(this._transpCtrl3_MouseDown);
             // 
             // frmMain
             // 
