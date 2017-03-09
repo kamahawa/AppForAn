@@ -40,16 +40,16 @@ namespace CameraApp.Help
                     worksheetBia1.Cells[1, 3] = "Lượt 2";
                     worksheetBia1.Cells[1, 4] = "Lượt 3";
                     worksheetBia1.Cells[1, 5] = "Tổng";
-
                     for (int i = 0; i <= dtBia1.Rows.Count - 1; i++)
                     {
-                        for (int j = 0; j <= dtBia1.Columns.Count - 1; j++)
+                        // tru them 2 cot tong diem va xep loai nen la -3
+                        for (int j = 0; j <= dtBia1.Columns.Count - 3; j++)
                         {
                             string data = dtBia1.Rows[i].ItemArray[j].ToString();
                             // table excel bat dau tu 1 nen phai +1 so vs table C#
                             worksheetBia1.Cells[i + 1 + 1, j + 1] = data;
                             //cong tong diem, j = 0 la ten
-                            if(j > 0 && j < dtBia3.Columns.Count - 1)
+                            if(j > 0 && j < dtBia3.Columns.Count - 3)
                             {
                                 try
                                 {
@@ -72,12 +72,13 @@ namespace CameraApp.Help
                     worksheetBia2.Cells[1, 5] = "Tổng";
                     for (int i = 0; i <= dtBia2.Rows.Count - 1; i++)
                     {
-                        for (int j = 0; j <= dtBia2.Columns.Count - 1; j++)
+                        // tru them 2 cot tong diem va xep loai nen la -3
+                        for (int j = 0; j <= dtBia2.Columns.Count - 3; j++)
                         {
                             string data = dtBia2.Rows[i].ItemArray[j].ToString();
                             worksheetBia2.Cells[i + 1 + 1, j + 1] = data;
                             //cong tong diem, j = 0 la ten
-                            if (j > 0 && j < dtBia3.Columns.Count - 1)
+                            if (j > 0 && j < dtBia3.Columns.Count - 3)
                             {
                                 try
                                 {
@@ -100,12 +101,13 @@ namespace CameraApp.Help
                     worksheetBia3.Cells[1, 5] = "Tổng";
                     for (int i = 0; i <= dtBia3.Rows.Count - 1; i++)
                     {
-                        for (int j = 0; j <= dtBia3.Columns.Count - 1; j++)
+                        // tru them 2 cot tong diem va xep loai nen la -3
+                        for (int j = 0; j <= dtBia3.Columns.Count - 3; j++)
                         {
                             string data = dtBia3.Rows[i].ItemArray[j].ToString();
                             worksheetBia3.Cells[i + 1 + 1, j + 1] = data;
-                            //cong tong diem, j = 0 : la ten, j = dtBia3.Columns.Count - 1 : la tong diem
-                            if (j > 0 && j < dtBia3.Columns.Count - 1)
+                            //cong tong diem, j = 0 : la ten, j = dtBia3.Columns.Count - 3 : la tong diem
+                            if (j > 0 && j < dtBia3.Columns.Count - 3)
                             {
                                 try
                                 {
@@ -222,28 +224,32 @@ namespace CameraApp.Help
                 while (((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 1]).Value2 != null)
                 {
                     rowIndex = 2 + index;
-                    string value = Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 1]).Value2);
-                    if (value != "")
+                    Excel.Range range = (Excel.Range)workSheet.Cells[rowIndex, 1];
+                    string value = range.Value2.ToString();//Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 1]).Value2);
+                    
+                    if (!value.Equals(""))
                     {
                         DataRow row;
                         row = dt.NewRow();
-                        row[0] = Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 1]).Value2);
+                        row[0] = value;// Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 1]).Value2);
                         row[1] = "";//Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 2]).Value2);
                         row[2] = "";//Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 3]).Value2);
                         row[3] = "";//Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 4]).Value2);
                         row[4] = "";//Convert.ToString(((Microsoft.Office.Interop.Excel.Range)workSheet.Cells[rowIndex, 5]).Value2);
                         row[5] = "";
                         row[6] = "";
-                        index++;
                         dt.Rows.Add(row);
                     }
+                    index++;
                 }
                 app.Workbooks.Close();
                 releaseObject(workBook);
                 releaseObject(app);
             }
             catch (Exception ex)
-            { }
+            {
+                Console.WriteLine(ex.Message);
+            }
             return dt;
         }
 

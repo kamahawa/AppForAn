@@ -173,8 +173,13 @@ namespace CameraApp
             //ShowScore(ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, 1);
         }
 
-        private void _transpCtrl_MouseUp(object sender, MouseEventArgs e)
+        private void _transpCtrl_MouseDown(object sender, MouseEventArgs e)
         {
+            //neu chua co danh sach thi khong cho click
+            if(_dtgScore.DataSource == null)
+            {
+                return;
+            }
             addShotIcon(e.X, e.Y, _panCam);
             XuLyBe1(e.X, e.Y);
         }
@@ -278,8 +283,13 @@ namespace CameraApp
             ChamDiem(0, ref luotBia2, ref currentMemberBia2, _dtgScore2, _lblName2, _lblScore2, 2);
         }
 
-        private void _transpCtrl2_MouseUp(object sender, MouseEventArgs e)
+        private void _transpCtrl2_MouseDown(object sender, MouseEventArgs e)
         {
+            //neu chua co danh sach thi khong cho click
+            if (_dtgScore2.DataSource == null)
+            {
+                return;
+            }
             addShotIcon(e.X, e.Y, _panCam2);
             XuLyBe2(e.X, e.Y);
         }
@@ -415,8 +425,13 @@ namespace CameraApp
             ChamDiem(0, ref luotBia3, ref currentMemberBia3, _dtgScore3, _lblName3, _lblScore3, 3);
         }
 
-        private void _transpCtrl3_MouseUp(object sender, MouseEventArgs e)
+        private void _transpCtrl3_MouseDown(object sender, MouseEventArgs e)
         {
+            //neu chua co danh sach thi khong cho click
+            if (_dtgScore3.DataSource == null)
+            {
+                return;
+            }
             addShotIcon(e.X, e.Y, _panCam3);
             XuLyBe3(e.X, e.Y);
         }
