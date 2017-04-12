@@ -36,9 +36,6 @@
             this.đổiTênFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nhậpĐịaChỉCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tùyChọnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.biaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.biaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.vềPhầnMềmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bảnQuyềnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngKýToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -123,7 +120,6 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.tùyChọnToolStripMenuItem,
             this.vềPhầnMềmToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -177,27 +173,6 @@
             this.thoátToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.thoátToolStripMenuItem.Text = "Thoát";
             this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click);
-            // 
-            // tùyChọnToolStripMenuItem
-            // 
-            this.tùyChọnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.biaToolStripMenuItem,
-            this.biaToolStripMenuItem1});
-            this.tùyChọnToolStripMenuItem.Name = "tùyChọnToolStripMenuItem";
-            this.tùyChọnToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.tùyChọnToolStripMenuItem.Text = "Tùy chọn";
-            // 
-            // biaToolStripMenuItem
-            // 
-            this.biaToolStripMenuItem.Name = "biaToolStripMenuItem";
-            this.biaToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-            this.biaToolStripMenuItem.Text = "1 bia";
-            // 
-            // biaToolStripMenuItem1
-            // 
-            this.biaToolStripMenuItem1.Name = "biaToolStripMenuItem1";
-            this.biaToolStripMenuItem1.Size = new System.Drawing.Size(99, 22);
-            this.biaToolStripMenuItem1.Text = "3 bia";
             // 
             // vềPhầnMềmToolStripMenuItem
             // 
@@ -787,6 +762,7 @@
             this.ClientSize = new System.Drawing.Size(1304, 631);
             this.Controls.Add(this._tabControl);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1320, 670);
             this.Name = "frmMain";
@@ -851,9 +827,6 @@
         private System.Windows.Forms.Button _btnMiss;
         private System.Windows.Forms.ToolStripMenuItem nhậpĐịaChỉCameraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đổiTênFormToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tùyChọnToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem biaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem biaToolStripMenuItem1;
         private System.Windows.Forms.TabControl _tabControl;
         private System.Windows.Forms.TabPage _tabBia4;
         private System.Windows.Forms.TabPage _tabBia7;

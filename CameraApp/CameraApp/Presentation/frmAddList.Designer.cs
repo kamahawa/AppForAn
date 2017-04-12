@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddList));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this._btnImport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -58,6 +59,7 @@
             this.ClientSize = new System.Drawing.Size(949, 576);
             this.Controls.Add(this._btnImport);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddList";
             this.Text = "Nhập danh sách";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

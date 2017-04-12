@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConfigCamera));
             this._lblName = new System.Windows.Forms.Label();
             this._txtUrlCamera = new System.Windows.Forms.TextBox();
             this._btnOk = new System.Windows.Forms.Button();
@@ -120,6 +121,7 @@
             this.Controls.Add(this._btnOk);
             this.Controls.Add(this._txtUrlCamera);
             this.Controls.Add(this._lblName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(620, 170);
             this.MinimizeBox = false;
