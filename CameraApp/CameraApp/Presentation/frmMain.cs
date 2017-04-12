@@ -12,6 +12,7 @@ using System.Threading;
 using CameraApp.Business;
 using System.Drawing.Imaging;
 using FoxLearn.License;
+using WebEye;
 
 namespace CameraApp
 {
@@ -24,6 +25,7 @@ namespace CameraApp
         //"http://68.114.48.220:80/videostream.cgi?user=admin&pwd=";
         //"rtsp://192.168.1.12:533/user=admin&password=&channel=1&stream=0.sdp?real_stream--rtp-caching=100";
         //"rtsp://192.168.1.199:554/user=admin&password=&channel=3&stream=0.sdp?real_stream--rtp-caching=100";
+        //rtsp://mpv.cdn3.bigCDN.com:554/bigCDN/definst/mp4:bigbuckbunnyiphone_400.mp4
         public static string[] urlCamera = new string[3];
         
         //luot ban
@@ -81,93 +83,7 @@ namespace CameraApp
             LoadCamera();
         }
 
-        #region be so 1
-        private void _btnGetCenter_Click(object sender, EventArgs e)
-        {
-            /*
-            
-            double h = _ptbCamera.Height;//578 is real height
-            double w = _ptbCamera.Width;//928 is real widht
-
-            double _widthDistort = 400; // do rong se luu anh moi
-            double _heightDistort = 400; // do dai se luu anh moi
-
-            //bitmap xu ly anh
-            Bitmap bm, bm1;
-
-            using (MagickImage image = new MagickImage("bia.png"))
-            {
-                image.VirtualPixelMethod = VirtualPixelMethod.Tile;
-                //224,134,  0,0,  416,133,  500,0,  204,333,  0,h,  438,334,  500,h
-                double[] args =
-                {
-                    285,85, // toa do diem dau can chuyen
-                    0,0, // toa do dat diem dau tien
-
-                    646,85, // toa do diem 2 can chuyen
-                    _widthDistort,0, // toa do dat diem 2
-                    
-                    238,483, // toa do diem 3 can chuyen
-                    0,_heightDistort, // toa do dat diem 3
-
-                    689,484, // toa do diem 4 can chuyen
-                    _widthDistort,_heightDistort // toa do dat diem 4
-                };
-
-                image.Distort(DistortMethod.Perspective, args);
-                image.Crop((int)_widthDistort, (int)_heightDistort, Gravity.Northwest);
-                //image.Write("D:\\test.png");
-
-                bm = image.ToBitmap();
-                
-                
-            }
-
-            using (MagickImage image = new MagickImage("bia1.png"))
-            {
-                image.VirtualPixelMethod = VirtualPixelMethod.Tile;
-                //224,134,  0,0,  416,133,  500,0,  204,333,  0,h,  438,334,  500,h
-                double[] args =
-                {
-                    285,85, // toa do diem dau can chuyen
-                    0,0, // toa do dat diem dau tien
-
-                    646,85, // toa do diem 2 can chuyen
-                    _widthDistort,0, // toa do dat diem 2
-                    
-                    238,483, // toa do diem 3 can chuyen
-                    0,_heightDistort, // toa do dat diem 3
-
-                    689,484, // toa do diem 4 can chuyen
-                    _widthDistort,_heightDistort // toa do dat diem 4
-                };
-
-                image.Distort(DistortMethod.Perspective, args);
-                image.Crop((int)_widthDistort, (int)_heightDistort, Gravity.Northwest);
-
-                bm1 = image.ToBitmap();                
-            }
-
-
-            ProcessImage pi = new ProcessImage(bm);
-            //xu ly anh
-            pi.Process();
-            //anh tra ve
-            bm = pi.Result();
-            _ptbCamera.Image = bm;
-
-            ProcessImage pi1 = new ProcessImage(bm1);
-            //xu ly anh
-            pi1.Process();
-            //anh tra ve
-            bm1 = pi1.Result();
-
-
-            //_ptbShow.Image = ProcessImage.Compare(bm,bm1);
-            MessageBox.Show(ProcessImage.diem.ToString());
-            */
-        }
-
+        #region be so 1        
         private void _btnScore_Click(object sender, EventArgs e)
         {
             //ShowScore(ref luotBia1, ref currentMemberBia1, _dtgScore, _lblName, _lblScore, 1);
@@ -177,7 +93,6 @@ namespace CameraApp
                 PictureBox control = _panCam.Controls[i] as PictureBox;
                 if (control == null)
                     continue;
-
                 control.Dispose();
             }
         }
@@ -196,17 +111,20 @@ namespace CameraApp
         
         private void XuLyBe1(int x, int y)
         {
-            Bitmap bitmap = Properties.Resources.bia4_8;
+            Bitmap bmResize = ProcessImage.ResizeImage(Properties.Resources.bia4_8, _ptbCamera.Width, _ptbCamera.Height);
+            Bitmap bitmap = bmResize;// Properties.Resources.bia4_8;
             int be = 1;// ban o be so 1
             Color c = bitmap.GetPixel(x, y);
             //dung thuat toan quicksort
             if (c.ToArgb().Equals(Color.Red.ToArgb()))
             {
-                bitmap = Properties.Resources.bia4_9;
+                bmResize = ProcessImage.ResizeImage(Properties.Resources.bia4_9, _ptbCamera.Width, _ptbCamera.Height);
+                bitmap = bmResize;//Properties.Resources.bia4_9;
                 c = bitmap.GetPixel(x, y);
                 if (c.ToArgb().Equals(Color.Red.ToArgb()))
                 {
-                    bitmap = Properties.Resources.bia4_10;
+                    bmResize = ProcessImage.ResizeImage(Properties.Resources.bia4_10, _ptbCamera.Width, _ptbCamera.Height);
+                    bitmap = bmResize;//Properties.Resources.bia4_10;
                     c = bitmap.GetPixel(x, y);
                     // neu nam o tam 10 thi la 10, khong la 9
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
@@ -232,11 +150,13 @@ namespace CameraApp
             }
             else
             {
-                bitmap = Properties.Resources.bia4_6;
+                bmResize = ProcessImage.ResizeImage(Properties.Resources.bia4_6, _ptbCamera.Width, _ptbCamera.Height);
+                bitmap = bmResize;//Properties.Resources.bia4_6;
                 c = bitmap.GetPixel(x, y);
                 if (c.ToArgb().Equals(Color.Red.ToArgb()))
                 {
-                    bitmap = Properties.Resources.bia4_7;
+                    bmResize = ProcessImage.ResizeImage(Properties.Resources.bia4_7, _ptbCamera.Width, _ptbCamera.Height);
+                    bitmap = bmResize;//Properties.Resources.bia4_7;
                     c = bitmap.GetPixel(x, y);
                     // neu nam o tam 7 thi la 7, khong la 6
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
@@ -254,7 +174,8 @@ namespace CameraApp
                 }
                 else
                 {
-                    bitmap = Properties.Resources.bia4_5;
+                    bmResize = ProcessImage.ResizeImage(Properties.Resources.bia4_5, _ptbCamera.Width, _ptbCamera.Height);
+                    bitmap = bmResize;//Properties.Resources.bia4_5;
                     c = bitmap.GetPixel(x, y);
                     //neu nam o trong 5 thi la 5, con o ngoai la truot
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
@@ -314,21 +235,21 @@ namespace CameraApp
 
         private void XuLyBe2(int x, int y)
         {
-            Bitmap bitmap = Properties.Resources.bia7_5;
+            Bitmap bitmap = ProcessImage.ResizeImage(Properties.Resources.bia7_5, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia7_5;
             int be = 2;// ban o be so 2
             Color c = bitmap.GetPixel(x, y);
             //dung thuat toan quicksort
             if (c.ToArgb().Equals(Color.Red.ToArgb()))
             {
-                bitmap = Properties.Resources.bia7_8;
+                bitmap = ProcessImage.ResizeImage(Properties.Resources.bia7_8, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia7_8;
                 c = bitmap.GetPixel(x, y);
                 if (c.ToArgb().Equals(Color.Red.ToArgb()))
                 {
-                    bitmap = Properties.Resources.bia7_9;
+                    bitmap = ProcessImage.ResizeImage(Properties.Resources.bia7_9, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia7_9;
                     c = bitmap.GetPixel(x, y);
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        bitmap = Properties.Resources.bia7_10;
+                        bitmap = ProcessImage.ResizeImage(Properties.Resources.bia7_10, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia7_10;
                         c = bitmap.GetPixel(x, y);
                         if (c.ToArgb().Equals(Color.Red.ToArgb()))
                         {
@@ -351,11 +272,11 @@ namespace CameraApp
                 }
                 else
                 {
-                    bitmap = Properties.Resources.bia7_6;
+                    bitmap = ProcessImage.ResizeImage(Properties.Resources.bia7_6, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia7_6;
                     c = bitmap.GetPixel(x, y);
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        bitmap = Properties.Resources.bia7_7;
+                        bitmap = ProcessImage.ResizeImage(Properties.Resources.bia7_7, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia7_7;
                         c = bitmap.GetPixel(x, y);
                         if (c.ToArgb().Equals(Color.Red.ToArgb()))
                         {
@@ -380,11 +301,11 @@ namespace CameraApp
             }
             else
             {
-                bitmap = Properties.Resources.bia7_3;
+                bitmap = ProcessImage.ResizeImage(Properties.Resources.bia7_3, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia7_3;
                 c = bitmap.GetPixel(x, y);
                 if (c.ToArgb().Equals(Color.Red.ToArgb()))
                 {
-                    bitmap = Properties.Resources.bia7_4;
+                    bitmap = ProcessImage.ResizeImage(Properties.Resources.bia7_4, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia7_4;
                     c = bitmap.GetPixel(x, y);
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
@@ -401,11 +322,11 @@ namespace CameraApp
                 }
                 else
                 {
-                    bitmap = Properties.Resources.bia7_1;
+                    bitmap = ProcessImage.ResizeImage(Properties.Resources.bia7_1, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia7_1;
                     c = bitmap.GetPixel(x, y);
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        bitmap = Properties.Resources.bia7_2;
+                        bitmap = ProcessImage.ResizeImage(Properties.Resources.bia7_2, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia7_2;
                         c = bitmap.GetPixel(x, y);
                         if (c.ToArgb().Equals(Color.Red.ToArgb()))
                         {
@@ -465,21 +386,21 @@ namespace CameraApp
 
         private void XuLyBe3(int x, int y)
         {
-            Bitmap bitmap = Properties.Resources.bia8_5;
+            Bitmap bitmap = ProcessImage.ResizeImage(Properties.Resources.bia8_5, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia8_5;
             int be = 3;// ban o be so 3
             Color c = bitmap.GetPixel(x, y);
             //dung thuat toan quicksort
             if (c.ToArgb().Equals(Color.Red.ToArgb()))
             {
-                bitmap = Properties.Resources.bia8_8;
+                bitmap = ProcessImage.ResizeImage(Properties.Resources.bia8_8, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia8_8;
                 c = bitmap.GetPixel(x, y);
                 if (c.ToArgb().Equals(Color.Red.ToArgb()))
                 {
-                    bitmap = Properties.Resources.bia8_9;
+                    bitmap = ProcessImage.ResizeImage(Properties.Resources.bia8_9, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia8_9;
                     c = bitmap.GetPixel(x, y);
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        bitmap = Properties.Resources.bia8_10;
+                        bitmap = ProcessImage.ResizeImage(Properties.Resources.bia8_10, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia8_10;
                         c = bitmap.GetPixel(x, y);
                         if (c.ToArgb().Equals(Color.Red.ToArgb()))
                         {
@@ -502,11 +423,11 @@ namespace CameraApp
                 }
                 else
                 {
-                    bitmap = Properties.Resources.bia8_6;
+                    bitmap = ProcessImage.ResizeImage(Properties.Resources.bia8_6, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia8_6;
                     c = bitmap.GetPixel(x, y);
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        bitmap = Properties.Resources.bia8_7;
+                        bitmap = ProcessImage.ResizeImage(Properties.Resources.bia8_7, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia8_7;
                         c = bitmap.GetPixel(x, y);
                         if (c.ToArgb().Equals(Color.Red.ToArgb()))
                         {
@@ -531,11 +452,11 @@ namespace CameraApp
             }
             else
             {
-                bitmap = Properties.Resources.bia8_3;
+                bitmap = ProcessImage.ResizeImage(Properties.Resources.bia8_3, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia8_3;
                 c = bitmap.GetPixel(x, y);
                 if (c.ToArgb().Equals(Color.Red.ToArgb()))
                 {
-                    bitmap = Properties.Resources.bia8_4;
+                    bitmap = ProcessImage.ResizeImage(Properties.Resources.bia8_4, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia8_4;
                     c = bitmap.GetPixel(x, y);
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
@@ -552,11 +473,11 @@ namespace CameraApp
                 }
                 else
                 {
-                    bitmap = Properties.Resources.bia8_1;
+                    bitmap = ProcessImage.ResizeImage(Properties.Resources.bia8_1, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia8_1;
                     c = bitmap.GetPixel(x, y);
                     if (c.ToArgb().Equals(Color.Red.ToArgb()))
                     {
-                        bitmap = Properties.Resources.bia8_2;
+                        bitmap = ProcessImage.ResizeImage(Properties.Resources.bia8_2, _ptbCamera.Width, _ptbCamera.Height);//Properties.Resources.bia8_2;
                         c = bitmap.GetPixel(x, y);
                         if (c.ToArgb().Equals(Color.Red.ToArgb()))
                         {
@@ -583,14 +504,7 @@ namespace CameraApp
         #endregion
 
         #region xu ly cham diem
-
-        private void ShowPictureCrop(AxVLCPlugin2 vlc, PictureBox picCamera)
-        {
-            vlc.video.takeSnapshot();
-            
-            picCamera.Image = Image.FromFile("CAXVLC24C0S1.bmp");
-        }
-
+        
         private void addShotIcon(int x, int y, Panel panCam)
         {
             PictureBox px = new PictureBox();
@@ -617,44 +531,9 @@ namespace CameraApp
                 tong3Bia[currentMember] += diem;
                 //dt.Rows[currentMember][5] = tong3Bia[currentMember];
                 //set tong diem
-                setTongDiem3Bia(currentMember);                
+                setTongDiem3Bia(currentMember);
 
-                switch (diem)
-                {
-                    case 0:
-                        playSound(@"ScoreSound\0_diem.wav");
-                        break;
-                    case 1:
-                        playSound(@"ScoreSound\1_diem.wav");
-                        break;
-                    case 2:
-                        playSound(@"ScoreSound\2_diem.wav");
-                        break;
-                    case 3:
-                        playSound(@"ScoreSound\3_diem.wav");
-                        break;
-                    case 4:
-                        playSound(@"ScoreSound\4_diem.wav");
-                        break;
-                    case 5:
-                        playSound(@"ScoreSound\5_diem.wav");
-                        break;
-                    case 6:
-                        playSound(@"ScoreSound\6_diem.wav");
-                        break;
-                    case 7:
-                        playSound(@"ScoreSound\7_diem.wav");
-                        break;
-                    case 8:
-                        playSound(@"ScoreSound\8_diem.wav");
-                        break;
-                    case 9:
-                        playSound(@"ScoreSound\9_diem.wav");
-                        break;
-                    case 10:
-                        playSound(@"ScoreSound\10_diem.wav");
-                        break;
-                }
+                docDiem(diem);
 
                 if (luot == 3)
                 {
@@ -703,120 +582,230 @@ namespace CameraApp
             //neu la o be nao thi phat len tong o be do
             if (be == 1)
             {
-                playSound(@"ScoreSound\Tong_diem_be_so_1_la.wav");
+                //playSound(@"ScoreSound\Tong_diem_be_so_1_la.wav");
+                playSound(Properties.Resources.Tong_diem_be_so_1_la);
             }
             else if (be == 2)
             {
-                playSound(@"ScoreSound\Tong_diem_be_so_2_la.wav");
+                //playSound(@"ScoreSound\Tong_diem_be_so_2_la.wav");
+                playSound(Properties.Resources.Tong_diem_be_so_2_la);
             }
             else if (be == 3)
             {
-                playSound(@"ScoreSound\Tong_diem_be_so_3_la.wav");
+                //playSound(@"ScoreSound\Tong_diem_be_so_3_la.wav");
+                playSound(Properties.Resources.Tong_diem_be_so_3_la);
             }
             //nghi 2 giay de doc so diem o luot tong diem be
             Thread.Sleep(2000);
-            switch (tong)
-            {
-                case 0:
-                    playSound(@"ScoreSound\0_diem.wav");
-                    break;
-                case 1:
-                    playSound(@"ScoreSound\1_diem.wav");
-                    break;
-                case 2:
-                    playSound(@"ScoreSound\2_diem.wav");
-                    break;
-                case 3:
-                    playSound(@"ScoreSound\3_diem.wav");
-                    break;
-                case 4:
-                    playSound(@"ScoreSound\4_diem.wav");
-                    break;
-                case 5:
-                    playSound(@"ScoreSound\5_diem.wav");
-                    break;
-                case 6:
-                    playSound(@"ScoreSound\6_diem.wav");
-                    break;
-                case 7:
-                    playSound(@"ScoreSound\7_diem.wav");
-                    break;
-                case 8:
-                    playSound(@"ScoreSound\8_diem.wav");
-                    break;
-                case 9:
-                    playSound(@"ScoreSound\9_diem.wav");
-                    break;
-                case 10:
-                    playSound(@"ScoreSound\10_diem.wav");
-                    break;
-                case 11:
-                    playSound(@"ScoreSound\11_diem.wav");
-                    break;
-                case 12:
-                    playSound(@"ScoreSound\12_diem.wav");
-                    break;
-                case 13:
-                    playSound(@"ScoreSound\13_diem.wav");
-                    break;
-                case 14:
-                    playSound(@"ScoreSound\14_diem.wav");
-                    break;
-                case 15:
-                    playSound(@"ScoreSound\15_diem.wav");
-                    break;
-                case 16:
-                    playSound(@"ScoreSound\16_diem.wav");
-                    break;
-                case 17:
-                    playSound(@"ScoreSound\17_diem.wav");
-                    break;
-                case 18:
-                    playSound(@"ScoreSound\18_diem.wav");
-                    break;
-                case 19:
-                    playSound(@"ScoreSound\19_diem.wav");
-                    break;
-                case 20:
-                    playSound(@"ScoreSound\20_diem.wav");
-                    break;
-                case 21:
-                    playSound(@"ScoreSound\21_diem.wav");
-                    break;
-                case 22:
-                    playSound(@"ScoreSound\22_diem.wav");
-                    break;
-                case 23:
-                    playSound(@"ScoreSound\23_diem.wav");
-                    break;
-                case 24:
-                    playSound(@"ScoreSound\24_diem.wav");
-                    break;
-                case 25:
-                    playSound(@"ScoreSound\25_diem.wav");
-                    break;
-                case 26:
-                    playSound(@"ScoreSound\26_diem.wav");
-                    break;
-                case 27:
-                    playSound(@"ScoreSound\27_diem.wav");
-                    break;
-                case 28:
-                    playSound(@"ScoreSound\28_diem.wav");
-                    break;
-                case 29:
-                    playSound(@"ScoreSound\29_diem.wav");
-                    break;
-                case 30:
-                    playSound(@"ScoreSound\30_diem.wav");
-                    break;
-            }
+            docDiem(tong);            
         }
 
         private void playSound(string fileName)
         {
             SoundPlayer simpleSound = new SoundPlayer(fileName);
             simpleSound.Play();
+        }
+
+        private void playSound(Stream file)
+        {
+            SoundPlayer simpleSound = new SoundPlayer(file);
+            simpleSound.Play();
+        }
+
+        private void docDiem(int diem)
+        {
+            switch (diem)
+            {
+                case 0:
+                    playSound(Properties.Resources._0_diem);
+                    break;
+                case 1:
+                    playSound(Properties.Resources._1_diem);
+                    break;
+                case 2:
+                    playSound(Properties.Resources._2_diem);
+                    break;
+                case 3:
+                    playSound(Properties.Resources._3_diem);
+                    break;
+                case 4:
+                    playSound(Properties.Resources._4_diem);
+                    break;
+                case 5:
+                    playSound(Properties.Resources._5_diem);
+                    break;
+                case 6:
+                    playSound(Properties.Resources._6_diem);
+                    break;
+                case 7:
+                    playSound(Properties.Resources._7_diem);
+                    break;
+                case 8:
+                    playSound(Properties.Resources._8_diem);
+                    break;
+                case 9:
+                    playSound(Properties.Resources._9_diem);
+                    break;
+                case 10:
+                    playSound(Properties.Resources._10_diem);
+                    break;
+                case 11:
+                    playSound(Properties.Resources._11_diem);
+                    break;
+                case 12:
+                    playSound(Properties.Resources._12_diem);
+                    break;
+                case 13:
+                    playSound(Properties.Resources._13_diem);
+                    break;
+                case 14:
+                    playSound(Properties.Resources._14_diem);
+                    break;
+                case 15:
+                    playSound(Properties.Resources._15_diem);
+                    break;
+                case 16:
+                    playSound(Properties.Resources._16_diem);
+                    break;
+                case 17:
+                    playSound(Properties.Resources._17_diem);
+                    break;
+                case 18:
+                    playSound(Properties.Resources._18_diem);
+                    break;
+                case 19:
+                    playSound(Properties.Resources._19_diem);
+                    break;
+                case 20:
+                    playSound(Properties.Resources._20_diem);
+                    break;
+                case 21:
+                    playSound(Properties.Resources._21_diem);
+                    break;
+                case 22:
+                    playSound(Properties.Resources._22_diem);
+                    break;
+                case 23:
+                    playSound(Properties.Resources._23_diem);
+                    break;
+                case 24:
+                    playSound(Properties.Resources._24_diem);
+                    break;
+                case 25:
+                    playSound(Properties.Resources._25_diem);
+                    break;
+                case 26:
+                    playSound(Properties.Resources._26_diem);
+                    break;
+                case 27:
+                    playSound(Properties.Resources._27_diem);
+                    break;
+                case 28:
+                    playSound(Properties.Resources._28_diem);
+                    break;
+                case 29:
+                    playSound(Properties.Resources._29_diem);
+                    break;
+                case 30:
+                    playSound(Properties.Resources._30_diem);
+                    break;
+                    /*
+                    case 0:
+                        playSound(@"ScoreSound\0_diem.wav");
+                        break;
+                    case 1:
+                        playSound(@"ScoreSound\1_diem.wav");
+                        break;
+                    case 2:
+                        playSound(@"ScoreSound\2_diem.wav");
+                        break;
+                    case 3:
+                        playSound(@"ScoreSound\3_diem.wav");
+                        break;
+                    case 4:
+                        playSound(@"ScoreSound\4_diem.wav");
+                        break;
+                    case 5:
+                        playSound(@"ScoreSound\5_diem.wav");
+                        break;
+                    case 6:
+                        playSound(@"ScoreSound\6_diem.wav");
+                        break;
+                    case 7:
+                        playSound(@"ScoreSound\7_diem.wav");
+                        break;
+                    case 8:
+                        playSound(@"ScoreSound\8_diem.wav");
+                        break;
+                    case 9:
+                        playSound(@"ScoreSound\9_diem.wav");
+                        break;
+                    case 10:
+                        playSound(@"ScoreSound\10_diem.wav");
+                        break;
+                    case 11:
+                        playSound(@"ScoreSound\11_diem.wav");
+                        break;
+                    case 12:
+                        playSound(@"ScoreSound\12_diem.wav");
+                        break;
+                    case 13:
+                        playSound(@"ScoreSound\13_diem.wav");
+                        break;
+                    case 14:
+                        playSound(@"ScoreSound\14_diem.wav");
+                        break;
+                    case 15:
+                        playSound(@"ScoreSound\15_diem.wav");
+                        break;
+                    case 16:
+                        playSound(@"ScoreSound\16_diem.wav");
+                        break;
+                    case 17:
+                        playSound(@"ScoreSound\17_diem.wav");
+                        break;
+                    case 18:
+                        playSound(@"ScoreSound\18_diem.wav");
+                        break;
+                    case 19:
+                        playSound(@"ScoreSound\19_diem.wav");
+                        break;
+                    case 20:
+                        playSound(@"ScoreSound\20_diem.wav");
+                        break;
+                    case 21:
+                        playSound(@"ScoreSound\21_diem.wav");
+                        break;
+                    case 22:
+                        playSound(@"ScoreSound\22_diem.wav");
+                        break;
+                    case 23:
+                        playSound(@"ScoreSound\23_diem.wav");
+                        break;
+                    case 24:
+                        playSound(@"ScoreSound\24_diem.wav");
+                        break;
+                    case 25:
+                        playSound(@"ScoreSound\25_diem.wav");
+                        break;
+                    case 26:
+                        playSound(@"ScoreSound\26_diem.wav");
+                        break;
+                    case 27:
+                        playSound(@"ScoreSound\27_diem.wav");
+                        break;
+                    case 28:
+                        playSound(@"ScoreSound\28_diem.wav");
+                        break;
+                    case 29:
+                        playSound(@"ScoreSound\29_diem.wav");
+                        break;
+                    case 30:
+                        playSound(@"ScoreSound\30_diem.wav");
+                        break;
+
+                */
+            }
         }
 
         private void setTongDiem3Bia(int currentMember)
@@ -871,14 +860,9 @@ namespace CameraApp
                 MessageBox.Show("Get stream fail. Please try again later");
             }
             */
-            /*
-            if (axVLCPlugin21.playlist.isPlaying)
-            { 
-                axVLCPlugin21.playlist.stop();
-            }
-            */
             try
             {
+                /*
                 if (urlCamera[0] != "")
                 {
                     _vlc.playlist.add(urlCamera[0], null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
@@ -893,6 +877,37 @@ namespace CameraApp
                 {
                     _vlc2.playlist.add(urlCamera[2], null, ":sout=#transcode{vcodec=theo,vb=800,acodec=flac,ab=128,channels=2,samplerate=44100}:file{dst=C:\\123.ogg,no-overwrite} :sout-keep");
                     _vlc2.playlist.next();
+                }
+                */
+                if (urlCamera[0] != "")
+                {
+                    var uri = new Uri(urlCamera[0]);
+                    _spcCamera.StartPlay(uri, TimeSpan.FromSeconds(15.0));
+                    _toolStripLabel.Text = "Camera đang kết nối...";
+                }
+                else
+                {
+                    _toolStripLabel.Text = "Vui lòng nhập đường dẫn cho camera số 1";
+                }
+                if (urlCamera[1] != "")
+                {
+                    var uri = new Uri(urlCamera[1]);
+                    _spcCamera1.StartPlay(uri, TimeSpan.FromSeconds(15.0));
+                    _toolStripLabel1.Text = "Camera đang kết nối...";
+                }
+                else
+                {
+                    _toolStripLabel1.Text = "Vui lòng nhập đường dẫn cho camera số 2";
+                }
+                if (urlCamera[2] != "")
+                {
+                    var uri = new Uri(urlCamera[2]);
+                    _spcCamera2.StartPlay(uri, TimeSpan.FromSeconds(15.0));
+                    _toolStripLabel2.Text = "Camera đang kết nối...";
+                }
+                else
+                {
+                    _toolStripLabel2.Text = "Vui lòng nhập đường dẫn cho camera số 3";
                 }
             }
             catch
@@ -1039,16 +1054,66 @@ namespace CameraApp
             }
         }
 
-        private void biaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void _btnConnect_Click(object sender, EventArgs e)
         {
-            
+            var uri = new Uri(urlCamera[0]);
+            _spcCamera.StartPlay(uri, TimeSpan.FromSeconds(15.0));
+            _toolStripLabel.Text = "Camera đang kết nối...";
         }
 
-        private void biaToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void _btnConnect1_Click(object sender, EventArgs e)
         {
-
+            var uri = new Uri(urlCamera[1]);
+            _spcCamera1.StartPlay(uri, TimeSpan.FromSeconds(15.0));
+            _toolStripLabel1.Text = "Camera đang kết nối...";
         }
-        
+
+        private void _btnConnect2_Click(object sender, EventArgs e)
+        {
+            var uri = new Uri(urlCamera[2]);
+            _spcCamera2.StartPlay(uri, TimeSpan.FromSeconds(15.0));
+            _toolStripLabel2.Text = "Camera đang kết nối...";
+        }
+
+        private void HandleStreamStartedEvent(object sender, EventArgs e)
+        {
+            _toolStripLabel.Text = "Camera đang chạy";
+            _btnConnect.Enabled = false;
+        }
+
+        private void HandleStreamFailedEvent(object sender, StreamFailedEventArgs e)
+        {
+            _toolStripLabel.Text = "Camera kết nối thất bại";
+            //MessageBox.Show(e.Error, "Stream Player Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            _btnConnect.Enabled = true;
+        }
+
+        private void HandleStreamStartedEvent1(object sender, EventArgs e)
+        {
+            _toolStripLabel1.Text = "Camera đang chạy";
+            _btnConnect1.Enabled = false;
+        }
+
+        private void HandleStreamFailedEvent1(object sender, StreamFailedEventArgs e)
+        {
+            _toolStripLabel1.Text = "Camera kết nối thất bại";
+            //MessageBox.Show(e.Error, "Stream Player Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            _btnConnect1.Enabled = true;
+        }
+
+        private void HandleStreamStartedEvent2(object sender, EventArgs e)
+        {
+            _toolStripLabel2.Text = "Camera đang chạy";
+            _btnConnect2.Enabled = false;
+        }
+
+        private void HandleStreamFailedEvent2(object sender, StreamFailedEventArgs e)
+        {
+            _toolStripLabel2.Text = "Camera kết nối thất bại";
+            //MessageBox.Show(e.Error, "Stream Player Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            _btnConnect2.Enabled = true;
+        }
+
         private void bảnQuyềnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (frmAbout frm = new frmAbout())

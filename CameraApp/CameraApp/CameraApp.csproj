@@ -72,6 +72,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebEye.StreamPlayerControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\WebEye.StreamPlayerControl.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\ProcessImage.cs" />
@@ -186,6 +190,40 @@
     <None Include="img\bia8-9.png" />
     <None Include="img\bia8-10.png" />
     <Content Include="M4A1.ico" />
+    <None Include="ScoreSound\0_diem.wav" />
+    <None Include="ScoreSound\1_diem.wav" />
+    <None Include="ScoreSound\2_diem.wav" />
+    <None Include="ScoreSound\3_diem.wav" />
+    <None Include="ScoreSound\4_diem.wav" />
+    <None Include="ScoreSound\5_diem.wav" />
+    <None Include="ScoreSound\6_diem.wav" />
+    <None Include="ScoreSound\7_diem.wav" />
+    <None Include="ScoreSound\8_diem.wav" />
+    <None Include="ScoreSound\9_diem.wav" />
+    <None Include="ScoreSound\10_diem.wav" />
+    <None Include="ScoreSound\11_diem.wav" />
+    <None Include="ScoreSound\12_diem.wav" />
+    <None Include="ScoreSound\13_diem.wav" />
+    <None Include="ScoreSound\14_diem.wav" />
+    <None Include="ScoreSound\15_diem.wav" />
+    <None Include="ScoreSound\16_diem.wav" />
+    <None Include="ScoreSound\17_diem.wav" />
+    <None Include="ScoreSound\18_diem.wav" />
+    <None Include="ScoreSound\19_diem.wav" />
+    <None Include="ScoreSound\20_diem.wav" />
+    <None Include="ScoreSound\21_diem.wav" />
+    <None Include="ScoreSound\22_diem.wav" />
+    <None Include="ScoreSound\23_diem.wav" />
+    <None Include="ScoreSound\24_diem.wav" />
+    <None Include="ScoreSound\25_diem.wav" />
+    <None Include="ScoreSound\26_diem.wav" />
+    <None Include="ScoreSound\27_diem.wav" />
+    <None Include="ScoreSound\28_diem.wav" />
+    <None Include="ScoreSound\29_diem.wav" />
+    <None Include="ScoreSound\30_diem.wav" />
+    <None Include="ScoreSound\Tong_diem_be_so_1_la.wav" />
+    <None Include="ScoreSound\Tong_diem_be_so_2_la.wav" />
+    <None Include="ScoreSound\Tong_diem_be_so_3_la.wav" />
     <Content Include="software\vlc-2.2.4-win32.exe" />
     <Content Include="x.png" />
   </ItemGroup>

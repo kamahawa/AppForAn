@@ -1,0 +1,3 @@
+rtsp://mpv.cdn3.bigCDN.com:554/bigCDN/definst/mp4:bigbuckbunnyiphone_400.mp4
+http://195.67.26.73/mjpg/video.mjpg
+rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov

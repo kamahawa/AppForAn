@@ -196,7 +196,109 @@
   <data name="bia8_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\bia8-9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Tong_diem_be_so_1_la" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\Tong_diem_be_so_1_la.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Tong_diem_be_so_2_la" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\Tong_diem_be_so_2_la.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Tong_diem_be_so_3_la" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\Tong_diem_be_so_3_la.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_0_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\0_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_10_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\10_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_11_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\11_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_12_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\12_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_13_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\13_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_14_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\14_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_15_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\15_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_16_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\16_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_17_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\17_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_18_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\18_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_19_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\19_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_1_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\1_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_20_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\20_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_21_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\21_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_22_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\22_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_23_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\23_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_24_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\24_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_25_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\25_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_26_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\26_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_27_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\27_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_28_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\28_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_29_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\29_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_2_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\2_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_30_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\30_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_3_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\3_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_4_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\4_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_5_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\5_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_6_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\6_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_7_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\7_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_8_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\8_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="_9_diem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ScoreSound\9_diem.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
